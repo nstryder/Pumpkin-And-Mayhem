@@ -8,6 +8,9 @@ size = Vector2(24, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktohr"]
 size = Vector2(8, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_od81e"]
+size = Vector2(32, 32)
+
 [node name="SliceInput" type="Node2D" unique_id=1655751501]
 script = ExtResource("1_tub0h")
 
@@ -27,3 +30,10 @@ position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowArea" unique_id=842314675]
 shape = SubResource("RectangleShape2D_lwrwe")
+
+[node name="ValidArea" type="Area2D" parent="." unique_id=1362354870]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ValidArea" unique_id=791782050]
+shape = SubResource("RectangleShape2D_od81e")
+
+[connection signal="mouse_exited" from="ValidArea" to="." method="_on_valid_area_mouse_exited"]
