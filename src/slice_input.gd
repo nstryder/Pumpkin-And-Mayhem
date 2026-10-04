@@ -1,6 +1,26 @@
+@tool
 extends Node2D
 
 signal sliced
+
+## How long the line will be, in pixels. 
+@export var line_length: int = 24:
+	set(value):
+		line_length = value
+		_setup_areas()
+
+## The width of the slice detection. Wider is more lenient for classifying a slice. 
+@export var detection_width: int = 24:
+	set(value):
+		detection_width = value
+		_setup_areas()
+
+## How much extra space around the detection areas to add. This makes click detection more lenient. 
+@export var detection_padding: int = 8:
+	set(value):
+		detection_padding = value
+		_setup_areas()
+
 
 var is_dragging: bool = false
 
@@ -15,11 +35,35 @@ var end_position: Vector2
 
 # Dragging starts if player clicks on a high or low area. 
 # Dragging ends if any occurs: 
-	# The mouse leaves the valid area (need to make this)
+	# The mouse leaves the valid area
 	# Left click is released 
+# Detection areas are considered as units in a 3x3 grid. 
+
+
+func _setup_areas() -> void:
+	var valid_area_rect: RectangleShape2D = _get_area_rect(valid_area)
+	valid_area_rect.size = Vector2(detection_width, line_length) + (Vector2.ONE * detection_padding)
+
+	var high_area_rect: RectangleShape2D = _get_area_rect(high_area)
+	high_area.position.y = - line_length / 3
+	var low_area_rect: RectangleShape2D = _get_area_rect(low_area)
+	low_area.position.y = line_length / 3
+	for rect: RectangleShape2D in [high_area_rect, low_area_rect]:
+		rect.size.x = detection_width
+		rect.size.y = line_length / 3
+	
+	var mid_area_rect: RectangleShape2D = _get_area_rect(mid_area)
+	mid_area_rect.size = Vector2(detection_width, line_length) / 3
+
+
+func _get_area_rect(area: Area2D) -> RectangleShape2D:
+	return (area.get_node("CollisionShape2D") as CollisionShape2D).shape
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Engine.is_editor_hint():
+		return
+	
 	if not _event_is_left_click(event):
 		return
 
@@ -108,7 +152,9 @@ func line_touches_all_areas(from: Vector2, to: Vector2, areas: Array[Area2D]) ->
 
 
 func _draw() -> void:
-	pass
+	var line_start := Vector2(0, -line_length / 2)
+	var line_end := Vector2(0, line_length / 2)
+	draw_dashed_line(line_start, line_end, Color.BLACK, 2, 1, true, false)
 
 
 func _on_valid_area_mouse_exited() -> void:
