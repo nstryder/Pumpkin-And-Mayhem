@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bctwpvok04ek"]
+
+[ext_resource type="Script" uid="uid://dnloa08wb4rdq" path="res://src/slice_input.gd" id="1_tub0h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(24, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktohr"]
+size = Vector2(8, 8)
+
+[node name="SliceInput" type="Node2D" unique_id=1655751501]
+script = ExtResource("1_tub0h")
+
+[node name="HighArea" type="Area2D" parent="." unique_id=1463798061]
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighArea" unique_id=1047715608]
+shape = SubResource("RectangleShape2D_lwrwe")
+
+[node name="MidArea" type="Area2D" parent="." unique_id=58886587]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MidArea" unique_id=2031696137]
+shape = SubResource("RectangleShape2D_ktohr")
+
+[node name="LowArea" type="Area2D" parent="." unique_id=1829787876]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowArea" unique_id=842314675]
+shape = SubResource("RectangleShape2D_lwrwe")

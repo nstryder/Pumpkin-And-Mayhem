@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b4qcchsvx76fn"]
+
+[ext_resource type="PackedScene" uid="uid://bctwpvok04ek" path="res://src/slice_input.tscn" id="1_2n3ak"]
+[ext_resource type="Script" uid="uid://dsu11g77pg68t" path="res://debug/test_slice.gd" id="1_bv2md"]
+
+[node name="test_slice" type="Node2D" unique_id=1031473362]
+script = ExtResource("1_bv2md")
+
+[node name="SliceInput" parent="." unique_id=1655751501 instance=ExtResource("1_2n3ak")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=417564042]
+zoom = Vector2(3, 3)
+
+[connection signal="sliced" from="SliceInput" to="." method="_on_slice_input_sliced"]
