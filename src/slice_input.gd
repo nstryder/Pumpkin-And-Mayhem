@@ -22,7 +22,10 @@ signal sliced
 		_setup_areas()
 
 
-var is_dragging: bool = false
+var is_dragging: bool = false:
+	set(value):
+		is_dragging = value
+		trail.enabled = value
 
 var start_position: Vector2
 var end_position: Vector2
@@ -31,6 +34,8 @@ var end_position: Vector2
 @onready var mid_area: Area2D = $MidArea
 @onready var low_area: Area2D = $LowArea
 @onready var valid_area: Area2D = $ValidArea
+@onready var trail: Trail = $Trail
+@onready var slice_vfx: SliceVfx = $SliceVfx
 
 
 # Dragging starts if player clicks on a high or low area. 
@@ -72,10 +77,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_press()
 	else:
 		_on_release()
-	
-
-func _physics_process(_delta: float) -> void:
-	pass
 
 
 func _event_is_left_click(event: InputEvent) -> bool:
@@ -91,11 +92,9 @@ func _on_press() -> void:
 		return
 	
 	var click_position: Vector2 = get_global_mouse_position()
-	if not point_touches_areas(click_position, [valid_area]):
-		return
-
 	start_position = click_position
 	is_dragging = true
+	print("Starting slice at ", start_position)
 
 
 func _on_release() -> void:
@@ -107,12 +106,14 @@ func _on_release() -> void:
 	print("Ending slice at ", end_position)
 	if is_valid_slice():
 		sliced.emit()
+		var vfx_distance: float = (line_length / 2.0) + 24
+		slice_vfx.show_slice(Vector2(0, -vfx_distance), Vector2(0, vfx_distance), 0.1)
 
 
 ## A valid slice occurs if the formed line touches all 3 areas.
 func is_valid_slice() -> bool:
 	return line_touches_all_areas(start_position, end_position, [high_area, mid_area, low_area])
-	
+
 
 func point_touches_areas(point: Vector2, areas: Array[Area2D]) -> bool:
 	var space: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
@@ -158,5 +159,4 @@ func _draw() -> void:
 
 
 func _on_valid_area_mouse_exited() -> void:
-	print("Mouse exiting valid area.")
 	_on_release()
