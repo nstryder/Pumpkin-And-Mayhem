@@ -106,8 +106,9 @@ func _on_release() -> void:
 	print("Ending slice at ", end_position)
 	if is_valid_slice():
 		sliced.emit()
+		var polarity: int = 1 if start_position.y < end_position.y else -1
 		var vfx_distance: float = (line_length / 2.0) + 24
-		slice_vfx.show_slice(Vector2(0, -vfx_distance), Vector2(0, vfx_distance), 0.1)
+		slice_vfx.show_slice(Vector2(0, -polarity * vfx_distance), Vector2(0, polarity * vfx_distance), 0.1)
 
 
 ## A valid slice occurs if the formed line touches all 3 areas.
