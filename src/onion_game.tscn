@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cb14c03d2i0xu"]
+
+[ext_resource type="Script" uid="uid://chpuuwfoydv53" path="res://src/onion_game.gd" id="1_dr4xq"]
+[ext_resource type="Texture2D" uid="uid://bodi0vfbpvm6r" path="res://icon.svg" id="2_nsoyf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
+font_size = 192
+font_color = Color(1, 0, 0, 1)
+outline_size = 16
+
+[node name="OnionGame" type="Node2D" unique_id=626989601]
+script = ExtResource("1_dr4xq")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=207740512]
+position = Vector2(688, 522)
+
+[node name="Onion" type="TextureRect" parent="Node2D" unique_id=1192675416]
+unique_name_in_owner = true
+offset_right = 556.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = ExtResource("2_nsoyf")
+
+[node name="DebugWin" type="Label" parent="." unique_id=91636543]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 149.0
+offset_top = 444.0
+offset_right = 1762.0
+offset_bottom = 707.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ONION CHOPPED"
+label_settings = SubResource("LabelSettings_lwrwe")
+metadata/_edit_use_anchors_ = true

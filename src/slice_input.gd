@@ -1,7 +1,10 @@
 @tool
 extends Node2D
+class_name SliceInput
 
 signal sliced
+
+const SELF_SCENE: PackedScene = preload("res://src/slice_input.tscn")
 
 ## How long the line will be, in pixels. 
 @export var line_length: int = 24:
@@ -45,24 +48,31 @@ var end_position: Vector2
 # Detection areas are considered as units in a 3x3 grid. 
 
 
-func _setup_areas() -> void:
-	var valid_area_rect: RectangleShape2D = _get_area_rect(valid_area)
-	valid_area_rect.size = Vector2(detection_width, line_length) + (Vector2.ONE * detection_padding)
+static func construct() -> SliceInput:
+	return SELF_SCENE.instantiate()
 
-	var high_area_rect: RectangleShape2D = _get_area_rect(high_area)
+
+func _setup_areas() -> void:
+	if not (Engine.is_editor_hint() or is_node_ready()):
+		return
+	var valid_area_rect: RectangleShape2D = ($ValidArea/CollisionShape2D as CollisionShape2D).shape
+	var high_area_rect: RectangleShape2D = ($HighArea/CollisionShape2D as CollisionShape2D).shape
+	var mid_area_rect: RectangleShape2D = ($MidArea/CollisionShape2D as CollisionShape2D).shape
+	var low_area_rect: RectangleShape2D = ($LowArea/CollisionShape2D as CollisionShape2D).shape
+
+	valid_area_rect.size = Vector2(detection_width, line_length) + (Vector2.ONE * detection_padding)
 	high_area.position.y = - line_length / 3
-	var low_area_rect: RectangleShape2D = _get_area_rect(low_area)
 	low_area.position.y = line_length / 3
 	for rect: RectangleShape2D in [high_area_rect, low_area_rect]:
 		rect.size.x = detection_width
 		rect.size.y = line_length / 3
 	
-	var mid_area_rect: RectangleShape2D = _get_area_rect(mid_area)
 	mid_area_rect.size = Vector2(detection_width, line_length) / 3
 
 
-func _get_area_rect(area: Area2D) -> RectangleShape2D:
-	return (area.get_node("CollisionShape2D") as CollisionShape2D).shape
+func _ready() -> void:
+	if not Engine.is_editor_hint():
+		_setup_areas()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -105,10 +115,12 @@ func _on_release() -> void:
 	end_position = get_global_mouse_position()
 	print("Ending slice at ", end_position)
 	if is_valid_slice():
-		sliced.emit()
 		var polarity: int = 1 if start_position.y < end_position.y else -1
 		var vfx_distance: float = (line_length / 2.0) + 24
 		slice_vfx.show_slice(Vector2(0, -polarity * vfx_distance), Vector2(0, polarity * vfx_distance), 0.1)
+		slice_vfx.reparent(get_parent())
+		
+		sliced.emit()
 
 
 ## A valid slice occurs if the formed line touches all 3 areas.
@@ -156,7 +168,7 @@ func line_touches_all_areas(from: Vector2, to: Vector2, areas: Array[Area2D]) ->
 func _draw() -> void:
 	var line_start := Vector2(0, -line_length / 2)
 	var line_end := Vector2(0, line_length / 2)
-	draw_dashed_line(line_start, line_end, Color.BLACK, 2, 1, true, false)
+	draw_dashed_line(line_start, line_end, Color.BLACK, 4, 8, true, false)
 
 
 func _on_valid_area_mouse_exited() -> void:

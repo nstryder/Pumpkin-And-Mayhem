@@ -6,13 +6,13 @@
 [ext_resource type="Script" uid="uid://bw6tih8v6jbda" path="res://src/slice_vfx.gd" id="4_gvwmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
-size = Vector2(24, 8)
+size = Vector2(128, 85)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktohr"]
-size = Vector2(8, 8)
+size = Vector2(42.666668, 85.333336)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_od81e"]
-size = Vector2(32, 32)
+size = Vector2(152, 280)
 
 [sub_resource type="Curve" id="Curve_lwrwe"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -20,9 +20,12 @@ point_count = 2
 
 [node name="SliceInput" type="Node2D" unique_id=1655751501]
 script = ExtResource("1_tub0h")
+line_length = 256
+detection_width = 128
+detection_padding = 24
 
 [node name="HighArea" type="Area2D" parent="." unique_id=1463798061]
-position = Vector2(0, -8)
+position = Vector2(0, -85)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighArea" unique_id=1047715608]
 shape = SubResource("RectangleShape2D_lwrwe")
@@ -33,19 +36,22 @@ shape = SubResource("RectangleShape2D_lwrwe")
 shape = SubResource("RectangleShape2D_ktohr")
 
 [node name="LowArea" type="Area2D" parent="." unique_id=1829787876]
-position = Vector2(0, 8)
+position = Vector2(0, 85)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowArea" unique_id=842314675]
 shape = SubResource("RectangleShape2D_lwrwe")
 
 [node name="ValidArea" type="Area2D" parent="." unique_id=1362354870]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ValidArea" unique_id=791782050]
 shape = SubResource("RectangleShape2D_od81e")
 
 [node name="Trail" parent="." unique_id=1965245881 instance=ExtResource("2_tnnxl")]
+top_level = true
 points = PackedVector2Array()
-width = 2.0
+width = 8.0
 joint_mode = 2
 end_cap_mode = 2
 antialiased = true
@@ -53,7 +59,7 @@ script = ExtResource("3_gvwmh")
 length = 16
 
 [node name="SliceVfx" type="Line2D" parent="." unique_id=1133987241]
-width = 4.0
+width = 8.0
 width_curve = SubResource("Curve_lwrwe")
 default_color = Color(1, 1, 0, 1)
 joint_mode = 2

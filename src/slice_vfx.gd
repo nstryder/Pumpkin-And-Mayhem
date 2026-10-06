@@ -9,6 +9,10 @@ var _duration_secs: float
 var _current_time: float = 0.0
 
 
+func _ready() -> void:
+	set_process(false)
+
+
 func show_slice(from: Vector2, to: Vector2, duration_secs: float, length: int = 32) -> void:
 	_from = from
 	_to = to
@@ -30,4 +34,4 @@ func _process(delta: float) -> void:
 		if not points.is_empty():
 			remove_point(0)
 		else:
-			set_process(false)
+			queue_free()
