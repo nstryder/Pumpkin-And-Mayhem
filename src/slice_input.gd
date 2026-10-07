@@ -33,6 +33,14 @@ var is_dragging: bool = false:
 var start_position: Vector2
 var end_position: Vector2
 
+var enabled: bool = true:
+	set(value):
+		enabled = value
+		# for area: Area2D in [valid_area, high_area, mid_area, low_area]:
+		# 	area.monitorable = value
+		# 	area.monitoring = value
+
+
 @onready var high_area: Area2D = $HighArea
 @onready var mid_area: Area2D = $MidArea
 @onready var low_area: Area2D = $LowArea
@@ -80,6 +88,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	
 	if not _event_is_left_click(event):
+		return
+
+	if not enabled:
 		return
 
 	var button_event: InputEventMouseButton = event

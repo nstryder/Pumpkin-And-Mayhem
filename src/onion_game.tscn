@@ -2,19 +2,35 @@
 
 [ext_resource type="Script" uid="uid://chpuuwfoydv53" path="res://src/onion_game.gd" id="1_dr4xq"]
 [ext_resource type="Texture2D" uid="uid://bodi0vfbpvm6r" path="res://icon.svg" id="2_nsoyf"]
+[ext_resource type="Shader" uid="uid://dabdarplu12kp" path="res://src/shaders/blur.gdshader" id="3_qwutk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
 font_size = 192
 font_color = Color(1, 0, 0, 1)
 outline_size = 16
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwrwe"]
+shader = ExtResource("3_qwutk")
+shader_parameter/lod = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktohr"]
+font_size = 192
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktohr"]
+bg_color = Color(0.8731761, 0.8731761, 0.8731761, 1)
+border_width_top = 16
+border_width_bottom = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t87rt"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="OnionGame" type="Node2D" unique_id=626989601]
 script = ExtResource("1_dr4xq")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=207740512]
+[node name="OnionHolder" type="Node2D" parent="." unique_id=207740512]
 position = Vector2(688, 522)
 
-[node name="Onion" type="TextureRect" parent="Node2D" unique_id=1192675416]
+[node name="Onion" type="TextureRect" parent="OnionHolder" unique_id=1192675416]
 unique_name_in_owner = true
 offset_right = 556.0
 offset_bottom = 128.0
@@ -37,3 +53,41 @@ grow_vertical = 2
 text = "ONION CHOPPED"
 label_settings = SubResource("LabelSettings_lwrwe")
 metadata/_edit_use_anchors_ = true
+
+[node name="BlurLayer" type="CanvasLayer" parent="." unique_id=1314547062]
+
+[node name="BlurTexture" type="ColorRect" parent="BlurLayer" unique_id=339666699]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_lwrwe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WipePrompt" type="CanvasLayer" parent="." unique_id=898543449]
+unique_name_in_owner = true
+visible = false
+
+[node name="Label" type="Label" parent="WipePrompt" unique_id=585324274]
+offset_left = 214.0
+offset_top = 184.0
+offset_right = 1726.0
+offset_bottom = 447.0
+text = "WIPE YOUR EYES"
+label_settings = SubResource("LabelSettings_ktohr")
+
+[node name="WipeInput" type="HSlider" parent="WipePrompt" unique_id=1454828052]
+unique_name_in_owner = true
+offset_left = 518.0
+offset_top = 718.0
+offset_right = 1413.0
+offset_bottom = 782.0
+theme_override_icons/grabber = ExtResource("2_nsoyf")
+theme_override_icons/grabber_highlight = ExtResource("2_nsoyf")
+theme_override_icons/grabber_disabled = ExtResource("2_nsoyf")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ktohr")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_t87rt")
+
+[connection signal="value_changed" from="WipePrompt/WipeInput" to="." method="_on_wipe_input_value_changed"]
