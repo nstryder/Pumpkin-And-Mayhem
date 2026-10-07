@@ -4,7 +4,7 @@ class_name SliceInput
 
 signal sliced
 
-const SELF_SCENE: PackedScene = preload("res://src/slice_input.tscn")
+const SELF_SCENE: PackedScene = preload("uid://bctwpvok04ek")
 
 ## How long the line will be, in pixels. 
 @export var line_length: int = 24:
@@ -61,7 +61,7 @@ static func construct() -> SliceInput:
 
 
 func _setup_areas() -> void:
-	if not (Engine.is_editor_hint() or is_node_ready()):
+	if not is_node_ready():
 		return
 	var valid_area_rect: RectangleShape2D = ($ValidArea/CollisionShape2D as CollisionShape2D).shape
 	var high_area_rect: RectangleShape2D = ($HighArea/CollisionShape2D as CollisionShape2D).shape
@@ -79,8 +79,7 @@ func _setup_areas() -> void:
 
 
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		_setup_areas()
+	_setup_areas()
 
 
 func _unhandled_input(event: InputEvent) -> void:

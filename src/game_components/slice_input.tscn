@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bctwpvok04ek"]
 
-[ext_resource type="Script" uid="uid://dnloa08wb4rdq" path="res://src/slice_input.gd" id="1_tub0h"]
-[ext_resource type="PackedScene" uid="uid://c4im3ageme5l5" path="res://src/trail.tscn" id="2_tnnxl"]
-[ext_resource type="Script" uid="uid://mxmqleybsd5p" path="res://src/trail.gd" id="3_gvwmh"]
-[ext_resource type="Script" uid="uid://bw6tih8v6jbda" path="res://src/slice_vfx.gd" id="4_gvwmh"]
+[ext_resource type="Script" uid="uid://dnloa08wb4rdq" path="res://src/game_components/slice_input.gd" id="1_tub0h"]
+[ext_resource type="PackedScene" uid="uid://c4im3ageme5l5" path="res://src/game_components/trail.tscn" id="2_tnnxl"]
+[ext_resource type="Script" uid="uid://mxmqleybsd5p" path="res://src/game_components/trail.gd" id="3_gvwmh"]
+[ext_resource type="Script" uid="uid://bw6tih8v6jbda" path="res://src/game_components/slice_vfx.gd" id="4_gvwmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(128, 85)

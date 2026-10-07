@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bao7qolnlt5wi"]
+
+[ext_resource type="Script" uid="uid://in6af5bvey4q" path="res://src/game_screens/garlic_game.gd" id="1_lbxbg"]
+
+[node name="GarlicGame" type="Node2D" unique_id=1156178750]
+script = ExtResource("1_lbxbg")

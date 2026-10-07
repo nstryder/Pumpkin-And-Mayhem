@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb14c03d2i0xu"]
 
-[ext_resource type="Script" uid="uid://chpuuwfoydv53" path="res://src/onion_game.gd" id="1_dr4xq"]
+[ext_resource type="Script" uid="uid://chpuuwfoydv53" path="res://src/game_screens/onion_game.gd" id="1_dr4xq"]
 [ext_resource type="Texture2D" uid="uid://bodi0vfbpvm6r" path="res://icon.svg" id="2_nsoyf"]
 [ext_resource type="Shader" uid="uid://dabdarplu12kp" path="res://src/shaders/blur.gdshader" id="3_qwutk"]
 
