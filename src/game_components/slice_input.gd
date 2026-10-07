@@ -86,7 +86,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if not _event_is_left_click(event):
+	if not Utils.event_is_left_click(event):
 		return
 
 	if not enabled:
@@ -97,14 +97,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_press()
 	else:
 		_on_release()
-
-
-func _event_is_left_click(event: InputEvent) -> bool:
-	if event is not InputEventMouseButton:
-		return false
-
-	var button_event: InputEventMouseButton = event
-	return button_event.button_index == MOUSE_BUTTON_LEFT
 
 
 func _on_press() -> void:
