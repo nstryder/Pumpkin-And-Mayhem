@@ -36,11 +36,16 @@ func attempt_press() -> void:
 	if tween:
 		tween.kill()
 	tween = create_tween()
+	tween.finished.connect(_on_tween_finished)
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	(tween.tween_property(garlic_press, "position:y", 512, 1.0)
 		.set_trans(Tween.TRANS_CUBIC)
 		.set_ease(Tween.EASE_OUT)
 	)
+
+
+func restart_press() -> void:
+	garlic_press_animation.play()
 
 
 func _on_garlic_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -57,3 +62,7 @@ func _on_garlic_area_input_event(_viewport: Node, event: InputEvent, _shape_idx:
 func _on_garlic_press_hitbox_area_entered(_area: Area2D) -> void:
 	tween.kill()
 	Utils.fade_in_item(debug_win)
+
+
+func _on_tween_finished() -> void:
+	restart_press()
