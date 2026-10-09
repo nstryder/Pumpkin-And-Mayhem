@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://brvneekx42wm5"]
+
+[ext_resource type="PackedScene" uid="uid://0oi64ebkb51w" path="res://src/game_components/pick_off_input.tscn" id="1_35y83"]
+[ext_resource type="PackedScene" uid="uid://dyriq22a7awc4" path="res://src/game_components/draggables/draggable_seed.tscn" id="2_ewnpk"]
+
+[node name="test_pick_off" type="Node2D" unique_id=902548844]
+
+[node name="PickOffInput" parent="." unique_id=1499264777 instance=ExtResource("1_35y83")]
+draggable_scene = ExtResource("2_ewnpk")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1547591661]

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dyriq22a7awc4"]
+
+[ext_resource type="PackedScene" uid="uid://cj2i2tnfpnx51" path="res://src/game_components/draggable_area.tscn" id="1_8j01o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2636"]
+radius = 32.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_8j01o"]
+font_size = 48
+
+[node name="DraggableSeed" unique_id=1557830965 instance=ExtResource("1_8j01o")]
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1342632994]
+shape = SubResource("CircleShape2D_r2636")
+
+[node name="Sprite" type="Label" parent="." index="1" unique_id=1852080134]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "🥜"
+label_settings = SubResource("LabelSettings_8j01o")
+horizontal_alignment = 1

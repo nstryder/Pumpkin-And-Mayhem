@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dih1w3do2r1sn"]
+
+[ext_resource type="PackedScene" uid="uid://cj2i2tnfpnx51" path="res://src/game_components/draggable_area.tscn" id="1_ftpwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(256, 256)
+
+[node name="test_draggable_area" type="Node2D" unique_id=1353802395]
+
+[node name="DraggableArea" parent="." unique_id=1557830965 instance=ExtResource("1_ftpwf")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DraggableArea" unique_id=1766675398]
+shape = SubResource("RectangleShape2D_lwrwe")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1250149189]

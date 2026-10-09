@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cabdnqygsbkqp"]
+
+[ext_resource type="Script" uid="uid://qb78dcbadu86" path="res://src/game_components/clickable_area.gd" id="1_mnjm2"]
+
+[node name="ClickableArea" type="Area2D" unique_id=1746058275]
+script = ExtResource("1_mnjm2")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://dhb4bcr73gne5"]
 
 [ext_resource type="Script" uid="uid://bp678co642ncl" path="res://src/game_screens/pumpkin_game.gd" id="1_qecsm"]
+[ext_resource type="PackedScene" uid="uid://dyriq22a7awc4" path="res://src/game_components/draggables/draggable_seed.tscn" id="2_wo2l0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qecsm"]
 font_size = 256
+
+[sub_resource type="LabelSettings" id="LabelSettings_wo2l0"]
+font_size = 224
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(256, 256)
 
 [node name="PumpkinGame" type="Node2D" unique_id=2065974962]
 script = ExtResource("1_qecsm")
@@ -29,3 +36,55 @@ text = "🎃"
 label_settings = SubResource("LabelSettings_qecsm")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="PickOffInput" parent="." unique_id=1499264777 instance_placeholder="res://src/game_components/pick_off_input.tscn"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(960, 512)
+draggable_scene = ExtResource("2_wo2l0")
+
+[node name="Oven" parent="." unique_id=1557830965 instance_placeholder="res://src/game_components/draggable_area.tscn"]
+position = Vector2(960, 540)
+
+[node name="Label" type="Label" parent="Oven" unique_id=1013095010]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "⏲️"
+label_settings = SubResource("LabelSettings_wo2l0")
+horizontal_alignment = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Oven" unique_id=1373835673]
+shape = SubResource("RectangleShape2D_lwrwe")
+
+[node name="FoodProcessor" parent="." unique_id=1032864887 instance_placeholder="res://src/game_components/draggable_area.tscn"]
+position = Vector2(960, 540)
+
+[node name="Label" type="Label" parent="FoodProcessor" unique_id=798865251]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "🥣"
+label_settings = SubResource("LabelSettings_wo2l0")
+horizontal_alignment = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FoodProcessor" unique_id=1634605799]
+shape = SubResource("RectangleShape2D_lwrwe")
+
+[node name="CookTimer" type="Timer" parent="." unique_id=970794070]

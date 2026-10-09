@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cj2i2tnfpnx51"]
+
+[ext_resource type="Script" uid="uid://c8apiu8lptwni" path="res://src/game_components/draggable_area.gd" id="1_bwi3q"]
+
+[node name="DraggableArea" type="Area2D" unique_id=1557830965]
+script = ExtResource("1_bwi3q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342632994]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
