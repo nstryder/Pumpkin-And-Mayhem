@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://uyl2msy1ncuw"]
+
+[ext_resource type="PackedScene" uid="uid://cabdnqygsbkqp" path="res://src/game_components/clickable_area.tscn" id="1_chfn2"]
+[ext_resource type="Script" uid="uid://cm3ic2wr0vajk" path="res://src/game_components/timed_input.gd" id="1_s6wvn"]
+[ext_resource type="Texture2D" uid="uid://dsi5ev0r01qsa" path="res://assets/gfx/textures/circle.svg" id="3_v02r1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v02r1"]
+font_size = 128
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TimedInput" type="Node2D" unique_id=517426030]
+script = ExtResource("1_s6wvn")
+
+[node name="Timer" type="Timer" parent="." unique_id=329137932]
+one_shot = true
+
+[node name="ClickableArea" parent="." unique_id=1746058275 instance=ExtResource("1_chfn2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea" unique_id=877238857]
+
+[node name="TimerVisuals" type="CanvasGroup" parent="." unique_id=1534909663]
+
+[node name="FailRegion" type="TextureProgressBar" parent="TimerVisuals" unique_id=1511175588]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+step = 0.0
+fill_mode = 5
+texture_progress = ExtResource("3_v02r1")
+tint_progress = Color(1, 0.24000001, 0.24000001, 1)
+
+[node name="PassRegion" type="TextureProgressBar" parent="TimerVisuals" unique_id=1168768915]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+step = 0.0
+fill_mode = 4
+texture_progress = ExtResource("3_v02r1")
+tint_progress = Color(0.30980393, 0.8392157, 0.34509805, 1)
+
+[node name="Progress" type="TextureProgressBar" parent="TimerVisuals" unique_id=682248382]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+step = 0.0
+fill_mode = 4
+texture_under = ExtResource("3_v02r1")
+texture_progress = ExtResource("3_v02r1")
+tint_under = Color(0, 0, 0, 0.18431373)
+
+[node name="Prompt" type="Label" parent="." unique_id=241615185]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_enabled = true
+text = "Try again..."
+label_settings = SubResource("LabelSettings_v02r1")
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1052353455]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
