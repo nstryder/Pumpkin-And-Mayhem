@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bbkh5p3v5ydw"]
+
+[ext_resource type="PackedScene" uid="uid://bx8rfxo0ogo7m" path="res://src/game_components/circle_input.tscn" id="1_hs04o"]
+
+[node name="test_circle_input" type="Node2D" unique_id=146325423]
+
+[node name="CircleInput" parent="." unique_id=1942862869 instance=ExtResource("1_hs04o")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1269792049]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bx8rfxo0ogo7m"]
+
+[ext_resource type="Script" uid="uid://dih3v7yyxjs8h" path="res://src/game_components/circle_input.gd" id="1_jnl6a"]
+[ext_resource type="Texture2D" uid="uid://bodi0vfbpvm6r" path="res://icon.svg" id="2_ceeer"]
+
+[node name="CircleInput" type="Node2D" unique_id=1942862869]
+script = ExtResource("1_jnl6a")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=357043065]
+position = Vector2(0, -256)
+texture = ExtResource("2_ceeer")
+
+[node name="RotationPoint" type="Node2D" parent="." unique_id=1178310144]
+unique_name_in_owner = true
+
+[node name="Offset" type="Node2D" parent="RotationPoint" unique_id=941463734]
+position = Vector2(0, -256)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="RotationPoint/Offset" unique_id=393781955]
+remote_path = NodePath("../../../Visual")
+update_rotation = false
