@@ -102,6 +102,4 @@ text = "Try again..."
 label_settings = SubResource("LabelSettings_v02r1")
 horizontal_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1052353455]
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
