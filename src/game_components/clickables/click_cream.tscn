@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dx0ytpr3c5rvi"]
+
+[ext_resource type="PackedScene" uid="uid://cabdnqygsbkqp" path="res://src/game_components/clickable_area.tscn" id="1_uji5s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uji5s"]
+font_size = 768
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(196, 196)
+
+[node name="ClickCream" unique_id=1746058275 instance=ExtResource("1_uji5s")]
+
+[node name="Sprite" type="Sprite2D" parent="." index="0" unique_id=733224290]
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Sprite" index="0" unique_id=1698862965]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -478.0
+offset_top = -523.0
+offset_right = 478.0
+offset_bottom = 523.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "🍦"
+label_settings = SubResource("LabelSettings_uji5s")
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=560550822]
+shape = SubResource("RectangleShape2D_lwrwe")

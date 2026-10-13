@@ -5,7 +5,7 @@
 [sub_resource type="Animation" id="Animation_e6jvx"]
 resource_name = "default"
 length = 60.0
-step = 0.1
+step = 1.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -13,14 +13,50 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 6, 11),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1, 5, 9, 13, 16, 20, 23, 27, 30, 34, 37, 41, 44, 47, 51),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [2.0],
 "method": &"stir"
 }, {
 "args": [2.0],
+"method": &"slice_butter"
+}, {
+"args": [2.0],
 "method": &"stir"
+}, {
+"args": [1.0],
+"method": &"add_onion"
+}, {
+"args": [2.0],
+"method": &"stir"
+}, {
+"args": [1.0],
+"method": &"add_garlic"
+}, {
+"args": [2.0],
+"method": &"stir"
+}, {
+"args": [1.0],
+"method": &"add_pumpkin"
+}, {
+"args": [2.0],
+"method": &"stir"
+}, {
+"args": [1.0],
+"method": &"add_milk"
+}, {
+"args": [2.0],
+"method": &"stir"
+}, {
+"args": [1.0],
+"method": &"add_cream"
+}, {
+"args": [2.0],
+"method": &"stir"
+}, {
+"args": [2.0],
+"method": &"shake_seasoning"
 }, {
 "args": [2.0],
 "method": &"stir"

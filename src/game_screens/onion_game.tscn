@@ -17,7 +17,7 @@ shader_parameter/lod = 0.0
 font_size = 192
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktohr"]
-bg_color = Color(0.8731761, 0.8731761, 0.8731761, 1)
+bg_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 border_width_top = 16
 border_width_bottom = 16
 

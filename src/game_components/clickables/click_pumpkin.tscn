@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dtdf2iiyytswv"]
+
+[ext_resource type="PackedScene" uid="uid://cabdnqygsbkqp" path="res://src/game_components/clickable_area.tscn" id="1_n5hgm"]
+[ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="2_n5hgm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(196, 196)
+
+[node name="ClickPumpkin" unique_id=1746058275 instance=ExtResource("1_n5hgm")]
+
+[node name="Sprite" type="Sprite2D" parent="." index="0" unique_id=733224290]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_n5hgm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=560550822]
+shape = SubResource("RectangleShape2D_lwrwe")

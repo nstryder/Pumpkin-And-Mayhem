@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://hnynq7d1e7ig"]
+
+[ext_resource type="Script" uid="uid://cx8ky12iyc3ga" path="res://src/game_components/shake_input.gd" id="1_7k4ds"]
+[ext_resource type="Texture2D" uid="uid://bodi0vfbpvm6r" path="res://icon.svg" id="1_aqmki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7k4ds"]
+bg_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+border_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqmki"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="ShakeInput" type="Node2D" unique_id=128938445]
+script = ExtResource("1_7k4ds")
+
+[node name="Slider" type="VSlider" parent="." unique_id=1635499404]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -192.0
+offset_right = 64.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("1_aqmki")
+theme_override_icons/grabber_highlight = ExtResource("1_aqmki")
+theme_override_icons/grabber_disabled = ExtResource("1_aqmki")
+theme_override_styles/slider = SubResource("StyleBoxFlat_7k4ds")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_aqmki")
+value = 100.0
+scrollable = false
+
+[connection signal="value_changed" from="Slider" to="." method="_on_slider_value_changed"]

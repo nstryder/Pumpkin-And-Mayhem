@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://coeo76qvjgdvv"]
+
+[ext_resource type="PackedScene" uid="uid://hnynq7d1e7ig" path="res://src/game_components/shake_input.tscn" id="1_kao04"]
+
+[node name="ShakeSeasoning" unique_id=128938445 instance=ExtResource("1_kao04")]
