@@ -1,10 +1,14 @@
 extends Node2D
+class_name CircleInput
+
 
 # How do we qualify a circle input?
 # Comparing delta theta maxes at 180 deg...
 # Every frame, compare delta theta if its positive or negative, add this to an accumulator
 # once abs(acc) hits threshold, consider input as complete
 # if released too early, reset acc
+
+const SELF_INPUT = preload("uid://bx8rfxo0ogo7m")
 
 signal completed
 
@@ -15,6 +19,10 @@ var current_point: Vector2
 var accumulated_angle_rad: float = 0.0
 
 @onready var rotation_point: Node2D = %RotationPoint
+
+
+static func construct() -> CircleInput:
+	return SELF_INPUT.instantiate()
 
 
 func _ready() -> void:
@@ -39,9 +47,7 @@ func _process(_delta: float) -> void:
 	current_point = new_point
 	accumulated_angle_rad -= delta_rotation
 	
-
 	rotation_point.rotation = accumulated_angle_rad
-	print(accumulated_angle_rad)
 
 	if rad_to_deg(absf(accumulated_angle_rad)) >= angle_threshold_deg:
 		completed.emit()
