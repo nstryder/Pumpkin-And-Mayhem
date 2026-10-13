@@ -9,15 +9,18 @@ class TimelineAction:
 
 var actions: Array[TimelineAction] = []
 var current_prompt: Node2D
+var scroll_speed: float = 200.0
 
 
 @onready var timeline_player: AnimationPlayer = $TimelinePlayer
 @onready var timer: Timer = $Timer
 @onready var output: Label = $Output
+@onready var action_holder: Control = %ActionHolder
 
 
 func _ready() -> void:
 	_get_timeline_actions()
+	_place_timeline_actions()
 	timer.timeout.connect(_on_action_missed)
 	output.hide()
 
@@ -35,6 +38,23 @@ func _get_timeline_actions() -> void:
 		actions.push_back(action)
 
 
+func _place_timeline_actions() -> void:
+	for action in actions:
+		var action_item := ColorRect.new()
+		action_item.color = Color.WHITE
+		action_item.size.y = action_holder.size.y
+		# general eq: d = vt
+		# Position:x determined by time 
+		# Size:x determined by time + window 
+		action_item.position.x = scroll_speed * action.start_time
+		action_item.size.x = scroll_speed * action.window_duration
+		action_holder.add_child(action_item)
+
+
+func _process(delta: float) -> void:
+	action_holder.position.x -= scroll_speed * delta
+
+	
 func act_circle(window: float) -> void:
 	var circle_input := CircleInput.construct()
 	add_child(circle_input)
@@ -53,8 +73,12 @@ func show_text(text: String) -> void:
 func _on_action_completed() -> void:
 	timer.stop()
 	current_prompt.queue_free()
+	actions.pop_front()
 	show_text("Nice!")
 
 
 func _on_action_missed() -> void:
-	pass
+	timeline_player.stop()
+	current_prompt.queue_free()
+	show_text("Failed...")
+	set_process(false)

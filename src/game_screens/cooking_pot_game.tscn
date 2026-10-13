@@ -60,3 +60,50 @@ grow_vertical = 2
 text = "Nice!"
 label_settings = SubResource("LabelSettings_lwrwe")
 horizontal_alignment = 1
+
+[node name="TimelineVisual" type="Node2D" parent="." unique_id=1995783135]
+position = Vector2(0, 240)
+
+[node name="Mask" type="ColorRect" parent="TimelineVisual" unique_id=1411470425]
+clip_children = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -710.0
+offset_top = -39.0
+offset_right = 710.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="BG" type="ColorRect" parent="TimelineVisual/Mask" unique_id=285367467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.20392157)
+
+[node name="ActionHolder" type="Control" parent="TimelineVisual/Mask" unique_id=1077044540]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionLine" type="ColorRect" parent="TimelineVisual/Mask" unique_id=1712842503]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = 10.0
+offset_bottom = 50.0
+grow_vertical = 2
+color = Color(0.20399997, 0.9, 0.17999998, 1)
