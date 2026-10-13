@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://41g1rrdsc4h"]
+
+[ext_resource type="Script" uid="uid://cec1s1s4erhd2" path="res://src/game_components/timeline_action_item.gd" id="1_j7mn6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+outline_size = 16
+outline_color = Color(1, 0.3817402, 0.7732658, 1)
+
+[node name="TimelineActionItem" type="ColorRect" unique_id=383126054]
+script = ExtResource("1_j7mn6")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1345605888]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer" unique_id=1902758857]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Act"
+label_settings = SubResource("LabelSettings_lwrwe")
