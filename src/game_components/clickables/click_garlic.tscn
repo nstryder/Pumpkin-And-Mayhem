@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cub5jljcse7nv"]
+
+[ext_resource type="PackedScene" uid="uid://cabdnqygsbkqp" path="res://src/game_components/clickable_area.tscn" id="1_j7dd1"]
+[ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="2_j7dd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(196, 196)
+
+[node name="ClickGarlic" unique_id=1746058275 instance=ExtResource("1_j7dd1")]
+
+[node name="Sprite" type="Sprite2D" parent="." index="0" unique_id=733224290]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_j7dd1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=560550822]
+shape = SubResource("RectangleShape2D_lwrwe")

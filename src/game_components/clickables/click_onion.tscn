@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b4j4bwhnr3eok"]
+
+[ext_resource type="PackedScene" uid="uid://cabdnqygsbkqp" path="res://src/game_components/clickable_area.tscn" id="1_n7uyt"]
+[ext_resource type="Texture2D" uid="uid://c43figngusf10" path="res://assets/gfx/sprites/ingredients/onionFull.png" id="2_eo04d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(196, 196)
+
+[node name="ClickOnion" unique_id=1746058275 instance=ExtResource("1_n7uyt")]
+
+[node name="Sprite" type="Sprite2D" parent="." index="0" unique_id=733224290]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_eo04d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=560550822]
+shape = SubResource("RectangleShape2D_lwrwe")

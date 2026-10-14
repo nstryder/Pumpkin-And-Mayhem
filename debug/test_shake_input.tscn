@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://tun362ham53u"]
+
+[ext_resource type="PackedScene" uid="uid://hnynq7d1e7ig" path="res://src/game_components/shake_input.tscn" id="1_m0ot1"]
+
+[node name="TestShakeInput" type="Node2D" unique_id=561791742]
+
+[node name="ShakeInput" parent="." unique_id=128938445 instance=ExtResource("1_m0ot1")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1585757128]
