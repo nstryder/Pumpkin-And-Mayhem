@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctu3pw4j7vu6s"]
 
-[ext_resource type="PackedScene" uid="uid://74un8kdkjk0a" path="res://src/game_screens/cooking_pot_game.tscn" id="1_807xi"]
+[ext_resource type="PackedScene" uid="uid://74un8kdkjk0a" path="res://src/game_screens/minigames/cooking_pot_game.tscn" id="1_807xi"]
 
 [node name="TestCookingPot" type="Node2D" unique_id=1022672936]
 
