@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dngehscb80t1h"]
+
+[ext_resource type="Texture2D" uid="uid://c16nsdbftt778" path="res://assets/gfx/sprites/backgrounds/pantry.png" id="1_ikwpo"]
+[ext_resource type="PackedScene" uid="uid://o6klciqvvcd3" path="res://src/game_components/clickable_highlight_area.tscn" id="2_a05fl"]
+[ext_resource type="PackedScene" uid="uid://c4o3ecrj177ac" path="res://src/game_components/scene_changer.tscn" id="3_pamml"]
+
+[node name="PantryScene" type="Node2D" unique_id=224631499]
+
+[node name="Pantry" type="Sprite2D" parent="." unique_id=1634005516]
+texture = ExtResource("1_ikwpo")
+centered = false
+
+[node name="ClickableHighlightArea" parent="." unique_id=1746058275 instance=ExtResource("2_a05fl")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickableHighlightArea" unique_id=1699600347]
+polygon = PackedVector2Array(0, 1080, 360, 1080, 360, 0, 0, 0)
+
+[node name="SceneChanger" parent="." unique_id=431471297 instance=ExtResource("3_pamml")]
+new_scene_path = "res://src/game_screens/kitchen_scene.tscn"
+
+[connection signal="clicked" from="ClickableHighlightArea" to="SceneChanger" method="request_new_scene"]

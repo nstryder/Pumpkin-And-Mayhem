@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://74un8kdkjk0a"]
 
-[ext_resource type="Script" uid="uid://cterdm68l8yku" path="res://src/game_screens/cooking_pot_game.gd" id="1_e6jvx"]
+[ext_resource type="Script" uid="uid://cterdm68l8yku" path="res://src/game_screens/minigames/cooking_pot_game.gd" id="1_e6jvx"]
 
 [sub_resource type="Animation" id="Animation_e6jvx"]
 resource_name = "default"
