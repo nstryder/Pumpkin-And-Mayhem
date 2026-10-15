@@ -4,10 +4,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if GlobalState.holds_pumpkin:
+	if GlobalState.current_item == GlobalState.Items.PUMPKIN or GlobalState.is_pumpkin_done:
 		pumpkin.queue_free()
 
 
 func _on_pumpkin_clicked() -> void:
-	GlobalState.holds_pumpkin = true
+	GlobalState.current_item = GlobalState.Items.PUMPKIN
 	pumpkin.queue_free()

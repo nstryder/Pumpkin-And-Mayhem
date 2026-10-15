@@ -1,15 +1,34 @@
 [gd_scene format=3 uid="uid://dhb4bcr73gne5"]
 
 [ext_resource type="Script" uid="uid://bp678co642ncl" path="res://src/game_screens/minigames/pumpkin_game.gd" id="1_qecsm"]
-[ext_resource type="Texture2D" uid="uid://c8lrnn6cv38md" path="res://assets/gfx/sprites/backgrounds/foodProssesor.png" id="2_5nx6y"]
 [ext_resource type="Texture2D" uid="uid://b0ba1xubc1kf6" path="res://assets/gfx/sprites/backgrounds/ovenOpen.png" id="2_kdncw"]
 [ext_resource type="Texture2D" uid="uid://d082tlyd4xugk" path="res://assets/gfx/sprites/backgrounds/cuttingBoard.png" id="2_t1m4g"]
+[ext_resource type="Texture2D" uid="uid://lme03lm8h4fp" path="res://assets/gfx/sprites/backgrounds/mixing1.png" id="2_v10d6"]
 [ext_resource type="PackedScene" uid="uid://dyriq22a7awc4" path="res://src/game_components/draggables/draggable_seed.tscn" id="2_wo2l0"]
 [ext_resource type="Texture2D" uid="uid://7s4wp78cf68e" path="res://assets/gfx/sprites/backgrounds/oven.png" id="3_rh4xj"]
+[ext_resource type="Texture2D" uid="uid://bdhoq7wvjmk2p" path="res://assets/gfx/sprites/backgrounds/mixing2.png" id="3_s4tqg"]
+[ext_resource type="Texture2D" uid="uid://bhvckna4cu0pb" path="res://assets/gfx/sprites/backgrounds/mixing.png" id="4_ddcvl"]
 [ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="4_irteb"]
 [ext_resource type="PackedScene" uid="uid://0oi64ebkb51w" path="res://src/game_components/pick_off_input.tscn" id="6_et57l"]
 [ext_resource type="PackedScene" uid="uid://bdmp7uy6xn8g" path="res://src/game_components/timed_inputs/oven_timed_input.tscn" id="8_2ux4t"]
 [ext_resource type="PackedScene" uid="uid://cvrxrae24avgp" path="res://src/game_components/timed_inputs/food_processor_timed_input.tscn" id="9_5nx6y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lwrwe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v10d6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s4tqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ddcvl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 24.0
+}]
 
 [sub_resource type="Animation" id="Animation_irteb"]
 length = 0.001
@@ -120,6 +139,47 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Backgrounds/FoodProcessor:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s4tqg"]
+resource_name = "finish"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Backgrounds/FoodProcessor:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.14901961)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Backgrounds/FoodProcessor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_et57l"]
@@ -332,6 +392,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ed0ld"]
 _data = {
 &"RESET": SubResource("Animation_irteb"),
+&"finish": SubResource("Animation_s4tqg"),
 &"full_slice": SubResource("Animation_et57l"),
 &"pickoff_slide_in": SubResource("Animation_ed0ld"),
 &"pickoff_slide_out": SubResource("Animation_2ux4t"),
@@ -346,8 +407,10 @@ script = ExtResource("1_qecsm")
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=635600527]
 
-[node name="FoodProssesor" type="Sprite2D" parent="Backgrounds" unique_id=329422620]
-texture = ExtResource("2_5nx6y")
+[node name="FoodProcessor" type="AnimatedSprite2D" parent="Backgrounds" unique_id=863790469]
+sprite_frames = SubResource("SpriteFrames_lwrwe")
+autoplay = "default"
+frame_progress = 0.76166135
 centered = false
 
 [node name="OvenOpen" type="Sprite2D" parent="Backgrounds" unique_id=2050084567]

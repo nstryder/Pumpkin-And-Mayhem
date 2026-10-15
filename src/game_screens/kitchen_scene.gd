@@ -11,7 +11,8 @@ func _ready() -> void:
 
 
 func _on_cutting_board_clicked() -> void:
-	if GlobalState.holds_pumpkin:
-		EventBus.scene_change_requested.emit(PUMPKIN_GAME)
-	else:
-		EventBus.prompt_requested.emit("Don't have anything to chop...")
+	match GlobalState.current_item:
+		GlobalState.Items.PUMPKIN:
+			EventBus.scene_change_requested.emit(PUMPKIN_GAME)
+		_:
+			EventBus.prompt_requested.emit("Don't have anything to chop...")

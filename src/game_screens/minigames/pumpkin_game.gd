@@ -89,8 +89,12 @@ func _on_oven_input_passed() -> void:
 
 func _on_food_processor_input_passed() -> void:
 	await food_process_timed_input.tween.finished
+	food_process_timed_input.queue_free()
+	pumpkin_animation.play("finish")
 	var showcase := ShowOffItem.construct(load("uid://bxia6ay2lv24e") as Texture2D)
 	add_child(showcase)
 	EventBus.prompt_requested.emit("Pumpkin Purée made!")
 	await showcase.finished
+	GlobalState.current_item = GlobalState.Items.NONE
+	GlobalState.is_pumpkin_done = true
 	EventBus.scene_change_requested.emit("uid://cu0hrfgp6mbuy")
