@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Pumpkin And Mayhem"
-run/main_scene="uid://ctu3pw4j7vu6s"
+run/main_scene="uid://s71cg7ciehlj"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*uid://diffiiq28mf7r"
 
 [debug]
 
