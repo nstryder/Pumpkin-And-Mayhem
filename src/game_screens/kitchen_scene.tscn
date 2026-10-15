@@ -1,8 +1,21 @@
 [gd_scene format=3 uid="uid://cu0hrfgp6mbuy"]
 
 [ext_resource type="Texture2D" uid="uid://crslqtqvqqrbe" path="res://assets/gfx/sprites/backgrounds/kitchen.png" id="1_04bkp"]
-[ext_resource type="PackedScene" uid="uid://o6klciqvvcd3" path="res://src/game_components/clickable_highlight_area.tscn" id="2_mt43b"]
+[ext_resource type="PackedScene" uid="uid://cun40reuoy7oc" path="res://src/game_components/clickable_polygon.tscn" id="2_mt43b"]
 [ext_resource type="PackedScene" uid="uid://c4o3ecrj177ac" path="res://src/game_components/scene_changer.tscn" id="4_bpg2w"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mt43b"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_qofop"]
+interpolation_mode = 2
+colors = PackedColorArray(0.37, 0.5695001, 1, 0.78039217, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mt43b"]
+gradient = SubResource("Gradient_qofop")
+width = 360
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0.19455253, 0)
 
 [node name="KitchenScene" type="Node2D" unique_id=1398770604]
 
@@ -10,12 +23,13 @@
 texture = ExtResource("1_04bkp")
 centered = false
 
-[node name="PantryHighlight" parent="." unique_id=1746058275 instance=ExtResource("2_mt43b")]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PantryHighlight" unique_id=1866481746]
-polygon = PackedVector2Array(1474, 9, 1762, 65, 1762, 1035, 1609, 1070, 1474, 896)
+[node name="ClickablePolygon" parent="." unique_id=1544714182 instance=ExtResource("2_mt43b")]
+material = SubResource("CanvasItemMaterial_mt43b")
+position = Vector2(1474, 9)
+texture = SubResource("GradientTexture2D_mt43b")
+polygon = PackedVector2Array(0, 4, 285, 58, 284, 1027, 163, 1060, 134, 1059, 14, 888, 0, 888)
 
 [node name="SceneChanger" parent="." unique_id=431471297 instance=ExtResource("4_bpg2w")]
 new_scene_path = "res://src/game_screens/pantry_scene.tscn"
 
-[connection signal="clicked" from="PantryHighlight" to="SceneChanger" method="request_new_scene"]
+[connection signal="clicked" from="ClickablePolygon" to="SceneChanger" method="request_new_scene"]

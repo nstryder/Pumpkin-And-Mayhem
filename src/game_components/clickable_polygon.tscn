@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cun40reuoy7oc"]
+
+[ext_resource type="Script" uid="uid://dybd2kuuxopp3" path="res://src/game_components/clickable_polygon.gd" id="1_prw7n"]
+[ext_resource type="PackedScene" uid="uid://cabdnqygsbkqp" path="res://src/game_components/clickable_area.tscn" id="2_opjbj"]
+
+[node name="ClickablePolygon" type="Polygon2D" unique_id=1544714182]
+script = ExtResource("1_prw7n")
+
+[node name="ClickableArea" parent="." unique_id=1746058275 instance=ExtResource("2_opjbj")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickableArea" unique_id=2113855517]
+unique_name_in_owner = true
+
+[connection signal="clicked" from="ClickableArea" to="." method="_on_clickable_area_clicked"]
+[connection signal="mouse_entered" from="ClickableArea" to="." method="_on_clickable_area_mouse_entered"]
+[connection signal="mouse_exited" from="ClickableArea" to="." method="_on_clickable_area_mouse_exited"]

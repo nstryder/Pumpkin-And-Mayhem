@@ -1,21 +1,52 @@
 [gd_scene format=3 uid="uid://dngehscb80t1h"]
 
 [ext_resource type="Texture2D" uid="uid://c16nsdbftt778" path="res://assets/gfx/sprites/backgrounds/pantry.png" id="1_ikwpo"]
-[ext_resource type="PackedScene" uid="uid://o6klciqvvcd3" path="res://src/game_components/clickable_highlight_area.tscn" id="2_a05fl"]
+[ext_resource type="Script" uid="uid://dyrrdcxv6lxot" path="res://src/game_screens/pantry_scene.gd" id="1_pamml"]
 [ext_resource type="PackedScene" uid="uid://c4o3ecrj177ac" path="res://src/game_components/scene_changer.tscn" id="3_pamml"]
+[ext_resource type="PackedScene" uid="uid://cun40reuoy7oc" path="res://src/game_components/clickable_polygon.tscn" id="3_qofop"]
+[ext_resource type="PackedScene" uid="uid://b870gceb77832" path="res://src/game_components/clickable_outline_area.tscn" id="5_qofop"]
+[ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="6_fmqa0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fmqa0"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_qofop"]
+interpolation_mode = 2
+colors = PackedColorArray(0.37, 0.5695001, 1, 0.78039217, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wccmg"]
+gradient = SubResource("Gradient_qofop")
+width = 360
+fill_from = Vector2(0.19455253, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(316, 244)
 
 [node name="PantryScene" type="Node2D" unique_id=224631499]
+script = ExtResource("1_pamml")
 
 [node name="Pantry" type="Sprite2D" parent="." unique_id=1634005516]
 texture = ExtResource("1_ikwpo")
 centered = false
 
-[node name="ClickableHighlightArea" parent="." unique_id=1746058275 instance=ExtResource("2_a05fl")]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickableHighlightArea" unique_id=1699600347]
+[node name="BackToPantry" parent="." unique_id=1544714182 instance=ExtResource("3_qofop")]
+material = SubResource("CanvasItemMaterial_fmqa0")
+texture = SubResource("GradientTexture2D_wccmg")
 polygon = PackedVector2Array(0, 1080, 360, 1080, 360, 0, 0, 0)
 
 [node name="SceneChanger" parent="." unique_id=431471297 instance=ExtResource("3_pamml")]
 new_scene_path = "res://src/game_screens/kitchen_scene.tscn"
 
-[connection signal="clicked" from="ClickableHighlightArea" to="SceneChanger" method="request_new_scene"]
+[node name="Pumpkin" parent="." unique_id=1112811118 instance=ExtResource("5_qofop")]
+unique_name_in_owner = true
+position = Vector2(675, 905)
+
+[node name="PumpkinWhole" type="Sprite2D" parent="Pumpkin" unique_id=1963594244]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_fmqa0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pumpkin" unique_id=1110431332]
+shape = SubResource("RectangleShape2D_lwrwe")
+
+[connection signal="clicked" from="BackToPantry" to="SceneChanger" method="request_new_scene"]
+[connection signal="clicked" from="Pumpkin" to="." method="_on_pumpkin_clicked"]
