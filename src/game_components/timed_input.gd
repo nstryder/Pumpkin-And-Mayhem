@@ -20,6 +20,7 @@ signal incomplete
 ## How long the window is for the user to click and still pass
 @export var pass_time_duration: float = 0.2
 
+var tween: Tween
 
 @onready var timer: Timer = $Timer
 @onready var pass_region: TextureProgressBar = %PassRegion
@@ -52,7 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if pass_time_start <= time_elapsed and time_elapsed <= (pass_time_start + pass_time_duration):
 		on_pass()
 	elif time_elapsed < pass_time_start:
-		await on_incomplete()
+		on_incomplete()
 	else:
 		on_fail()
 
@@ -61,34 +62,38 @@ func _process(_delta: float) -> void:
 	progress.value = (total_time - timer.time_left) / total_time * 100
 
 
-func on_pass() -> void:
-	print("Passed!")
-	prompt.text = "Passed!"
+func show_text(text: String) -> void:
+	prompt.text = text
 	prompt.show()
+	prompt.offset_transform_position.y = -64
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	(tween.tween_property(prompt, "offset_transform_position:y", 0, 0.2)
+		.set_trans(Tween.TRANS_ELASTIC)
+		.set_ease(Tween.EASE_OUT)
+	)
+	tween.tween_interval(0.6)
+	tween.tween_callback(prompt.hide)
+
+
+func on_pass() -> void:
+	show_text("Passed!")
 	timer.stop()
 	passed.emit()
 
 
 func on_fail() -> void:
 	print("Failed!")
-	prompt.text = "Failed..."
-	prompt.show()
+	show_text("Failed.")
 	timer.stop()
 	failed.emit()
 
 
 func on_incomplete() -> void:
 	print("Incomplete. Retry")
-	prompt.text = "Try again..."
-	prompt.show()
-	prompt.offset_transform_position.y = 0
-	var tween := create_tween()
-	(tween.tween_property(prompt, "offset_transform_position:y", -64, 0.2)
-		.set_trans(Tween.TRANS_CUBIC)
-		.set_ease(Tween.EASE_OUT)
-	)
-	await get_tree().create_timer(0.6).timeout
-	prompt.hide()
+	show_text("Try again...")
+	await tween.finished
 	timer.start()
 	set_process_unhandled_input(true)
 	set_process(true)

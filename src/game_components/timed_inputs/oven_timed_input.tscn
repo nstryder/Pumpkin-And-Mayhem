@@ -2,23 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://uyl2msy1ncuw" path="res://src/game_components/timed_input.tscn" id="1_bxlge"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_bxlge"]
-font_size = 256
-
 [node name="OvenTimedInput" unique_id=517426030 instance=ExtResource("1_bxlge")]
 
-[node name="Label" type="Label" parent="." index="3" unique_id=48118528]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -159.5
-offset_top = -174.5
-offset_right = 159.5
-offset_bottom = 174.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "🫕"
-label_settings = SubResource("LabelSettings_bxlge")
-horizontal_alignment = 1
+[node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=1737650728]

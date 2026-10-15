@@ -1,14 +1,22 @@
 extends Node2D
 
 @onready var current_scene: Node2D = %CurrentScene
+@onready var prompt: Label = %Prompt
+@onready var prompt_animation: AnimationPlayer = %PromptAnimation
 
 
 func _ready() -> void:
 	EventBus.scene_change_requested.connect(_on_scene_change_requested)
-
+	EventBus.prompt_requested.connect(_on_prompt_requested)
+	
 
 func _on_scene_change_requested(new_scene_path: String) -> void:
 	current_scene.get_child(0).queue_free()
 	var new_scene: PackedScene = load(new_scene_path)
 	var instance: Node = new_scene.instantiate()
 	current_scene.add_child(instance)
+
+
+func _on_prompt_requested(text: String) -> void:
+	prompt.text = text
+	prompt_animation.play("fade")

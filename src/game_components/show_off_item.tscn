@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://crao4dskw6ap5"]
+
+[ext_resource type="Script" uid="uid://d3ct0rddc1is7" path="res://src/game_components/show_off_item.gd" id="1_3fcd2"]
+[ext_resource type="Texture2D" uid="uid://c7463md3rnpoe" path="res://assets/gfx/textures/sparkle_sheet.png" id="1_nihtq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c1qab"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_nihtq"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 4.2, 0, 0, Vector2(1, 3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nihtq"]
+curve = SubResource("Curve_nihtq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lwrwe"]
+lifetime_randomness = 0.35
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 2000.0
+initial_velocity_max = 2000.0
+angular_velocity_min = 246.69998
+angular_velocity_max = 246.69998
+gravity = Vector3(0, 0, 0)
+damping_min = 2000.0001
+damping_max = 3000.0002
+scale_min = 0.29999998
+scale_max = 0.59999996
+scale_over_velocity_max = 3000.0
+scale_over_velocity_curve = SubResource("CurveTexture_nihtq")
+anim_offset_max = 1.0
+
+[sub_resource type="Animation" id="Animation_nihtq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteHolder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteHolder:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3fcd2"]
+resource_name = "slide"
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteHolder:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.96666664, 1.5666667, 2.2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(960, 1080), Vector2(960, 540), Vector2(960, 550), Vector2(960, 530), Vector2(960, 540), Vector2(960, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteHolder:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81yl5"]
+_data = {
+&"RESET": SubResource("Animation_nihtq"),
+&"slide": SubResource("Animation_3fcd2")
+}
+
+[node name="ShowOffItem" type="Node2D" unique_id=1704069132]
+script = ExtResource("1_3fcd2")
+
+[node name="SpriteHolder" type="Node2D" parent="." unique_id=49299148]
+position = Vector2(960, 540)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SpriteHolder" unique_id=1861150864]
+material = SubResource("CanvasItemMaterial_c1qab")
+amount = 32
+texture = ExtResource("1_nihtq")
+process_material = SubResource("ParticleProcessMaterial_lwrwe")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteHolder" unique_id=1802878567]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1995011007]
+libraries/ = SubResource("AnimationLibrary_81yl5")
+autoplay = &"slide"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

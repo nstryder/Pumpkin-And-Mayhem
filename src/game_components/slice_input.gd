@@ -71,11 +71,9 @@ func _setup_areas() -> void:
 	valid_area_rect.size = Vector2(detection_width, line_length) + (Vector2.ONE * detection_padding)
 	high_area.position.y = - line_length / 3
 	low_area.position.y = line_length / 3
-	for rect: RectangleShape2D in [high_area_rect, low_area_rect]:
+	for rect: RectangleShape2D in [high_area_rect, mid_area_rect, low_area_rect]:
 		rect.size.x = detection_width
 		rect.size.y = line_length / 3
-	
-	mid_area_rect.size = Vector2(detection_width, line_length) / 3
 
 
 func _ready() -> void:

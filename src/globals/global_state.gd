@@ -1,4 +1,14 @@
 extends Node
 
 
-var holds_pumpkin: bool = false
+enum Items {
+	NONE,
+	PUMPKIN,
+	ONION,
+	GARLIC,
+}
+
+
+var is_pumpkin_done: bool = false
+var is_onion_done: bool = false
+var is_garlic_done: bool = false

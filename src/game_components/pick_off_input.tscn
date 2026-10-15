@@ -1,35 +1,44 @@
 [gd_scene format=3 uid="uid://0oi64ebkb51w"]
 
 [ext_resource type="Script" uid="uid://ch4uaj5254nic" path="res://src/game_components/pick_off_input.gd" id="1_t2011"]
+[ext_resource type="Texture2D" uid="uid://ck1a4bm632kmd" path="res://assets/gfx/sprites/ingredients/pumpkinHalf.png" id="2_bn62y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktohr"]
-radius = 192.0
+radius = 308.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
-font_size = 384
+[sub_resource type="LabelSettings" id="LabelSettings_ktohr"]
+font_size = 48
+outline_size = 10
+outline_color = Color(0.19723561, 0.19723561, 0.19723561, 1)
+shadow_offset = Vector2(4, 4)
 
 [node name="PickOffInput" type="Node2D" unique_id=1499264777]
 script = ExtResource("1_t2011")
+spawn_radius = 154
+
+[node name="PumpkinHalf" type="Sprite2D" parent="." unique_id=537600812]
+position = Vector2(-12, -4)
+texture = ExtResource("2_bn62y")
 
 [node name="PickOffZone" type="Area2D" parent="." unique_id=1720790927]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickOffZone" unique_id=2084060866]
 shape = SubResource("CircleShape2D_ktohr")
 
-[node name="Label" type="Label" parent="." unique_id=1000861846]
+[node name="Prompt" type="Label" parent="." unique_id=1842711390]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -165.0
+offset_top = 360.0
+offset_right = 166.0
+offset_bottom = 427.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "🥥"
-label_settings = SubResource("LabelSettings_lwrwe")
+text = "Drag seeds off"
+label_settings = SubResource("LabelSettings_ktohr")
 horizontal_alignment = 1
 
 [connection signal="area_exited" from="PickOffZone" to="." method="_on_pick_off_zone_area_exited"]

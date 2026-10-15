@@ -1,45 +1,417 @@
 [gd_scene format=3 uid="uid://dhb4bcr73gne5"]
 
-[ext_resource type="Script" uid="uid://bp678co642ncl" path="res://src/game_screens/pumpkin_game.gd" id="1_qecsm"]
+[ext_resource type="Script" uid="uid://bp678co642ncl" path="res://src/game_screens/minigames/pumpkin_game.gd" id="1_qecsm"]
+[ext_resource type="Texture2D" uid="uid://c8lrnn6cv38md" path="res://assets/gfx/sprites/backgrounds/foodProssesor.png" id="2_5nx6y"]
+[ext_resource type="Texture2D" uid="uid://b0ba1xubc1kf6" path="res://assets/gfx/sprites/backgrounds/ovenOpen.png" id="2_kdncw"]
+[ext_resource type="Texture2D" uid="uid://d082tlyd4xugk" path="res://assets/gfx/sprites/backgrounds/cuttingBoard.png" id="2_t1m4g"]
 [ext_resource type="PackedScene" uid="uid://dyriq22a7awc4" path="res://src/game_components/draggables/draggable_seed.tscn" id="2_wo2l0"]
+[ext_resource type="Texture2D" uid="uid://7s4wp78cf68e" path="res://assets/gfx/sprites/backgrounds/oven.png" id="3_rh4xj"]
+[ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="4_irteb"]
+[ext_resource type="PackedScene" uid="uid://0oi64ebkb51w" path="res://src/game_components/pick_off_input.tscn" id="6_et57l"]
+[ext_resource type="PackedScene" uid="uid://bdmp7uy6xn8g" path="res://src/game_components/timed_inputs/oven_timed_input.tscn" id="8_2ux4t"]
+[ext_resource type="PackedScene" uid="uid://cvrxrae24avgp" path="res://src/game_components/timed_inputs/food_processor_timed_input.tscn" id="9_5nx6y"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_qecsm"]
-font_size = 256
+[sub_resource type="Animation" id="Animation_irteb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PumpkinHolder/TopLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-576, -450)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PumpkinHolder/TopRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -450)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PumpkinHolder/BottomLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-576, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PumpkinHolder/BottomRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PickOffInput:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 512)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PickOffInput:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Backgrounds/CuttingBoard:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Backgrounds/Oven:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Backgrounds/OvenOpen:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_et57l"]
+resource_name = "full_slice"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PumpkinHolder/TopLeft:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-592, -450), Vector2(-592, -466), Vector2(-592, -466), Vector2(576.25, -1263.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PumpkinHolder/TopRight:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(16, -450), Vector2(16, -466), Vector2(16, -466), Vector2(937.49994, -1268.7499)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PumpkinHolder/BottomLeft:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-592, 0), Vector2(-592, 16), Vector2(-592, 16), Vector2(452.49988, -1184.9999)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PumpkinHolder/BottomRight:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(16, 0), Vector2(16, 16), Vector2(16, 16), Vector2(1036.25, -1198.7499)]
+}
+
+[sub_resource type="Animation" id="Animation_ed0ld"]
+resource_name = "pickoff_slide_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PickOffInput:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(960, 0), Vector2(960, 512), Vector2(960, 512)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PickOffInput:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2ux4t"]
+resource_name = "pickoff_slide_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PickOffInput:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 512), Vector2(960, 1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PickOffInput:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v10d6"]
+resource_name = "show_food_processor"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Backgrounds/OvenOpen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5nx6y"]
+resource_name = "show_oven"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Backgrounds/CuttingBoard:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8crve"]
+resource_name = "show_oven_done"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Backgrounds/Oven:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kdncw"]
+resource_name = "vertical_slice"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PumpkinHolder/TopLeft:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-576, -450), Vector2(-592, -450)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PumpkinHolder/TopRight:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -450), Vector2(16, -450)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PumpkinHolder/BottomLeft:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-576, 0), Vector2(-592, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PumpkinHolder/BottomRight:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(16, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ed0ld"]
+_data = {
+&"RESET": SubResource("Animation_irteb"),
+&"full_slice": SubResource("Animation_et57l"),
+&"pickoff_slide_in": SubResource("Animation_ed0ld"),
+&"pickoff_slide_out": SubResource("Animation_2ux4t"),
+&"show_food_processor": SubResource("Animation_v10d6"),
+&"show_oven": SubResource("Animation_5nx6y"),
+&"show_oven_done": SubResource("Animation_8crve"),
+&"vertical_slice": SubResource("Animation_kdncw")
+}
 
 [node name="PumpkinGame" type="Node2D" unique_id=2065974962]
 script = ExtResource("1_qecsm")
 
+[node name="Backgrounds" type="Node2D" parent="." unique_id=635600527]
+
+[node name="FoodProssesor" type="Sprite2D" parent="Backgrounds" unique_id=329422620]
+texture = ExtResource("2_5nx6y")
+centered = false
+
+[node name="OvenOpen" type="Sprite2D" parent="Backgrounds" unique_id=2050084567]
+texture = ExtResource("2_kdncw")
+centered = false
+
+[node name="Oven" type="Sprite2D" parent="Backgrounds" unique_id=2057969621]
+texture = ExtResource("3_rh4xj")
+centered = false
+
+[node name="CuttingBoard" type="Sprite2D" parent="Backgrounds" unique_id=753538031]
+texture = ExtResource("2_t1m4g")
+centered = false
+
 [node name="PumpkinHolder" type="Node2D" parent="." unique_id=1408970454]
 unique_name_in_owner = true
 position = Vector2(960, 540)
+scale = Vector2(0.8, 0.8)
 
-[node name="Pumpkin" type="Label" parent="PumpkinHolder" unique_id=1310696011]
+[node name="TopLeft" type="Sprite2D" parent="PumpkinHolder" unique_id=652400137]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "🎃"
-label_settings = SubResource("LabelSettings_qecsm")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
+position = Vector2(-576, -450)
+texture = ExtResource("4_irteb")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 450)
 
-[node name="PickOffInput" parent="." unique_id=1499264777 instance_placeholder="res://src/game_components/pick_off_input.tscn"]
+[node name="TopRight" type="Sprite2D" parent="PumpkinHolder" unique_id=1359317039]
+unique_name_in_owner = true
+position = Vector2(0, -450)
+texture = ExtResource("4_irteb")
+centered = false
+region_enabled = true
+region_rect = Rect2(576, 0, 576, 450)
+
+[node name="BottomLeft" type="Sprite2D" parent="PumpkinHolder" unique_id=256099758]
+unique_name_in_owner = true
+position = Vector2(-576, 0)
+texture = ExtResource("4_irteb")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 450, 576, 450)
+
+[node name="BottomRight" type="Sprite2D" parent="PumpkinHolder" unique_id=1576362245]
+unique_name_in_owner = true
+texture = ExtResource("4_irteb")
+centered = false
+region_enabled = true
+region_rect = Rect2(576, 450, 576, 450)
+
+[node name="PumpkinAnimation" type="AnimationPlayer" parent="." unique_id=345602792]
+libraries/ = SubResource("AnimationLibrary_ed0ld")
+
+[node name="PickOffInput" parent="." unique_id=1499264777 instance=ExtResource("6_et57l")]
 unique_name_in_owner = true
 position = Vector2(960, 512)
 draggable_scene = ExtResource("2_wo2l0")
 
-[node name="OvenTimedInput" parent="." unique_id=517426030 instance_placeholder="res://src/game_components/timed_inputs/oven_timed_input.tscn"]
+[node name="OvenTimedInput" parent="." unique_id=517426030 instance=ExtResource("8_2ux4t")]
 unique_name_in_owner = true
 position = Vector2(960, 540)
+total_time = 2.0
+pass_time_start = 1.5
 
-[node name="FoodProcessTimedInput" parent="." unique_id=1142726142 instance_placeholder="res://src/game_components/timed_inputs/food_processor_timed_input.tscn"]
+[node name="FoodProcessTimedInput" parent="." unique_id=1142726142 instance=ExtResource("9_5nx6y")]
 unique_name_in_owner = true
 position = Vector2(960, 540)
