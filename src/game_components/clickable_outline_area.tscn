@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="2_xexu6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lwrwe"]
+resource_local_to_scene = true
 shader = ExtResource("2_xexu6")
 shader_parameter/color = Color(1, 1, 1, 0.7411765)
 shader_parameter/width = 0.0

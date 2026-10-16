@@ -5,7 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cun40reuoy7oc" path="res://src/game_components/clickable_polygon.tscn" id="2_mt43b"]
 [ext_resource type="PackedScene" uid="uid://c4o3ecrj177ac" path="res://src/game_components/scene_changer.tscn" id="4_bpg2w"]
 [ext_resource type="PackedScene" uid="uid://b870gceb77832" path="res://src/game_components/clickable_outline_area.tscn" id="4_qeuev"]
+[ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="6_kjwha"]
 [ext_resource type="Texture2D" uid="uid://dm4i4i2s6bc32" path="res://assets/gfx/sprites/tools/cuttingBoardSmall.png" id="6_pd7gb"]
+[ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="8_3vn67"]
+[ext_resource type="Texture2D" uid="uid://c43figngusf10" path="res://assets/gfx/sprites/ingredients/onionFull.png" id="9_3vn67"]
+[ext_resource type="Texture2D" uid="uid://bb67nd3dqxmru" path="res://assets/gfx/sprites/ingredients/garlicBraid.png" id="10_kpcsg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mt43b"]
 blend_mode = 1
@@ -19,6 +23,15 @@ gradient = SubResource("Gradient_qofop")
 width = 360
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0.19455253, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpcsg"]
+resource_local_to_scene = true
+shader = ExtResource("6_kjwha")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(206, 114)
@@ -40,6 +53,7 @@ polygon = PackedVector2Array(0, 4, 285, 58, 284, 1027, 163, 1060, 134, 1059, 14,
 new_scene_path = "res://src/game_screens/pantry_scene.tscn"
 
 [node name="CuttingBoard" parent="." unique_id=1746058275 instance=ExtResource("4_qeuev")]
+material = SubResource("ShaderMaterial_kpcsg")
 position = Vector2(1004, 574)
 
 [node name="CuttingBoard" type="Sprite2D" parent="CuttingBoard" unique_id=1900377512]
@@ -47,6 +61,20 @@ texture = ExtResource("6_pd7gb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CuttingBoard" unique_id=1067404117]
 shape = SubResource("RectangleShape2D_lwrwe")
+
+[node name="Pumpkin" type="Sprite2D" parent="." unique_id=189815241]
+position = Vector2(545, 917.99994)
+scale = Vector2(0.24916758, 0.24916759)
+texture = ExtResource("8_3vn67")
+
+[node name="Onion" type="Sprite2D" parent="." unique_id=2024923378]
+position = Vector2(808, 941.99994)
+scale = Vector2(0.31379312, 0.31379315)
+texture = ExtResource("9_3vn67")
+
+[node name="Garlic" type="Sprite2D" parent="." unique_id=1537332064]
+position = Vector2(1024, 890)
+texture = ExtResource("10_kpcsg")
 
 [connection signal="clicked" from="ClickablePolygon" to="SceneChanger" method="request_new_scene"]
 [connection signal="clicked" from="CuttingBoard" to="." method="_on_cutting_board_clicked"]

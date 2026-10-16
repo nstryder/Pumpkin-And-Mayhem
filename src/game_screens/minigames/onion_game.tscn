@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cb14c03d2i0xu"]
 
-[ext_resource type="Script" uid="uid://chpuuwfoydv53" path="res://src/game_screens/onion_game.gd" id="1_dr4xq"]
-[ext_resource type="Texture2D" uid="uid://bodi0vfbpvm6r" path="res://icon.svg" id="2_nsoyf"]
+[ext_resource type="Script" uid="uid://chpuuwfoydv53" path="res://src/game_screens/minigames/onion_game.gd" id="1_dr4xq"]
+[ext_resource type="Texture2D" uid="uid://c43figngusf10" path="res://assets/gfx/sprites/ingredients/onionFull.png" id="2_6xnon"]
+[ext_resource type="Texture2D" uid="uid://d082tlyd4xugk" path="res://assets/gfx/sprites/backgrounds/cuttingBoard.png" id="2_evax5"]
 [ext_resource type="Shader" uid="uid://dabdarplu12kp" path="res://src/shaders/blur.gdshader" id="3_qwutk"]
+[ext_resource type="Texture2D" uid="uid://ctvk53ib6xrh2" path="res://assets/gfx/sprites/tools/arm.png" id="5_evax5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
 font_size = 192
@@ -27,24 +29,16 @@ bg_color = Color(1, 1, 1, 1)
 [node name="OnionGame" type="Node2D" unique_id=626989601]
 script = ExtResource("1_dr4xq")
 
+[node name="Background" type="Sprite2D" parent="." unique_id=1335019883]
+texture = ExtResource("2_evax5")
+centered = false
+
 [node name="OnionHolder" type="Node2D" parent="." unique_id=207740512]
 position = Vector2(947, 567)
 
-[node name="Onion" type="TextureRect" parent="OnionHolder" unique_id=1192675416]
+[node name="Onion" type="Sprite2D" parent="OnionHolder" unique_id=1898432142]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -278.0
-offset_top = -64.0
-offset_right = 278.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("2_nsoyf")
+texture = ExtResource("2_6xnon")
 
 [node name="DebugWin" type="Label" parent="." unique_id=91636543]
 visible = false
@@ -80,22 +74,32 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Label" type="Label" parent="WipePrompt" unique_id=585324274]
-offset_left = 214.0
-offset_top = 184.0
-offset_right = 1726.0
-offset_bottom = 447.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -764.0
+offset_right = 764.0
+offset_bottom = 263.0
+grow_horizontal = 2
 text = "WIPE YOUR EYES"
 label_settings = SubResource("LabelSettings_ktohr")
 
 [node name="WipeInput" type="HSlider" parent="WipePrompt" unique_id=1454828052]
 unique_name_in_owner = true
-offset_left = 518.0
-offset_top = 718.0
-offset_right = 1413.0
-offset_bottom = 782.0
-theme_override_icons/grabber = ExtResource("2_nsoyf")
-theme_override_icons/grabber_highlight = ExtResource("2_nsoyf")
-theme_override_icons/grabber_disabled = ExtResource("2_nsoyf")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -777.0
+offset_top = -913.0
+offset_right = 777.0
+offset_bottom = 583.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_icons/grabber = ExtResource("5_evax5")
+theme_override_icons/grabber_highlight = ExtResource("5_evax5")
+theme_override_icons/grabber_disabled = ExtResource("5_evax5")
 theme_override_styles/slider = SubResource("StyleBoxFlat_ktohr")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_t87rt")
 

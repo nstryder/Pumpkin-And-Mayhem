@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cun40reuoy7oc" path="res://src/game_components/clickable_polygon.tscn" id="3_qofop"]
 [ext_resource type="PackedScene" uid="uid://b870gceb77832" path="res://src/game_components/clickable_outline_area.tscn" id="5_qofop"]
 [ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="6_fmqa0"]
+[ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="6_j8816"]
+[ext_resource type="Texture2D" uid="uid://bb67nd3dqxmru" path="res://assets/gfx/sprites/ingredients/garlicBraid.png" id="6_wccmg"]
+[ext_resource type="Texture2D" uid="uid://c43figngusf10" path="res://assets/gfx/sprites/ingredients/onionFull.png" id="9_j8816"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fmqa0"]
 blend_mode = 1
@@ -19,8 +22,41 @@ gradient = SubResource("Gradient_qofop")
 width = 360
 fill_from = Vector2(0.19455253, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxv01"]
+resource_local_to_scene = true
+shader = ExtResource("6_j8816")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wccmg"]
+size = Vector2(72, 234)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ux8o"]
+resource_local_to_scene = true
+shader = ExtResource("6_j8816")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(316, 244)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eujn2"]
+resource_local_to_scene = true
+shader = ExtResource("6_j8816")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktohr"]
+size = Vector2(140, 134)
 
 [node name="PantryScene" type="Node2D" unique_id=224631499]
 script = ExtResource("1_pamml")
@@ -37,8 +73,21 @@ polygon = PackedVector2Array(0, 1080, 360, 1080, 360, 0, 0, 0)
 [node name="SceneChanger" parent="." unique_id=431471297 instance=ExtResource("3_pamml")]
 new_scene_path = "res://src/game_screens/kitchen_scene.tscn"
 
+[node name="Garlic" parent="." unique_id=1973749770 instance=ExtResource("5_qofop")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_bxv01")
+position = Vector2(424, 447)
+
+[node name="GarlicBraid" type="Sprite2D" parent="Garlic" unique_id=1108196081]
+texture = ExtResource("6_wccmg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Garlic" unique_id=66253435]
+position = Vector2(-8, 23)
+shape = SubResource("RectangleShape2D_wccmg")
+
 [node name="Pumpkin" parent="." unique_id=1112811118 instance=ExtResource("5_qofop")]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_4ux8o")
 position = Vector2(675, 905)
 
 [node name="PumpkinWhole" type="Sprite2D" parent="Pumpkin" unique_id=1963594244]
@@ -48,5 +97,19 @@ texture = ExtResource("6_fmqa0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pumpkin" unique_id=1110431332]
 shape = SubResource("RectangleShape2D_lwrwe")
 
+[node name="Onion" parent="." unique_id=1746058275 instance=ExtResource("5_qofop")]
+material = SubResource("ShaderMaterial_eujn2")
+position = Vector2(1067, 309)
+
+[node name="OnionFull" type="Sprite2D" parent="Onion" unique_id=1642059955]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_j8816")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Onion" unique_id=966234932]
+position = Vector2(-4, 3)
+shape = SubResource("RectangleShape2D_ktohr")
+
 [connection signal="clicked" from="BackToPantry" to="SceneChanger" method="request_new_scene"]
+[connection signal="clicked" from="Garlic" to="." method="_on_garlic_clicked"]
 [connection signal="clicked" from="Pumpkin" to="." method="_on_pumpkin_clicked"]
+[connection signal="clicked" from="Onion" to="." method="_on_onion_clicked"]

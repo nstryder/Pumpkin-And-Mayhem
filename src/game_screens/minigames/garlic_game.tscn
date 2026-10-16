@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bao7qolnlt5wi"]
 
-[ext_resource type="Script" uid="uid://in6af5bvey4q" path="res://src/game_screens/garlic_game.gd" id="1_lbxbg"]
+[ext_resource type="Script" uid="uid://in6af5bvey4q" path="res://src/game_screens/minigames/garlic_game.gd" id="1_lbxbg"]
 [ext_resource type="Texture2D" uid="uid://bodi0vfbpvm6r" path="res://icon.svg" id="2_inrj1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cwxwh"]

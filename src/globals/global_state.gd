@@ -17,3 +17,7 @@ var is_garlic_done: bool = false
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.BLACK)
+
+
+func is_holding_item() -> bool:
+	return current_item != Items.NONE
