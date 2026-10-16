@@ -26,6 +26,7 @@ var onion_slices: Array[Sprite2D] = []
 
 
 func _ready() -> void:
+	Audio.play_instrument(Audio.Instruments.PERCUSSION)
 	var rect: Rect2 = onion.get_rect()
 
 	# Calculate Slice locations
@@ -90,8 +91,6 @@ func move_slice() -> void:
 func win() -> void:
 	blur_amount = 0
 	onion_holder.hide()
-	var tween := create_tween()
-	tween.tween_property(background, "modulate:a", 0.2, 0.2)
 	var showcase := ShowOffItem.construct(load("uid://c43figngusf10") as Texture2D)
 	add_child(showcase)
 	EventBus.prompt_requested.emit("Onions sliced!")

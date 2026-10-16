@@ -12,6 +12,7 @@ const PUMPKIN_GAME = "uid://dhb4bcr73gne5"
 
 
 func _ready() -> void:
+	Audio.mute_instrument(Audio.Instruments.PERCUSSION)
 	if not GlobalState.is_pumpkin_done:
 		pumpkin.hide()
 	if not GlobalState.is_onion_done:

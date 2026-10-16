@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://bao7qolnlt5wi"]
 
 [ext_resource type="Script" uid="uid://in6af5bvey4q" path="res://src/game_screens/minigames/garlic_game.gd" id="1_lbxbg"]
-[ext_resource type="Texture2D" uid="uid://bodi0vfbpvm6r" path="res://icon.svg" id="2_inrj1"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_cwxwh"]
-font_size = 192
+[ext_resource type="Texture2D" uid="uid://d082tlyd4xugk" path="res://assets/gfx/sprites/backgrounds/cuttingBoard.png" id="2_lpv0c"]
+[ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="3_bb13r"]
+[ext_resource type="Texture2D" uid="uid://cx061svnia22k" path="res://assets/gfx/sprites/tools/punch.png" id="3_lpv0c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(350, 256)
@@ -13,10 +12,10 @@ size = Vector2(350, 256)
 size = Vector2(350, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktohr"]
-size = Vector2(128, 128)
+size = Vector2(433, 75)
 
-[sub_resource type="LabelSettings" id="LabelSettings_mvjtv"]
-font_size = 128
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkkox"]
+size = Vector2(325, 43)
 
 [sub_resource type="Animation" id="Animation_cwxwh"]
 length = 0.001
@@ -30,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(-9, -298)]
 }
 
 [sub_resource type="Animation" id="Animation_taym3"]
@@ -48,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.5, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-512, 0), Vector2(512, 0)]
+"values": [Vector2(-640, -181), Vector2(508, -370)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pyrxn"]
@@ -98,35 +97,19 @@ _data = {
 &"new_animation": SubResource("Animation_mvjtv")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_taym3"]
-font_size = 192
-font_color = Color(1, 0, 0, 1)
-outline_size = 16
-
 [node name="GarlicGame" type="Node2D" unique_id=1156178750]
 script = ExtResource("1_lbxbg")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2073862956]
+texture = ExtResource("2_lpv0c")
+centered = false
 
 [node name="GarlicHolder" type="Node2D" parent="." unique_id=760087602]
 position = Vector2(981, 655)
 
-[node name="Garlic" type="Label" parent="GarlicHolder" unique_id=569985375]
+[node name="Garlic" type="Sprite2D" parent="GarlicHolder" unique_id=161729628]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -11.5
-offset_right = 10.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.5, 1)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-text = "🧄"
-label_settings = SubResource("LabelSettings_cwxwh")
-horizontal_alignment = 1
+texture = ExtResource("3_bb13r")
 
 [node name="GarlicPlaceArea" type="Area2D" parent="GarlicHolder" unique_id=1150140114]
 unique_name_in_owner = true
@@ -137,6 +120,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_lwrwe")
 
 [node name="GarlicPressHitbox" type="Area2D" parent="GarlicHolder" unique_id=444343262]
+unique_name_in_owner = true
 position = Vector2(1, 97)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GarlicHolder/GarlicPressHitbox" unique_id=924255229]
@@ -149,31 +133,19 @@ position = Vector2(988, 266)
 
 [node name="GarlicPress" type="Sprite2D" parent="GarlicPressHolder" unique_id=1625781611]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.19607843)
-texture = ExtResource("2_inrj1")
+position = Vector2(-9, -298)
+texture = ExtResource("3_lpv0c")
 
 [node name="Area2D" type="Area2D" parent="GarlicPressHolder/GarlicPress" unique_id=1758371146]
+position = Vector2(-74, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GarlicPressHolder/GarlicPress/Area2D" unique_id=1839443117]
+position = Vector2(86.5, -5.5)
 shape = SubResource("RectangleShape2D_ktohr")
 
-[node name="Label" type="Label" parent="GarlicPressHolder/GarlicPress" unique_id=238772082]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -84.0
-offset_top = -75.5
-offset_right = -44.0
-offset_bottom = -52.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415927
-pivot_offset_ratio = Vector2(0.5, 0.5)
-text = "✊"
-label_settings = SubResource("LabelSettings_mvjtv")
-horizontal_alignment = 1
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GarlicPressHolder/GarlicPress/Area2D" unique_id=705448745]
+position = Vector2(87.5, 58.5)
+shape = SubResource("RectangleShape2D_nkkox")
 
 [node name="GarlicPressAnimation" type="AnimationPlayer" parent="GarlicPressHolder" unique_id=1747321635]
 unique_name_in_owner = true
@@ -202,25 +174,6 @@ horizontal_alignment = 1
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_cwxwh")
 autoplay = &"new_animation"
-
-[node name="DebugWin" type="Label" parent="." unique_id=603726775]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 149.0
-offset_top = 444.0
-offset_right = 1762.0
-offset_bottom = 707.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "GARLIC PRESSED"
-label_settings = SubResource("LabelSettings_taym3")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [connection signal="input_event" from="GarlicHolder/GarlicPlaceArea" to="." method="_on_garlic_area_input_event"]
 [connection signal="area_entered" from="GarlicHolder/GarlicPressHitbox" to="." method="_on_garlic_press_hitbox_area_entered"]
