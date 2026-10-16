@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="8_3vn67"]
 [ext_resource type="Texture2D" uid="uid://c43figngusf10" path="res://assets/gfx/sprites/ingredients/onionFull.png" id="9_3vn67"]
 [ext_resource type="Texture2D" uid="uid://bb67nd3dqxmru" path="res://assets/gfx/sprites/ingredients/garlicBraid.png" id="10_kpcsg"]
+[ext_resource type="Texture2D" uid="uid://bqgj8givqfp05" path="res://assets/gfx/sprites/tools/recipe.png" id="11_iitx3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mt43b"]
 blend_mode = 1
@@ -36,6 +37,61 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(206, 114)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nft63"]
+resource_local_to_scene = true
+shader = ExtResource("6_kjwha")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j103b"]
+blend_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktohr"]
+size = Vector2(215, 141)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iitx3"]
+font_size = 128
+
+[sub_resource type="Animation" id="Animation_nft63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prompt:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iitx3"]
+resource_name = "prompt"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prompt:offset_transform_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nft63"]
+_data = {
+&"RESET": SubResource("Animation_nft63"),
+&"prompt": SubResource("Animation_iitx3")
+}
+
 [node name="KitchenScene" type="Node2D" unique_id=1398770604]
 script = ExtResource("1_mt43b")
 
@@ -43,7 +99,7 @@ script = ExtResource("1_mt43b")
 texture = ExtResource("1_04bkp")
 centered = false
 
-[node name="ClickablePolygon" parent="." unique_id=1544714182 instance=ExtResource("2_mt43b")]
+[node name="ToPantry" parent="." unique_id=1544714182 instance=ExtResource("2_mt43b")]
 material = SubResource("CanvasItemMaterial_mt43b")
 position = Vector2(1474, 9)
 texture = SubResource("GradientTexture2D_mt43b")
@@ -76,5 +132,51 @@ texture = ExtResource("9_3vn67")
 position = Vector2(1024, 890)
 texture = ExtResource("10_kpcsg")
 
-[connection signal="clicked" from="ClickablePolygon" to="SceneChanger" method="request_new_scene"]
+[node name="RecipeClickable" parent="." unique_id=1613145478 instance=ExtResource("4_qeuev")]
+material = SubResource("ShaderMaterial_nft63")
+position = Vector2(1030, 953)
+
+[node name="ColorRect" type="ColorRect" parent="RecipeClickable" unique_id=518286143]
+offset_left = -1030.0
+offset_top = -953.0
+offset_right = 890.0
+offset_bottom = 127.0
+mouse_filter = 2
+color = Color(0.005333328, 0, 0.16, 0.60784316)
+
+[node name="Recipe2" type="Sprite2D" parent="RecipeClickable" unique_id=1324607147]
+modulate = Color(1, 1, 1, 0.2)
+material = SubResource("CanvasItemMaterial_j103b")
+position = Vector2(-2.0000002, 7)
+scale = Vector2(0.3, 0.3)
+skew = -0.1867503
+texture = ExtResource("11_iitx3")
+
+[node name="Recipe" type="Sprite2D" parent="RecipeClickable" unique_id=1813149998]
+scale = Vector2(0.3, 0.3)
+skew = -0.18675023
+texture = ExtResource("11_iitx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecipeClickable" unique_id=1673666986]
+position = Vector2(-1.5, 4.5)
+shape = SubResource("RectangleShape2D_ktohr")
+
+[node name="Prompt" type="Label" parent="RecipeClickable" unique_id=125701477]
+offset_left = -90.0
+offset_top = -304.0
+offset_right = 69.0
+offset_bottom = -129.0
+offset_transform_enabled = true
+text = "👇"
+label_settings = SubResource("LabelSettings_iitx3")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="RecipeClickable" unique_id=1122212464]
+libraries/ = SubResource("AnimationLibrary_nft63")
+autoplay = &"prompt"
+
+[connection signal="clicked" from="ToPantry" to="SceneChanger" method="request_new_scene"]
 [connection signal="clicked" from="CuttingBoard" to="." method="_on_cutting_board_clicked"]
+[connection signal="clicked" from="RecipeClickable" to="." method="_on_recipe_clickable_clicked"]

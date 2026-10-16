@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cu0hrfgp6mbuy" path="res://src/game_screens/kitchen_scene.tscn" id="1_eewff"]
 [ext_resource type="Script" uid="uid://clbxa6334eoc6" path="res://src/main.gd" id="1_gh0ne"]
+[ext_resource type="Shader" uid="uid://dl54wnyckk5ii" path="res://src/shaders/drop_shadow.gdshader" id="3_3cfgd"]
+[ext_resource type="Texture2D" uid="uid://bqgj8givqfp05" path="res://assets/gfx/sprites/tools/recipe.png" id="3_5q4o7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ktohr"]
 font_size = 48
@@ -70,6 +72,86 @@ _data = {
 &"fade": SubResource("Animation_5q4o7")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fyndt"]
+shader = ExtResource("3_3cfgd")
+shader_parameter/dist = 16
+shader_parameter/color = Color(0, 0, 0, 0.5)
+shader_parameter/angle = 145.200006897
+
+[sub_resource type="Animation" id="Animation_3cfgd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 952)]
+}
+
+[sub_resource type="Animation" id="Animation_kmhfv"]
+resource_name = "hide_recipe"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 538), Vector2(0, 952), Vector2(0, 952)]
+}
+
+[sub_resource type="Animation" id="Animation_rlaii"]
+resource_name = "hover"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 952), Vector2(0, 904), Vector2(0, 952), Vector2(0, 952), Vector2(0, 952)]
+}
+
+[sub_resource type="Animation" id="Animation_fyndt"]
+resource_name = "show_recipe"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 952), Vector2(0, 538), Vector2(0, 538)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kmhfv"]
+_data = {
+&"RESET": SubResource("Animation_3cfgd"),
+&"hide_recipe": SubResource("Animation_kmhfv"),
+&"hover": SubResource("Animation_rlaii"),
+&"show_recipe": SubResource("Animation_fyndt")
+}
+
 [node name="Main" type="Node2D" unique_id=959749560]
 script = ExtResource("1_gh0ne")
 
@@ -88,9 +170,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -280.0
-offset_top = -120.0
+offset_top = -150.0
 offset_right = 280.0
-offset_bottom = -53.0
+offset_bottom = -83.0
 grow_horizontal = 2
 grow_vertical = 0
 offset_transform_enabled = true
@@ -100,3 +182,25 @@ horizontal_alignment = 1
 [node name="PromptAnimation" type="AnimationPlayer" parent="UI" unique_id=790289759]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_3cfgd")
+
+[node name="Recipe" type="TextureRect" parent="UI" unique_id=938596913]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fyndt")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 738.0
+offset_bottom = 414.0017
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -16)
+texture = ExtResource("3_5q4o7")
+
+[node name="RecipeAnimation" type="AnimationPlayer" parent="UI/Recipe" unique_id=2104211992]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_kmhfv")
+
+[connection signal="gui_input" from="UI/Recipe" to="." method="_on_recipe_gui_input"]
+[connection signal="mouse_entered" from="UI/Recipe" to="." method="_on_recipe_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Recipe" to="." method="_on_recipe_mouse_exited"]

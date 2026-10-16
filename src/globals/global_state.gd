@@ -10,6 +10,14 @@ enum Items {
 
 var current_item := Items.NONE
 
+signal recipe_read
+var is_recipe_read: bool = false:
+	set(value):
+		is_recipe_read = value
+		if is_recipe_read:
+			recipe_read.emit()
+
+
 var is_pumpkin_done: bool = false:
 	set(value):
 		is_pumpkin_done = value
