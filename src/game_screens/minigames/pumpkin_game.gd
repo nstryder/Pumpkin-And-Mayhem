@@ -18,6 +18,7 @@ var current_slice: SliceInput
 
 
 func _ready() -> void:
+	Audio.play_instrument(Audio.Instruments.PERCUSSION)
 	pop_slice()
 	for node: Node in [pick_off_input, oven_timed_input, food_process_timed_input]:
 		node.get_parent().remove_child(node)

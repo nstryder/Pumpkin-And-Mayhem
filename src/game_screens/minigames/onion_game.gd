@@ -26,6 +26,7 @@ var onion_slices: Array[Sprite2D] = []
 
 
 func _ready() -> void:
+	Audio.play_instrument(Audio.Instruments.PERCUSSION)
 	var rect: Rect2 = onion.get_rect()
 
 	# Calculate Slice locations

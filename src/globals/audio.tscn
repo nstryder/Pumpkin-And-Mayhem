@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://g1bdspwpiqnr"]
+
+[ext_resource type="Script" uid="uid://cfajw7pvstqs6" path="res://src/globals/audio.gd" id="1_8u575"]
+[ext_resource type="AudioStream" uid="uid://wsmup207nk42" path="res://assets/audio/bgm/Cello.ogg" id="1_kbgn2"]
+[ext_resource type="AudioStream" uid="uid://13yvjitokaob" path="res://assets/audio/bgm/Clarinet.ogg" id="2_8u575"]
+[ext_resource type="AudioStream" uid="uid://dk8rolr3pl50i" path="res://assets/audio/bgm/Flute.ogg" id="3_yb3y1"]
+[ext_resource type="AudioStream" uid="uid://c8rovjebnrtwd" path="res://assets/audio/bgm/Guitar.ogg" id="4_rv8kc"]
+[ext_resource type="AudioStream" uid="uid://dbqbtg77y7ib6" path="res://assets/audio/bgm/Oboe.ogg" id="5_psb3x"]
+[ext_resource type="AudioStream" uid="uid://chaepsra6wwaa" path="res://assets/audio/bgm/Percussion.ogg" id="6_1lhw6"]
+[ext_resource type="AudioStream" uid="uid://c2iph5w7kvty8" path="res://assets/audio/bgm/Piano.ogg" id="7_o21kw"]
+[ext_resource type="AudioStream" uid="uid://bcbwq13mittyi" path="res://assets/audio/bgm/Violin.ogg" id="8_f4mc7"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_ktohr"]
+stream_count = 8
+stream_0/stream = ExtResource("1_kbgn2")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_8u575")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("3_yb3y1")
+stream_2/volume = 0.0
+stream_3/stream = ExtResource("4_rv8kc")
+stream_3/volume = 0.0
+stream_4/stream = ExtResource("5_psb3x")
+stream_4/volume = 0.0
+stream_5/stream = ExtResource("6_1lhw6")
+stream_5/volume = -60.0
+stream_6/stream = ExtResource("7_o21kw")
+stream_6/volume = 0.0
+stream_7/stream = ExtResource("8_f4mc7")
+stream_7/volume = 0.0
+
+[node name="Audio" type="Node" unique_id=591780017]
+script = ExtResource("1_8u575")
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=182045848]
+stream = SubResource("AudioStreamSynchronized_ktohr")
+autoplay = true
+bus = &"BGM"

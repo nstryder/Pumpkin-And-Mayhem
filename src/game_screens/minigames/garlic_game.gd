@@ -25,6 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	Audio.play_instrument(Audio.Instruments.PERCUSSION)
 	garlic_press_holder.hide()
 	prompt_add_garlic.show()
 	garlic.modulate.a = 0.2
