@@ -13,11 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://b2ybjva3igr2j" path="res://assets/gfx/sprites/ingredients/cream.png" id="8_7jr61"]
 [ext_resource type="Texture2D" uid="uid://dn6818hr3pdq3" path="res://assets/gfx/sprites/tools/shakerClosed.png" id="9_2wouj"]
 [ext_resource type="Texture2D" uid="uid://c43figngusf10" path="res://assets/gfx/sprites/ingredients/onionFull.png" id="9_3vn67"]
-[ext_resource type="Texture2D" uid="uid://bb67nd3dqxmru" path="res://assets/gfx/sprites/ingredients/garlicBraid.png" id="10_kpcsg"]
 [ext_resource type="Texture2D" uid="uid://t4of18xsptqv" path="res://assets/gfx/sprites/ingredients/butterWrapper.png" id="10_xjwiq"]
 [ext_resource type="Texture2D" uid="uid://k3fhct5gnqag" path="res://assets/gfx/sprites/ingredients/butterFull.png" id="11_hdvu7"]
 [ext_resource type="Texture2D" uid="uid://bqgj8givqfp05" path="res://assets/gfx/sprites/tools/recipe.png" id="11_iitx3"]
 [ext_resource type="Texture2D" uid="uid://b8sgnoxumasg4" path="res://assets/gfx/sprites/tools/cauldronSmol.png" id="12_7jr61"]
+[ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="14_7jr61"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mt43b"]
 blend_mode = 1
@@ -79,6 +79,42 @@ shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21got"]
 size = Vector2(278, 165)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f040r"]
+resource_local_to_scene = true
+shader = ExtResource("6_kjwha")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wouj"]
+size = Vector2(538, 412)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ylgrd"]
+resource_local_to_scene = true
+shader = ExtResource("6_kjwha")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjwiq"]
+size = Vector2(214, 224)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h20sc"]
+resource_local_to_scene = true
+shader = ExtResource("6_kjwha")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdvu7"]
+size = Vector2(188, 180)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qee7m"]
 resource_local_to_scene = true
@@ -244,6 +280,51 @@ region_rect = Rect2(1621.1516, 500.73804, 317.2705, 368.8069)
 position = Vector2(3, -1.5)
 shape = SubResource("RectangleShape2D_21got")
 
+[node name="MainIngredients" type="Node2D" parent="." unique_id=57285340]
+unique_name_in_owner = true
+
+[node name="Pumpkin" parent="MainIngredients" unique_id=1312326557 instance=ExtResource("4_qeuev")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_f040r")
+position = Vector2(571, 903)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="MainIngredients/Pumpkin" unique_id=1977353606]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_3vn67")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainIngredients/Pumpkin" unique_id=462632038]
+position = Vector2(-15, -2)
+shape = SubResource("RectangleShape2D_2wouj")
+
+[node name="Onion" parent="MainIngredients" unique_id=3091617 instance=ExtResource("4_qeuev")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ylgrd")
+position = Vector2(802, 920)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="MainIngredients/Onion" unique_id=1370850904]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_3vn67")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainIngredients/Onion" unique_id=106834664]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_xjwiq")
+
+[node name="Garlic" parent="MainIngredients" unique_id=1434316116 instance=ExtResource("4_qeuev")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_h20sc")
+position = Vector2(1001, 926)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="MainIngredients/Garlic" unique_id=1364763260]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_7jr61")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainIngredients/Garlic" unique_id=1030201525]
+position = Vector2(2, 6)
+shape = SubResource("RectangleShape2D_hdvu7")
+
 [node name="Cauldron" parent="." unique_id=1020724483 instance=ExtResource("4_qeuev")]
 material = SubResource("ShaderMaterial_qee7m")
 position = Vector2(433, 545)
@@ -275,20 +356,6 @@ texture = ExtResource("6_pd7gb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CuttingBoard" unique_id=1067404117]
 position = Vector2(75.5, -21)
 shape = SubResource("RectangleShape2D_lwrwe")
-
-[node name="Pumpkin" type="Sprite2D" parent="." unique_id=189815241]
-position = Vector2(545, 917.99994)
-scale = Vector2(0.24916758, 0.24916759)
-texture = ExtResource("8_3vn67")
-
-[node name="Onion" type="Sprite2D" parent="." unique_id=2024923378]
-position = Vector2(808, 941.99994)
-scale = Vector2(0.31379312, 0.31379315)
-texture = ExtResource("9_3vn67")
-
-[node name="Garlic" type="Sprite2D" parent="." unique_id=1537332064]
-position = Vector2(1024, 890)
-texture = ExtResource("10_kpcsg")
 
 [node name="RecipeClickable" parent="." unique_id=1613145478 instance=ExtResource("4_qeuev")]
 visible = false
@@ -341,6 +408,9 @@ autoplay = &"prompt"
 [connection signal="clicked" from="SmallIngredients/Cream" to="." method="_on_cream_clicked"]
 [connection signal="clicked" from="SmallIngredients/Shaker" to="." method="_on_shaker_clicked"]
 [connection signal="clicked" from="SmallIngredients/Butter" to="." method="_on_butter_clicked"]
+[connection signal="clicked" from="MainIngredients/Pumpkin" to="." method="_on_pumpkin_clicked"]
+[connection signal="clicked" from="MainIngredients/Onion" to="." method="_on_onion_clicked"]
+[connection signal="clicked" from="MainIngredients/Garlic" to="." method="_on_garlic_clicked"]
 [connection signal="clicked" from="Cauldron" to="." method="_on_cauldron_clicked"]
 [connection signal="clicked" from="CuttingBoard" to="." method="_on_cutting_board_clicked"]
 [connection signal="clicked" from="RecipeClickable" to="." method="_on_recipe_clickable_clicked"]

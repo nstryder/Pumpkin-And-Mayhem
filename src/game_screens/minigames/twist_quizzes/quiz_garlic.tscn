@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ms20ep2oivf5"]
+
+[ext_resource type="PackedScene" uid="uid://ssrockctwoaq" path="res://src/game_screens/minigames/twist_quiz.tscn" id="1_wmj3k"]
+[ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="2_wmj3k"]
+[ext_resource type="Texture2D" uid="uid://btwii6pbi70ch" path="res://assets/gfx/sprites/ingredients/garlicNoteMedium.png" id="3_lupgi"]
+[ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="4_5ossn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2krs"]
+resource_local_to_scene = true
+shader = ExtResource("4_5ossn")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ossn"]
+resource_local_to_scene = true
+shader = ExtResource("4_5ossn")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[node name="QuizGarlic" unique_id=98396052 instance=ExtResource("1_wmj3k")]
+correct_sprite = ExtResource("2_wmj3k")
+wrong_sprite = ExtResource("3_lupgi")
+global_variable = "garlic"
+correct_choice = 1
+
+[node name="Choice2" parent="Choice2" parent_id_path=PackedInt32Array(1675814794) index="0" unique_id=1746058275]
+material = SubResource("ShaderMaterial_g2krs")
+
+[node name="Choice1" parent="Choice1" parent_id_path=PackedInt32Array(2132052345) index="0" unique_id=1475868059]
+material = SubResource("ShaderMaterial_5ossn")

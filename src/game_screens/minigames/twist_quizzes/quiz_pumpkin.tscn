@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dd6l3uixtkn8m"]
+
+[ext_resource type="PackedScene" uid="uid://ssrockctwoaq" path="res://src/game_screens/minigames/twist_quiz.tscn" id="1_hu5ly"]
+[ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="2_hu5ly"]
+[ext_resource type="Texture2D" uid="uid://dwkqv2bhedbat" path="res://assets/gfx/sprites/ingredients/pumpkinWholeTwist.png" id="3_k54av"]
+[ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="4_46c6h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2ike"]
+resource_local_to_scene = true
+shader = ExtResource("4_46c6h")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_46c6h"]
+resource_local_to_scene = true
+shader = ExtResource("4_46c6h")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[node name="QuizPumpkin" unique_id=98396052 instance=ExtResource("1_hu5ly")]
+correct_sprite = ExtResource("2_hu5ly")
+wrong_sprite = ExtResource("3_k54av")
+global_variable = "pumpkin"
+correct_choice = 1
+
+[node name="Choice2" parent="Choice2" parent_id_path=PackedInt32Array(1675814794) index="0" unique_id=1746058275]
+material = SubResource("ShaderMaterial_u2ike")
+
+[node name="Choice1" parent="Choice1" parent_id_path=PackedInt32Array(2132052345) index="0" unique_id=1475868059]
+material = SubResource("ShaderMaterial_46c6h")
