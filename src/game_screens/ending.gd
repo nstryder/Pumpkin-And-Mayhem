@@ -16,7 +16,7 @@ func _ready() -> void:
 		grade.text = "Poor."
 	
 	if GlobalState.garlic_status == GlobalState.Status.TWISTED:
-		feedback.text += "\nYour vampire Uncle Ben does not\nseem pleased to find his note in your soup."
+		feedback.text += "\n\nYour vampire Uncle Ben does not\nseem pleased to find his note in your soup."
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:

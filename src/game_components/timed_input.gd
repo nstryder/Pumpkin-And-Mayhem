@@ -20,6 +20,10 @@ signal incomplete
 ## How long the window is for the user to click and still pass
 @export var pass_time_duration: float = 0.2
 
+@export var pass_sfx: AudioStream
+@export var fail_sfx: AudioStream
+@export var retry_sfx: AudioStream
+
 var tween: Tween
 
 @onready var timer: Timer = $Timer
@@ -79,12 +83,14 @@ func show_text(text: String) -> void:
 
 
 func on_pass() -> void:
+	Audio.play_sfx(pass_sfx)
 	show_text("Passed!")
 	timer.stop()
 	passed.emit()
 
 
 func on_fail() -> void:
+	Audio.play_sfx(fail_sfx)
 	print("Failed!")
 	show_text("Failed.")
 	timer.stop()
@@ -92,6 +98,7 @@ func on_fail() -> void:
 
 
 func on_incomplete() -> void:
+	Audio.play_sfx(retry_sfx)
 	print("Incomplete. Retry")
 	show_text("Try again...")
 	await tween.finished

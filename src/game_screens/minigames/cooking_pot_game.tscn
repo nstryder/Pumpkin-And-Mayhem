@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://74un8kdkjk0a"]
 
 [ext_resource type="Script" uid="uid://cterdm68l8yku" path="res://src/game_screens/minigames/cooking_pot_game.gd" id="1_e6jvx"]
+[ext_resource type="AudioStream" uid="uid://b1e6wgd4lfknu" path="res://assets/audio/sfx/confirmation_003.ogg" id="2_724sb"]
 [ext_resource type="Texture2D" uid="uid://05pkc3a767s8" path="res://assets/gfx/sprites/backgrounds/stovetop.png" id="2_enqv7"]
 [ext_resource type="Texture2D" uid="uid://c12daxjxgllt6" path="res://assets/gfx/textures/fire_sheet.png" id="3_0wxp5"]
+[ext_resource type="AudioStream" uid="uid://djqypggequkcu" path="res://assets/audio/sfx/error_008.ogg" id="3_khwjq"]
 [ext_resource type="Texture2D" uid="uid://bqu0qxwujhgkk" path="res://assets/gfx/sprites/tools/cauldronBoil1.png" id="4_b6cld"]
 [ext_resource type="Texture2D" uid="uid://bay7x0gogtynf" path="res://assets/gfx/textures/splat_sheet.png" id="4_kk122"]
+[ext_resource type="AudioStream" uid="uid://0x1k67mibgj0" path="res://assets/audio/sfx/scratch_004.ogg" id="4_q10gw"]
 [ext_resource type="Texture2D" uid="uid://c7463md3rnpoe" path="res://assets/gfx/textures/sparkle_sheet.png" id="5_0eun0"]
 [ext_resource type="Texture2D" uid="uid://d1d5apjogkkhy" path="res://assets/gfx/textures/smoke_sheet.png" id="5_a1fu1"]
 [ext_resource type="Texture2D" uid="uid://ble5hnt5rfcjw" path="res://assets/gfx/sprites/ingredients/butterPiece.png" id="5_kk122"]
@@ -442,6 +445,9 @@ _data = {
 
 [node name="CookingPotGame" type="Node2D" unique_id=503086958]
 script = ExtResource("1_e6jvx")
+pass_sfx = ExtResource("2_724sb")
+fail_sfx = ExtResource("3_khwjq")
+splat_sfx = ExtResource("4_q10gw")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=996980263]
 texture = ExtResource("2_enqv7")

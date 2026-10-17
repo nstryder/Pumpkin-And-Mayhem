@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3ct0rddc1is7" path="res://src/game_components/show_off_item.gd" id="1_3fcd2"]
 [ext_resource type="Texture2D" uid="uid://c7463md3rnpoe" path="res://assets/gfx/textures/sparkle_sheet.png" id="1_nihtq"]
+[ext_resource type="AudioStream" uid="uid://o40lucj7ja56" path="res://assets/audio/sfx/confirmation_002.ogg" id="3_3fcd2"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c1qab"]
 blend_mode = 1
@@ -114,6 +115,21 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_3fcd2")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_81yl5"]
 _data = {
@@ -146,5 +162,8 @@ process_material = SubResource("ParticleProcessMaterial_lwrwe")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1995011007]
 libraries/ = SubResource("AnimationLibrary_81yl5")
 autoplay = &"slide"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=208078014]
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

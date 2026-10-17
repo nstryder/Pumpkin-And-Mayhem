@@ -3,6 +3,7 @@ class_name ClickableArea
 
 signal clicked
 
+@export var click_sfx: AudioStream
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if get_viewport().is_input_handled():
@@ -12,4 +13,5 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		return
 	
 	get_viewport().set_input_as_handled()
+	Audio.play_sfx(click_sfx)
 	clicked.emit()

@@ -25,6 +25,9 @@ const SELF_SCENE: PackedScene = preload("uid://bctwpvok04ek")
 		_setup_areas()
 
 
+@export var slice_sfx: AudioStream
+
+
 var is_dragging: bool = false:
 	set(value):
 		is_dragging = value
@@ -120,6 +123,7 @@ func _on_release() -> void:
 		slice_vfx.show_slice(Vector2(0, -polarity * vfx_distance), Vector2(0, polarity * vfx_distance), 0.1)
 		slice_vfx.reparent(get_parent())
 		
+		Audio.play_sfx(slice_sfx)
 		sliced.emit()
 
 

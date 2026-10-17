@@ -18,6 +18,11 @@ const SLICE_BUTTER = preload("uid://c8iwm3ulg4wkh")
 const SHAKE_SEASONING = preload("uid://coeo76qvjgdvv")
 
 
+@export var pass_sfx: AudioStream
+@export var fail_sfx: AudioStream
+@export var splat_sfx: AudioStream
+
+
 var actions: Array[TimelineAction] = []
 var current_prompt: Node2D
 var scroll_speed: float = 200.0
@@ -50,6 +55,7 @@ var current_ingredient: ClickableArea
 func _ready() -> void:
 	# for s: String in ["milk", "cream", "shaker", "butter", "onion", "garlic", "pumpkin"]:
 	# 	GlobalState.set(s + "_status", GlobalState.Status.TWISTED)
+	Audio.play_instrument(Audio.Instruments.PERCUSSION)
 	action_line.position.x = visual_offset
 	_get_timeline_actions()
 	_place_timeline_actions()
@@ -203,12 +209,14 @@ func _on_action_completed() -> void:
 		current_prompt.queue_free()
 	_change_action_color(Color.SPRING_GREEN)
 	_show_text("Nice!")
+	Audio.play_sfx(pass_sfx)
 	current_action_idx += 1
 
 
 func _on_action_missed() -> void:
 	if current_prompt:
 		current_prompt.queue_free()
+	Audio.play_sfx(fail_sfx)
 	timer.stop()
 	_change_action_color(Color.PALE_VIOLET_RED)
 	GlobalState.mistakes_made += 1
@@ -221,6 +229,7 @@ func _check_ingredient(ingredient: ClickableArea) -> void:
 	if current_ingredient == ingredient:
 		_on_action_completed()
 		splat.restart()
+		Audio.play_sfx(splat_sfx)
 		current_ingredient.queue_free()
 	else:
 		_on_action_missed()

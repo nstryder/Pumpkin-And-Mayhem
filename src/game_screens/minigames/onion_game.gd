@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var cuts_quantity: int = 8
+@export var finish_sfx: AudioStream
 
 var slice_points: Array[Vector2] = []
 var current_slice: SliceInput
