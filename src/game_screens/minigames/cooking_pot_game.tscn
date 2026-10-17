@@ -292,10 +292,10 @@ _data = {
 &"prompt_ingredients": SubResource("Animation_5jqi1")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1n2f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a1fu1"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -304,10 +304,10 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(242, 600)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wxp5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekt5o"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -316,10 +316,10 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1fu1"]
 size = Vector2(562, 379)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekt5o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6cld"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -328,10 +328,10 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6cld"]
 size = Vector2(188, 176)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g44vp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngwn7"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -340,10 +340,10 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26e66"]
 size = Vector2(242, 319)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_26e66"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqju1"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -449,7 +449,7 @@ position = Vector2(1626, 502)
 
 [node name="Milk" parent="Ingredients" unique_id=1746058275 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_r1n2f")
+material = SubResource("ShaderMaterial_a1fu1")
 position = Vector2(140, -189)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Milk" unique_id=120376861]
@@ -461,7 +461,7 @@ shape = SubResource("RectangleShape2D_lwrwe")
 
 [node name="Pumpkin" parent="Ingredients" unique_id=438314555 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_0wxp5")
+material = SubResource("ShaderMaterial_ekt5o")
 position = Vector2(78, 519)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Pumpkin" unique_id=753268800]
@@ -474,7 +474,7 @@ shape = SubResource("RectangleShape2D_a1fu1")
 
 [node name="Garlic" parent="Ingredients" unique_id=2023098467 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_ekt5o")
+material = SubResource("ShaderMaterial_b6cld")
 position = Vector2(176, 232)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Garlic" unique_id=1155802434]
@@ -487,7 +487,7 @@ shape = SubResource("RectangleShape2D_b6cld")
 
 [node name="Cream" parent="Ingredients" unique_id=584506115 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_g44vp")
+material = SubResource("ShaderMaterial_ngwn7")
 position = Vector2(-140, -146)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Cream" unique_id=695896546]
@@ -501,7 +501,7 @@ shape = SubResource("RectangleShape2D_26e66")
 
 [node name="Onion" parent="Ingredients" unique_id=1685821879 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_26e66")
+material = SubResource("ShaderMaterial_oqju1")
 position = Vector2(-106, 136)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Onion" unique_id=824876557]

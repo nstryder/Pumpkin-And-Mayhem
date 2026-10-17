@@ -5,12 +5,20 @@ const GARLIC_GAME = "uid://bao7qolnlt5wi"
 const ONION_GAME = "uid://cb14c03d2i0xu"
 const PUMPKIN_GAME = "uid://dhb4bcr73gne5"
 
+@export var debug_skip: bool = false
+
 @onready var recipe_clickable: ClickableArea = $RecipeClickable
 @onready var to_pantry: Polygon2D = $ToPantry
 @onready var cutting_board: ClickableArea = $CuttingBoard
 @onready var pumpkin: Sprite2D = $Pumpkin
 @onready var onion: Sprite2D = $Onion
 @onready var garlic: Sprite2D = $Garlic
+
+@onready var small_ingredients: Node2D = %SmallIngredients
+@onready var milk: ClickableArea = %Milk
+@onready var cream: ClickableArea = %Cream
+@onready var shaker: ClickableArea = %Shaker
+@onready var butter: ClickableArea = %Butter
 
 
 func _ready() -> void:
@@ -27,6 +35,19 @@ func _ready() -> void:
 		onion.hide()
 	if not GlobalState.is_garlic_done:
 		garlic.hide()
+	
+	# Check smalls here
+	if not GlobalState.got_milk:
+		milk.queue_free()
+	if not GlobalState.got_cream:
+		cream.queue_free()
+	if not GlobalState.got_shaker:
+		shaker.queue_free()
+	if not GlobalState.got_butter:
+		butter.queue_free()
+	
+	if debug_skip:
+		_on_recipe_clickable_clicked()
 
 
 func _disable_all_clickables() -> void:

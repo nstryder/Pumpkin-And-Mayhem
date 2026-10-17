@@ -35,6 +35,12 @@ var is_garlic_done: bool = false:
 		Audio.play_instrument(Audio.Instruments.CELLO)
 
 
+var got_milk: bool = false
+var got_cream: bool = false
+var got_butter: bool = false
+var got_shaker: bool = false
+
+
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.BLACK)
 
