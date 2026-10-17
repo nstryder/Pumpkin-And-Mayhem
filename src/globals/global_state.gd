@@ -114,6 +114,7 @@ func choose_sprite_main(status: Status, normal: Texture2D, twisted: Texture2D) -
 			return twisted
 		Status.NONE:
 			if has_all_mains():
+				print("Twisting since has all mains.")
 				return twisted
 			else:
 				return normal
@@ -123,19 +124,19 @@ func choose_sprite_main(status: Status, normal: Texture2D, twisted: Texture2D) -
 func get_sprite_onion() -> Texture2D:
 	var normal: Texture2D = load("uid://c43figngusf10")
 	var twisted: Texture2D = load("uid://ck87fpk0swyy")
-	return choose_sprite_main(milk_status, normal, twisted)
+	return choose_sprite_main(onion_status, normal, twisted)
 
 
 func get_sprite_garlic() -> Texture2D:
 	var normal: Texture2D = load("uid://bq8680d4gurff")
 	var twisted: Texture2D = load("uid://s7r2riw6p8vk")
-	return choose_sprite_main(milk_status, normal, twisted)
+	return choose_sprite_main(garlic_status, normal, twisted)
 
 
 func get_sprite_pumpkin() -> Texture2D:
 	var normal: Texture2D = load("uid://bxia6ay2lv24e")
 	var twisted: Texture2D = load("uid://dwkqv2bhedbat")
-	return choose_sprite_main(milk_status, normal, twisted)
+	return choose_sprite_main(pumpkin_status, normal, twisted)
 
 
 func get_sprite_milk() -> Texture2D:

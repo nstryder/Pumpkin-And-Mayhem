@@ -36,6 +36,7 @@ var current_ingredient: ClickableArea
 @onready var butter_point: Node2D = %ButterPoint
 @onready var splat: GPUParticles2D = %Splat
 @onready var seasoning_particles: GPUParticles2D = %SeasoningParticles
+@onready var twist_seasoning_particles: GPUParticles2D = %TwistSeasoningParticles
 @onready var animation: AnimationPlayer = %Animation
 
 @onready var ingredients: Node2D = %Ingredients
@@ -47,11 +48,15 @@ var current_ingredient: ClickableArea
 
 
 func _ready() -> void:
+	for s: String in ["milk", "cream", "shaker", "butter", "onion", "garlic", "pumpkin"]:
+		GlobalState.set(s + "_status", GlobalState.Status.TWISTED)
+
 	action_line.position.x = visual_offset
 	_get_timeline_actions()
 	_place_timeline_actions()
 	timer.timeout.connect(_on_action_missed)
 	output.hide()
+	_check_twists()
 	_disable_ingredients()
 
 
@@ -78,6 +83,13 @@ func _place_timeline_actions() -> void:
 		action_item.size.x = scroll_speed * action.window_duration
 		action_holder.add_child(action_item)
 		action.visual = action_item
+
+
+func _check_twists() -> void:
+	for ingredient_name: String in ["milk", "cream", "onion", "garlic", "pumpkin"]:
+		var ingredient: ClickableArea = get(ingredient_name)
+		var sprite: Sprite2D = ingredient.get_node("Sprite")
+		sprite.texture = GlobalState.call("get_sprite_" + ingredient_name)
 
 
 func _process(delta: float) -> void:
@@ -156,6 +168,7 @@ func add_pumpkin(window: float) -> void:
 func slice_butter(window: float) -> void:
 	var instance: SliceInput = SLICE_BUTTER.instantiate()
 	butter_point.add_child(instance)
+	butter_point.move_child(instance, 0)
 	instance.sliced.connect(_on_butter_completed)
 	_start_action(window, instance)
 
@@ -178,7 +191,10 @@ func _on_butter_completed() -> void:
 
 
 func _on_seasoning_completed() -> void:
-	seasoning_particles.restart()
+	if GlobalState.shaker_status == GlobalState.Status.TWISTED:
+		twist_seasoning_particles.restart()
+	else:
+		seasoning_particles.restart()
 	_on_action_completed()
 
 

@@ -197,7 +197,6 @@ _data = {
 
 [node name="KitchenScene" type="Node2D" unique_id=1398770604]
 script = ExtResource("1_mt43b")
-debug_skip = true
 
 [node name="KitchenBG" type="Sprite2D" parent="." unique_id=1094648885]
 texture = ExtResource("1_04bkp")
@@ -282,6 +281,7 @@ shape = SubResource("RectangleShape2D_21got")
 
 [node name="MainIngredients" type="Node2D" parent="." unique_id=57285340]
 unique_name_in_owner = true
+process_mode = 4
 
 [node name="Pumpkin" parent="MainIngredients" unique_id=1312326557 instance=ExtResource("4_qeuev")]
 unique_name_in_owner = true
@@ -358,7 +358,6 @@ position = Vector2(75.5, -21)
 shape = SubResource("RectangleShape2D_lwrwe")
 
 [node name="RecipeClickable" parent="." unique_id=1613145478 instance=ExtResource("4_qeuev")]
-visible = false
 material = SubResource("ShaderMaterial_lhxh0")
 position = Vector2(1030, 953)
 
