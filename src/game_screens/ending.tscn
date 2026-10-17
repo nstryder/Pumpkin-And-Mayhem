@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://dr01e4q2881b0"]
+
+[ext_resource type="Script" uid="uid://c5ne5bw8uspda" path="res://src/game_screens/ending.gd" id="1_twss7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwrwe"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
+font_size = 96
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktohr"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_x18bo"]
+font_size = 128
+font_color = Color(0.91, 0.33670002, 0.74756503, 1)
+outline_size = 24
+
+[sub_resource type="Animation" id="Animation_wtxv7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/PanelContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CenterContainer/Feedback:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Grade:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Shroud:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_twss7"]
+resource_name = "show"
+length = 7.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/PanelContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CenterContainer/Feedback:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Grade:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Shroud:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wtxv7"]
+_data = {
+&"RESET": SubResource("Animation_wtxv7"),
+&"show": SubResource("Animation_twss7")
+}
+
+[node name="Ending" type="Node2D" unique_id=274153520]
+script = ExtResource("1_twss7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1215321094]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=2121689347]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -425.0
+offset_top = 81.0
+offset_right = 425.0
+offset_bottom = 229.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lwrwe")
+
+[node name="Header" type="Label" parent="CanvasLayer/PanelContainer" unique_id=828610420]
+layout_mode = 2
+text = "Your family says..."
+label_settings = SubResource("LabelSettings_lwrwe")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1165284628]
+propagate_maximum_size = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Feedback" type="Label" parent="CanvasLayer/CenterContainer" unique_id=809359101]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(1440, -1)
+layout_mode = 2
+text = "The soup turned out great!
+"
+label_settings = SubResource("LabelSettings_ktohr")
+horizontal_alignment = 1
+
+[node name="Grade" type="Label" parent="CanvasLayer" unique_id=155480020]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -550.0
+offset_top = -231.0
+offset_right = -75.0
+offset_bottom = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Superb!"
+label_settings = SubResource("LabelSettings_x18bo")
+horizontal_alignment = 2
+
+[node name="Shroud" type="ColorRect" parent="CanvasLayer" unique_id=1065618894]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=810961913]
+libraries/ = SubResource("AnimationLibrary_wtxv7")
+autoplay = &"show"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

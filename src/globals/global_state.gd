@@ -14,7 +14,15 @@ enum Status {
 	TWISTED
 }
 
+
 var current_item := Items.NONE
+
+signal mistakes_made_changed(new_value: int)
+var mistakes_made: int = 0:
+	set(value):
+		mistakes_made = value
+		mistakes_made_changed.emit(value)
+
 
 signal recipe_read
 var is_recipe_read: bool = false:
@@ -79,6 +87,7 @@ func twist_select_correct(variable_name: String) -> void:
 
 func twist_select_wrong(variable_name: String) -> void:
 	print("That's wrong.")
+	mistakes_made += 1
 	set(variable_name + "_status", Status.TWISTED)
 
 

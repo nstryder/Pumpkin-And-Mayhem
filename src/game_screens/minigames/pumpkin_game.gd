@@ -49,11 +49,13 @@ func start_pick_off() -> void:
 func start_oven() -> void:
 	add_child(oven_timed_input)
 	oven_timed_input.passed.connect(_on_oven_input_passed)
+	oven_timed_input.failed.connect(_on_oven_input_failed)
 
 
 func start_food_processor() -> void:
 	add_child(food_process_timed_input)
 	food_process_timed_input.passed.connect(_on_food_processor_input_passed)
+	food_process_timed_input.failed.connect(_on_food_processor_input_failed)
 
 
 func _on_slice_sliced() -> void:
@@ -88,6 +90,11 @@ func _on_oven_input_passed() -> void:
 	start_food_processor()
 
 
+func _on_oven_input_failed() -> void:
+	GlobalState.mistakes_made += 1
+	_on_oven_input_passed()
+
+
 func _on_food_processor_input_passed() -> void:
 	await food_process_timed_input.tween.finished
 	food_process_timed_input.queue_free()
@@ -99,3 +106,8 @@ func _on_food_processor_input_passed() -> void:
 	GlobalState.current_item = GlobalState.Items.NONE
 	GlobalState.is_pumpkin_done = true
 	EventBus.scene_change_requested.emit("uid://cu0hrfgp6mbuy")
+
+
+func _on_food_processor_input_failed() -> void:
+	GlobalState.mistakes_made += 1
+	_on_food_processor_input_passed()

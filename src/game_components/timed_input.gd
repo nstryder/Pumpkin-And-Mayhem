@@ -49,6 +49,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	set_process(false)
 	set_process_unhandled_input(false)
+	process_mode = Node.PROCESS_MODE_DISABLED
 	var time_elapsed: float = total_time - timer.time_left
 	if pass_time_start <= time_elapsed and time_elapsed <= (pass_time_start + pass_time_duration):
 		on_pass()
@@ -68,7 +69,7 @@ func show_text(text: String) -> void:
 	prompt.offset_transform_position.y = -64
 	if tween:
 		tween.kill()
-	tween = create_tween()
+	tween = get_tree().create_tween()
 	(tween.tween_property(prompt, "offset_transform_position:y", 0, 0.2)
 		.set_trans(Tween.TRANS_ELASTIC)
 		.set_ease(Tween.EASE_OUT)
@@ -97,6 +98,7 @@ func on_incomplete() -> void:
 	timer.start()
 	set_process_unhandled_input(true)
 	set_process(true)
+	process_mode = Node.PROCESS_MODE_INHERIT
 	incomplete.emit()
 
 

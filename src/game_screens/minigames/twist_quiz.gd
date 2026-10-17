@@ -31,6 +31,8 @@ func woosh_unchosen(node: Node2D) -> void:
 
 
 func return_to_kitchen() -> void:
+	choice_1.process_mode = Node.PROCESS_MODE_DISABLED
+	choice_2.process_mode = Node.PROCESS_MODE_DISABLED
 	transition.play("fade_out")
 	await transition.animation_finished
 	EventBus.scene_change_requested.emit("uid://cu0hrfgp6mbuy")

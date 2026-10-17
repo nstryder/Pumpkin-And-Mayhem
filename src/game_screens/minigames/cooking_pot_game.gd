@@ -23,7 +23,6 @@ var current_prompt: Node2D
 var scroll_speed: float = 200.0
 var visual_offset: int = 128
 var current_action_idx: int = 0
-var fails: int = 0
 var current_ingredient: ClickableArea
 
 
@@ -38,6 +37,7 @@ var current_ingredient: ClickableArea
 @onready var seasoning_particles: GPUParticles2D = %SeasoningParticles
 @onready var twist_seasoning_particles: GPUParticles2D = %TwistSeasoningParticles
 @onready var animation: AnimationPlayer = %Animation
+@onready var transition: AnimationPlayer = %Transition
 
 @onready var ingredients: Node2D = %Ingredients
 @onready var milk: ClickableArea = %Milk
@@ -48,9 +48,8 @@ var current_ingredient: ClickableArea
 
 
 func _ready() -> void:
-	for s: String in ["milk", "cream", "shaker", "butter", "onion", "garlic", "pumpkin"]:
-		GlobalState.set(s + "_status", GlobalState.Status.TWISTED)
-
+	# for s: String in ["milk", "cream", "shaker", "butter", "onion", "garlic", "pumpkin"]:
+	# 	GlobalState.set(s + "_status", GlobalState.Status.TWISTED)
 	action_line.position.x = visual_offset
 	_get_timeline_actions()
 	_place_timeline_actions()
@@ -212,7 +211,7 @@ func _on_action_missed() -> void:
 		current_prompt.queue_free()
 	timer.stop()
 	_change_action_color(Color.PALE_VIOLET_RED)
-	fails += 1
+	GlobalState.mistakes_made += 1
 	_show_text("Failed...")
 	current_action_idx += 1
 
@@ -245,3 +244,10 @@ func _on_garlic_clicked() -> void:
 
 func _on_pumpkin_clicked() -> void:
 	_check_ingredient(pumpkin)
+
+
+func _on_timeline_player_animation_finished(_anim_name: StringName) -> void:
+	set_process(false)
+	transition.play("fade_out")
+	await transition.animation_finished
+	get_tree().change_scene_to_packed(load("uid://dr01e4q2881b0") as PackedScene)

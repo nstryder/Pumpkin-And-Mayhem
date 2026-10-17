@@ -72,7 +72,7 @@ func move_slice() -> void:
 	pass
 	# On the first slice, we need the last fragment
 	# safe to use slice points count?
-	var i: int = slice_points.size()
+	var i: int = slice_points.size() + 1
 	var fragment: Sprite2D = onion_slices[i]
 	var new_position := Vector2()
 	new_position.x = fragment.position.x + 64 + (i * 4)
