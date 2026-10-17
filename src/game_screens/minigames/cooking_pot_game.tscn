@@ -1,10 +1,76 @@
 [gd_scene format=3 uid="uid://74un8kdkjk0a"]
 
 [ext_resource type="Script" uid="uid://cterdm68l8yku" path="res://src/game_screens/minigames/cooking_pot_game.gd" id="1_e6jvx"]
+[ext_resource type="Texture2D" uid="uid://05pkc3a767s8" path="res://assets/gfx/sprites/backgrounds/stovetop.png" id="2_enqv7"]
+[ext_resource type="Texture2D" uid="uid://c12daxjxgllt6" path="res://assets/gfx/textures/fire_sheet.png" id="3_0wxp5"]
+[ext_resource type="Texture2D" uid="uid://dqbmmc8ouc5mt" path="res://assets/gfx/sprites/tools/cauldron.png" id="3_mbp8u"]
+[ext_resource type="Texture2D" uid="uid://bay7x0gogtynf" path="res://assets/gfx/textures/splat_sheet.png" id="4_kk122"]
+[ext_resource type="Texture2D" uid="uid://c7463md3rnpoe" path="res://assets/gfx/textures/sparkle_sheet.png" id="5_0eun0"]
+[ext_resource type="Texture2D" uid="uid://d1d5apjogkkhy" path="res://assets/gfx/textures/smoke_sheet.png" id="5_a1fu1"]
+[ext_resource type="Texture2D" uid="uid://ble5hnt5rfcjw" path="res://assets/gfx/sprites/ingredients/butterPiece.png" id="5_kk122"]
+[ext_resource type="PackedScene" uid="uid://b870gceb77832" path="res://src/game_components/clickable_outline_area.tscn" id="6_j7lc5"]
+[ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="7_muvqr"]
+[ext_resource type="Texture2D" uid="uid://pvuyroskktye" path="res://assets/gfx/sprites/ingredients/milk.png" id="8_muvqr"]
+[ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="9_5jqi1"]
+[ext_resource type="Texture2D" uid="uid://b2ybjva3igr2j" path="res://assets/gfx/sprites/ingredients/cream.png" id="9_r1n2f"]
+[ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="10_0eun0"]
+[ext_resource type="Texture2D" uid="uid://c43figngusf10" path="res://assets/gfx/sprites/ingredients/onionFull.png" id="10_g44vp"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0eun0"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_a1fu1"]
+_data = [Vector2(0, 1), 0.0, -3.093715, 0, 0, Vector2(1, 0), -0.057671715, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0wxp5"]
+curve = SubResource("Curve_a1fu1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ktohr"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 256, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -1, 0)
+flatness = 1.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+scale_max = 0.7
+alpha_curve = SubResource("CurveTexture_0wxp5")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lwrwe"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ekt5o"]
+_data = [Vector2(0, 0), 0.0, 5.3371367, 0, 0, Vector2(0.36732346, 1), 0.0, 0.0, 0, 0, Vector2(0.71494806, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.960447, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_a1fu1"]
+curve = SubResource("Curve_ekt5o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_od81e"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(192, 64, 1)
+gravity = Vector3(0, -1000, 0)
+color = Color(0.050948553, 0.05094856, 0.050948553, 1)
+alpha_curve = SubResource("CurveTexture_a1fu1")
+anim_offset_max = 1.0
 
 [sub_resource type="Animation" id="Animation_e6jvx"]
 resource_name = "default"
-length = 60.0
+length = 62.0
 step = 1.0
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -13,7 +79,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 5, 9, 13, 16, 20, 23, 27, 30, 34, 37, 41, 44, 47, 51),
+"times": PackedFloat32Array(1, 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45, 49, 53, 58),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [2.0],
@@ -25,37 +91,37 @@ tracks/0/keys = {
 "args": [2.0],
 "method": &"stir"
 }, {
-"args": [1.0],
+"args": [2.0],
 "method": &"add_onion"
 }, {
 "args": [2.0],
 "method": &"stir"
 }, {
-"args": [1.0],
+"args": [2.0],
 "method": &"add_garlic"
 }, {
 "args": [2.0],
 "method": &"stir"
 }, {
-"args": [1.0],
+"args": [2.0],
 "method": &"add_pumpkin"
 }, {
 "args": [2.0],
 "method": &"stir"
 }, {
-"args": [1.0],
+"args": [2.0],
 "method": &"add_milk"
 }, {
 "args": [2.0],
 "method": &"stir"
 }, {
-"args": [1.0],
+"args": [2.0],
 "method": &"add_cream"
 }, {
 "args": [2.0],
 "method": &"stir"
 }, {
-"args": [2.0],
+"args": [3.0],
 "method": &"shake_seasoning"
 }, {
 "args": [2.0],
@@ -68,11 +134,262 @@ _data = {
 &"default": SubResource("Animation_e6jvx")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ktohr"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_j7lc5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8711452, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ekt5o"]
+curve = SubResource("Curve_j7lc5")
+
+[sub_resource type="Curve" id="Curve_r1n2f"]
+_data = [Vector2(0, 0.0055242777), 0.0, 0.0, 0, 0, Vector2(0.5095137, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6685076), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_b6cld"]
+curve = SubResource("Curve_r1n2f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lwrwe"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 71.089
+initial_velocity_min = 438.0
+initial_velocity_max = 521.74
+gravity = Vector3(0, 2000, 0)
+scale_min = 0.29999998
+scale_curve = SubResource("CurveTexture_b6cld")
+alpha_curve = SubResource("CurveTexture_ekt5o")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5jqi1"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_0wxp5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1600455, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0eun0"]
+curve = SubResource("Curve_0wxp5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5jqi1"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 3000, 0)
+scale_min = 0.099999994
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_0eun0")
+
+[sub_resource type="Animation" id="Animation_muvqr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ButterPoint/Mask/ButterPiece:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButterPoint/Mask/ButterPiece:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ingredients:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j7lc5"]
+resource_name = "butter_fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ButterPoint/Mask/ButterPiece:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1.9096838, 1),
+"update": 0,
+"values": [Vector2(33, 14), Vector2(33, 384)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Splat")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"restart"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ButterPoint/Mask/ButterPiece:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5jqi1"]
+resource_name = "prompt_ingredients"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ingredients:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.3618172, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muvqr"]
+_data = {
+&"RESET": SubResource("Animation_muvqr"),
+&"butter_fall": SubResource("Animation_j7lc5"),
+&"prompt_ingredients": SubResource("Animation_5jqi1")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1n2f"]
+resource_local_to_scene = true
+shader = ExtResource("7_muvqr")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(242, 600)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wxp5"]
+resource_local_to_scene = true
+shader = ExtResource("7_muvqr")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1fu1"]
+size = Vector2(562, 379)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekt5o"]
+resource_local_to_scene = true
+shader = ExtResource("7_muvqr")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6cld"]
+size = Vector2(188, 176)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g44vp"]
+resource_local_to_scene = true
+shader = ExtResource("7_muvqr")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26e66"]
+size = Vector2(242, 319)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26e66"]
+resource_local_to_scene = true
+shader = ExtResource("7_muvqr")
+shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jqi1"]
+size = Vector2(212, 220)
+
 [sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
-font_size = 192
+font_size = 120
+shadow_color = Color(0, 0, 0, 0.38039216)
+shadow_offset = Vector2(4, 4)
 
 [node name="CookingPotGame" type="Node2D" unique_id=503086958]
 script = ExtResource("1_e6jvx")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=996980263]
+texture = ExtResource("2_enqv7")
+centered = false
+
+[node name="FireBack" type="GPUParticles2D" parent="." unique_id=321769258]
+material = SubResource("CanvasItemMaterial_0eun0")
+position = Vector2(686, 1057)
+amount = 16
+texture = ExtResource("3_0wxp5")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_ktohr")
+
+[node name="Cauldron" type="Sprite2D" parent="." unique_id=946566970]
+position = Vector2(662, 706)
+texture = ExtResource("3_mbp8u")
+
+[node name="FireBack2" type="GPUParticles2D" parent="." unique_id=385625648]
+material = SubResource("CanvasItemMaterial_0eun0")
+position = Vector2(684, 1403)
+amount = 16
+texture = ExtResource("3_0wxp5")
+lifetime = 0.3
+visibility_rect = Rect2(-1000, -1000, 2000, 2000)
+process_material = SubResource("ParticleProcessMaterial_ktohr")
+
+[node name="Smoke" type="GPUParticles2D" parent="." unique_id=594502216]
+material = SubResource("CanvasItemMaterial_lwrwe")
+position = Vector2(673, 662)
+texture = ExtResource("5_a1fu1")
+process_material = SubResource("ParticleProcessMaterial_od81e")
 
 [node name="TimelinePlayer" type="AnimationPlayer" parent="." unique_id=1183957914]
 libraries/ = SubResource("AnimationLibrary_pmsfn")
@@ -81,24 +398,123 @@ autoplay = &"default"
 [node name="Timer" type="Timer" parent="." unique_id=1662738616]
 one_shot = true
 
-[node name="Output" type="Label" parent="." unique_id=1924449870]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Nice!"
-label_settings = SubResource("LabelSettings_lwrwe")
-horizontal_alignment = 1
+[node name="StirPoint" type="Node2D" parent="." unique_id=1719328662]
+unique_name_in_owner = true
+position = Vector2(675, 672)
+
+[node name="Splat" type="GPUParticles2D" parent="." unique_id=1964025514]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_ktohr")
+position = Vector2(676, 673)
+emitting = false
+texture = ExtResource("4_kk122")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+process_material = SubResource("ParticleProcessMaterial_lwrwe")
+
+[node name="SeasoningParticles" type="GPUParticles2D" parent="." unique_id=823500966]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_5jqi1")
+position = Vector2(692, 230)
+emitting = false
+amount = 16
+texture = ExtResource("5_0eun0")
+lifetime = 0.56
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_5jqi1")
+
+[node name="ButterPoint" type="Node2D" parent="." unique_id=327942805]
+unique_name_in_owner = true
+position = Vector2(674, 405)
+
+[node name="Mask" type="Polygon2D" parent="ButterPoint" unique_id=858860581]
+clip_children = 1
+position = Vector2(0, 1)
+polygon = PackedVector2Array(-406, 274, 376, 275, 373, -248, -405, -244)
+
+[node name="ButterPiece" type="Sprite2D" parent="ButterPoint/Mask" unique_id=222524675]
+visible = false
+position = Vector2(33, 14)
+texture = ExtResource("5_kk122")
+
+[node name="Animation" type="AnimationPlayer" parent="ButterPoint" unique_id=181629592]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_muvqr")
+
+[node name="Ingredients" type="Node2D" parent="." unique_id=298660490]
+unique_name_in_owner = true
+position = Vector2(1626, 502)
+
+[node name="Milk" parent="Ingredients" unique_id=1746058275 instance=ExtResource("6_j7lc5")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_r1n2f")
+position = Vector2(140, -189)
+
+[node name="Sprite" type="Sprite2D" parent="Ingredients/Milk" unique_id=120376861]
+texture = ExtResource("8_muvqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/Milk" unique_id=1227196449]
+position = Vector2(3, 10)
+shape = SubResource("RectangleShape2D_lwrwe")
+
+[node name="Pumpkin" parent="Ingredients" unique_id=438314555 instance=ExtResource("6_j7lc5")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_0wxp5")
+position = Vector2(78, 519)
+
+[node name="Sprite" type="Sprite2D" parent="Ingredients/Pumpkin" unique_id=753268800]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_5jqi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/Pumpkin" unique_id=811987743]
+position = Vector2(-20, 8.5)
+shape = SubResource("RectangleShape2D_a1fu1")
+
+[node name="Garlic" parent="Ingredients" unique_id=2023098467 instance=ExtResource("6_j7lc5")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ekt5o")
+position = Vector2(176, 232)
+
+[node name="Sprite" type="Sprite2D" parent="Ingredients/Garlic" unique_id=1155802434]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_0eun0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/Garlic" unique_id=335501642]
+position = Vector2(2, -6)
+shape = SubResource("RectangleShape2D_b6cld")
+
+[node name="Cream" parent="Ingredients" unique_id=584506115 instance=ExtResource("6_j7lc5")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_g44vp")
+position = Vector2(-140, -146)
+
+[node name="Sprite" type="Sprite2D" parent="Ingredients/Cream" unique_id=695896546]
+texture = ExtResource("9_r1n2f")
+region_enabled = true
+region_rect = Rect2(1662, 528, 243, 313)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/Cream" unique_id=1172945622]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_26e66")
+
+[node name="Onion" parent="Ingredients" unique_id=1685821879 instance=ExtResource("6_j7lc5")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_26e66")
+position = Vector2(-106, 136)
+
+[node name="Sprite" type="Sprite2D" parent="Ingredients/Onion" unique_id=824876557]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_g44vp")
+region_rect = Rect2(1662, 528, 243, 313)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/Onion" unique_id=1127180021]
+position = Vector2(-9, 2)
+shape = SubResource("RectangleShape2D_5jqi1")
 
 [node name="TimelineVisual" type="Node2D" parent="." unique_id=1995783135]
-position = Vector2(0, 240)
+position = Vector2(960, 80)
 
 [node name="Mask" type="ColorRect" parent="TimelineVisual" unique_id=1411470425]
 clip_children = 1
@@ -144,3 +560,25 @@ offset_right = 10.0
 offset_bottom = 50.0
 grow_vertical = 2
 color = Color(0.20399997, 0.9, 0.17999998, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1591902977]
+
+[node name="Output" type="Label" parent="CanvasLayer" unique_id=1924449870]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 65.0
+offset_top = -217.0
+offset_right = 354.0
+offset_bottom = -52.0
+grow_vertical = 0
+offset_transform_enabled = true
+text = "Nice!"
+label_settings = SubResource("LabelSettings_lwrwe")
+
+[connection signal="clicked" from="Ingredients/Milk" to="." method="_on_milk_clicked"]
+[connection signal="clicked" from="Ingredients/Pumpkin" to="." method="_on_pumpkin_clicked"]
+[connection signal="clicked" from="Ingredients/Garlic" to="." method="_on_garlic_clicked"]
+[connection signal="clicked" from="Ingredients/Cream" to="." method="_on_cream_clicked"]
+[connection signal="clicked" from="Ingredients/Onion" to="." method="_on_onion_clicked"]
