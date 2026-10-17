@@ -14,6 +14,8 @@ var is_recipe_showing: bool = false:
 @onready var prompt_animation: AnimationPlayer = %PromptAnimation
 @onready var recipe_animation: AnimationPlayer = %RecipeAnimation
 @onready var recipe: TextureRect = %Recipe
+@onready var mistake_counter: Label = %MistakeCounter
+@onready var mistake_animation: AnimationPlayer = %MistakeAnimation
 
 
 func _ready() -> void:
@@ -31,6 +33,18 @@ func _ready() -> void:
 	if not GlobalState.is_recipe_read:
 		recipe.hide()
 	
+	mistake_counter.hide()
+	GlobalState.mistakes_made_changed.connect(_on_mistakes_made)
+
+
+func _on_mistakes_made(new_value: int) -> void:
+	if new_value == 0:
+		mistake_counter.hide()
+	else:
+		mistake_counter.show()
+		mistake_counter.text = str("Mistakes: ", new_value)
+		mistake_animation.play("shake")
+
 
 func _on_scene_change_requested(new_scene_path: String) -> void:
 	current_scene.get_child(0).queue_free()

@@ -18,12 +18,16 @@ const SLICE_BUTTER = preload("uid://c8iwm3ulg4wkh")
 const SHAKE_SEASONING = preload("uid://coeo76qvjgdvv")
 
 
+@export var pass_sfx: AudioStream
+@export var fail_sfx: AudioStream
+@export var splat_sfx: AudioStream
+
+
 var actions: Array[TimelineAction] = []
 var current_prompt: Node2D
 var scroll_speed: float = 200.0
 var visual_offset: int = 128
 var current_action_idx: int = 0
-var fails: int = 0
 var current_ingredient: ClickableArea
 
 
@@ -36,7 +40,9 @@ var current_ingredient: ClickableArea
 @onready var butter_point: Node2D = %ButterPoint
 @onready var splat: GPUParticles2D = %Splat
 @onready var seasoning_particles: GPUParticles2D = %SeasoningParticles
+@onready var twist_seasoning_particles: GPUParticles2D = %TwistSeasoningParticles
 @onready var animation: AnimationPlayer = %Animation
+@onready var transition: AnimationPlayer = %Transition
 
 @onready var ingredients: Node2D = %Ingredients
 @onready var milk: ClickableArea = %Milk
@@ -47,11 +53,15 @@ var current_ingredient: ClickableArea
 
 
 func _ready() -> void:
+	# for s: String in ["milk", "cream", "shaker", "butter", "onion", "garlic", "pumpkin"]:
+	# 	GlobalState.set(s + "_status", GlobalState.Status.TWISTED)
+	Audio.play_instrument(Audio.Instruments.PERCUSSION)
 	action_line.position.x = visual_offset
 	_get_timeline_actions()
 	_place_timeline_actions()
 	timer.timeout.connect(_on_action_missed)
 	output.hide()
+	_check_twists()
 	_disable_ingredients()
 
 
@@ -78,6 +88,13 @@ func _place_timeline_actions() -> void:
 		action_item.size.x = scroll_speed * action.window_duration
 		action_holder.add_child(action_item)
 		action.visual = action_item
+
+
+func _check_twists() -> void:
+	for ingredient_name: String in ["milk", "cream", "onion", "garlic", "pumpkin"]:
+		var ingredient: ClickableArea = get(ingredient_name)
+		var sprite: Sprite2D = ingredient.get_node("Sprite")
+		sprite.texture = GlobalState.call("get_sprite_" + ingredient_name)
 
 
 func _process(delta: float) -> void:
@@ -156,6 +173,7 @@ func add_pumpkin(window: float) -> void:
 func slice_butter(window: float) -> void:
 	var instance: SliceInput = SLICE_BUTTER.instantiate()
 	butter_point.add_child(instance)
+	butter_point.move_child(instance, 0)
 	instance.sliced.connect(_on_butter_completed)
 	_start_action(window, instance)
 
@@ -178,7 +196,10 @@ func _on_butter_completed() -> void:
 
 
 func _on_seasoning_completed() -> void:
-	seasoning_particles.restart()
+	if GlobalState.shaker_status == GlobalState.Status.TWISTED:
+		twist_seasoning_particles.restart()
+	else:
+		seasoning_particles.restart()
 	_on_action_completed()
 
 
@@ -188,15 +209,17 @@ func _on_action_completed() -> void:
 		current_prompt.queue_free()
 	_change_action_color(Color.SPRING_GREEN)
 	_show_text("Nice!")
+	Audio.play_sfx(pass_sfx)
 	current_action_idx += 1
 
 
 func _on_action_missed() -> void:
 	if current_prompt:
 		current_prompt.queue_free()
+	Audio.play_sfx(fail_sfx)
 	timer.stop()
 	_change_action_color(Color.PALE_VIOLET_RED)
-	fails += 1
+	GlobalState.mistakes_made += 1
 	_show_text("Failed...")
 	current_action_idx += 1
 
@@ -206,6 +229,7 @@ func _check_ingredient(ingredient: ClickableArea) -> void:
 	if current_ingredient == ingredient:
 		_on_action_completed()
 		splat.restart()
+		Audio.play_sfx(splat_sfx)
 		current_ingredient.queue_free()
 	else:
 		_on_action_missed()
@@ -229,3 +253,10 @@ func _on_garlic_clicked() -> void:
 
 func _on_pumpkin_clicked() -> void:
 	_check_ingredient(pumpkin)
+
+
+func _on_timeline_player_animation_finished(_anim_name: StringName) -> void:
+	set_process(false)
+	transition.play("fade_out")
+	await transition.animation_finished
+	get_tree().change_scene_to_packed(load("uid://dr01e4q2881b0") as PackedScene)

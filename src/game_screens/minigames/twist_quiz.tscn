@@ -1,0 +1,402 @@
+[gd_scene format=3 uid="uid://ssrockctwoaq"]
+
+[ext_resource type="Script" uid="uid://bqwjgo6b2ccf7" path="res://src/game_screens/minigames/twist_quiz.gd" id="1_20px1"]
+[ext_resource type="Texture2D" uid="uid://d1d5apjogkkhy" path="res://assets/gfx/textures/smoke_sheet.png" id="2_gqsu7"]
+[ext_resource type="PackedScene" uid="uid://b870gceb77832" path="res://src/game_components/clickable_outline_area.tscn" id="3_fc0sf"]
+[ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="4_aecyt"]
+
+[sub_resource type="Animation" id="Animation_gqsu7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prompt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 110)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prompt:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Choice2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(480, 540)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Choice1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1440, 540.00006)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Choice2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Choice1:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cn1sf"]
+resource_name = "hover"
+length = 2.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prompt:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 95), Vector2(960, 115)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prompt:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.017453292, 0.017453292]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Choice2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, 548), Vector2(480, 532)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Choice1:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1440, 548), Vector2(1440, 532)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Choice2:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.25, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.00872664625997164, -0.00872664625997164]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Choice1:rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.75, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.00872664625997164, -0.00872664625997164]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fc0sf"]
+_data = {
+&"RESET": SubResource("Animation_gqsu7"),
+&"hover": SubResource("Animation_cn1sf")
+}
+
+[sub_resource type="Animation" id="Animation_aecyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Shroud:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_se2ad"]
+resource_name = "fade_in"
+length = 1.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Shroud:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fc0sf"]
+resource_name = "fade_out"
+length = 1.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Shroud:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aecyt"]
+_data = {
+&"RESET": SubResource("Animation_aecyt"),
+&"fade_in": SubResource("Animation_se2ad"),
+&"fade_out": SubResource("Animation_fc0sf")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lwrwe"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_t87rt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.267562, 1), 0.0, 0.0, 0, 0, Vector2(0.746901, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_nkkox"]
+curve = SubResource("Curve_t87rt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ktohr"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(480, 270, 1)
+emission_shape = 2
+emission_sphere_radius = 1.0
+angle_min = -44.99999
+angle_max = 45.00001
+spread = 180.0
+initial_velocity_min = 500.71
+initial_velocity_max = 598.57
+gravity = Vector3(0, 98, 0)
+radial_accel_min = 26.879997
+radial_accel_max = 51.249996
+scale_min = 3.0
+scale_max = 3.0
+color = Color(0.0790124, 0.0018916348, 0.07902161, 1)
+alpha_curve = SubResource("CurveTexture_nkkox")
+anim_offset_max = 1.0
+turbulence_noise_speed_random = 4.0
+turbulence_influence_max = 0.14
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
+font_size = 48
+shadow_color = Color(0, 0, 0, 0.54509807)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc0sf"]
+resource_local_to_scene = true
+shader = ExtResource("4_aecyt")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0sf"]
+size = Vector2(540, 540)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aecyt"]
+resource_local_to_scene = true
+shader = ExtResource("4_aecyt")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
+size = Vector2(540, 540)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fc0sf"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_aecyt"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9791427, 0), -2.6520996, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_od81e"]
+curve = SubResource("Curve_aecyt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_se2ad"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = -45.000015
+angular_velocity_max = 44.999985
+gravity = Vector3(0, -400, 0)
+color = Color(0.9369793, 0.15030318, 0.9999998, 1)
+alpha_curve = SubResource("CurveTexture_od81e")
+anim_offset_max = 1.0
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+
+[node name="TwistQuiz" type="Node2D" unique_id=98396052]
+script = ExtResource("1_20px1")
+
+[node name="Hover" type="AnimationPlayer" parent="." unique_id=278589784]
+libraries/ = SubResource("AnimationLibrary_fc0sf")
+autoplay = &"hover"
+
+[node name="Transition" type="AnimationPlayer" parent="." unique_id=1663414677]
+libraries/ = SubResource("AnimationLibrary_aecyt")
+autoplay = &"fade_in"
+
+[node name="Fog" type="GPUParticles2D" parent="." unique_id=533602440]
+material = SubResource("CanvasItemMaterial_lwrwe")
+position = Vector2(960, 540)
+amount = 16
+texture = ExtResource("2_gqsu7")
+process_material = SubResource("ParticleProcessMaterial_ktohr")
+
+[node name="Prompt" type="Node2D" parent="." unique_id=1146350234]
+position = Vector2(960, 110)
+
+[node name="Label" type="Label" parent="Prompt" unique_id=653751046]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Which is the correct ingredient again...?"
+label_settings = SubResource("LabelSettings_lwrwe")
+horizontal_alignment = 1
+
+[node name="Choice2" type="Node2D" parent="." unique_id=1675814794]
+position = Vector2(480, 540)
+
+[node name="Choice2" parent="Choice2" unique_id=1746058275 instance=ExtResource("3_fc0sf")]
+material = SubResource("ShaderMaterial_fc0sf")
+rotation = -0.01199914
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="Choice2Sprite" type="Sprite2D" parent="Choice2/Choice2" unique_id=509626065]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Choice2/Choice2" unique_id=1897556772]
+shape = SubResource("RectangleShape2D_fc0sf")
+
+[node name="Choice1" type="Node2D" parent="." unique_id=2132052345]
+position = Vector2(1440, 540.00006)
+
+[node name="Choice1" parent="Choice1" unique_id=1475868059 instance=ExtResource("3_fc0sf")]
+material = SubResource("ShaderMaterial_aecyt")
+scale = Vector2(1.0000002, 1.0000002)
+
+[node name="Choice1Sprite" type="Sprite2D" parent="Choice1/Choice1" unique_id=829936624]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Choice1/Choice1" unique_id=1645068216]
+shape = SubResource("RectangleShape2D_lwrwe")
+
+[node name="Woosh" type="GPUParticles2D" parent="." unique_id=958353724]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_fc0sf")
+emitting = false
+texture = ExtResource("2_gqsu7")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_se2ad")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1503523035]
+
+[node name="Shroud" type="ColorRect" parent="CanvasLayer" unique_id=1532880561]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="clicked" from="Choice2/Choice2" to="." method="_on_choice_2_clicked"]
+[connection signal="clicked" from="Choice1/Choice1" to="." method="_on_choice_1_clicked"]

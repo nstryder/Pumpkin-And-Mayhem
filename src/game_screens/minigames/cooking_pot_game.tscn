@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://74un8kdkjk0a"]
 
 [ext_resource type="Script" uid="uid://cterdm68l8yku" path="res://src/game_screens/minigames/cooking_pot_game.gd" id="1_e6jvx"]
+[ext_resource type="AudioStream" uid="uid://b1e6wgd4lfknu" path="res://assets/audio/sfx/confirmation_003.ogg" id="2_724sb"]
 [ext_resource type="Texture2D" uid="uid://05pkc3a767s8" path="res://assets/gfx/sprites/backgrounds/stovetop.png" id="2_enqv7"]
 [ext_resource type="Texture2D" uid="uid://c12daxjxgllt6" path="res://assets/gfx/textures/fire_sheet.png" id="3_0wxp5"]
-[ext_resource type="Texture2D" uid="uid://dqbmmc8ouc5mt" path="res://assets/gfx/sprites/tools/cauldron.png" id="3_mbp8u"]
+[ext_resource type="AudioStream" uid="uid://djqypggequkcu" path="res://assets/audio/sfx/error_008.ogg" id="3_khwjq"]
+[ext_resource type="Texture2D" uid="uid://bqu0qxwujhgkk" path="res://assets/gfx/sprites/tools/cauldronBoil1.png" id="4_b6cld"]
 [ext_resource type="Texture2D" uid="uid://bay7x0gogtynf" path="res://assets/gfx/textures/splat_sheet.png" id="4_kk122"]
+[ext_resource type="AudioStream" uid="uid://0x1k67mibgj0" path="res://assets/audio/sfx/scratch_004.ogg" id="4_q10gw"]
 [ext_resource type="Texture2D" uid="uid://c7463md3rnpoe" path="res://assets/gfx/textures/sparkle_sheet.png" id="5_0eun0"]
 [ext_resource type="Texture2D" uid="uid://d1d5apjogkkhy" path="res://assets/gfx/textures/smoke_sheet.png" id="5_a1fu1"]
 [ext_resource type="Texture2D" uid="uid://ble5hnt5rfcjw" path="res://assets/gfx/sprites/ingredients/butterPiece.png" id="5_kk122"]
+[ext_resource type="Texture2D" uid="uid://bde4jfqg8q4sp" path="res://assets/gfx/sprites/tools/cauldronBoil2.png" id="5_ngwn7"]
 [ext_resource type="PackedScene" uid="uid://b870gceb77832" path="res://src/game_components/clickable_outline_area.tscn" id="6_j7lc5"]
+[ext_resource type="Texture2D" uid="uid://dxpf5wipbj7x8" path="res://assets/gfx/sprites/tools/cauldronBoil3.png" id="6_oqju1"]
 [ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="7_muvqr"]
 [ext_resource type="Texture2D" uid="uid://pvuyroskktye" path="res://assets/gfx/sprites/ingredients/milk.png" id="8_muvqr"]
 [ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="9_5jqi1"]
@@ -44,6 +49,23 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.7
 scale_max = 0.7
 alpha_curve = SubResource("CurveTexture_0wxp5")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ktohr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b6cld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ngwn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oqju1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lwrwe"]
 blend_mode = 1
@@ -163,6 +185,7 @@ initial_velocity_max = 521.74
 gravity = Vector3(0, 2000, 0)
 scale_min = 0.29999998
 scale_curve = SubResource("CurveTexture_b6cld")
+color = Color(0.98039216, 0.42352942, 0.18431373, 1)
 alpha_curve = SubResource("CurveTexture_ekt5o")
 anim_offset_max = 1.0
 
@@ -188,6 +211,17 @@ gravity = Vector3(0, 3000, 0)
 scale_min = 0.099999994
 scale_max = 0.19999999
 scale_curve = SubResource("CurveTexture_0eun0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b6cld"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 3000, 0)
+scale_min = 0.099999994
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_0eun0")
+anim_offset_min = 0.67509997
+anim_offset_max = 1.0
 
 [sub_resource type="Animation" id="Animation_muvqr"]
 length = 0.001
@@ -292,10 +326,10 @@ _data = {
 &"prompt_ingredients": SubResource("Animation_5jqi1")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1n2f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6cld"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -304,10 +338,10 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(242, 600)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wxp5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngwn7"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -316,10 +350,10 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1fu1"]
 size = Vector2(562, 379)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekt5o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqju1"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -328,10 +362,10 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6cld"]
 size = Vector2(188, 176)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g44vp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_724sb"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -340,10 +374,10 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26e66"]
 size = Vector2(242, 319)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_26e66"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_khwjq"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -357,8 +391,63 @@ font_size = 120
 shadow_color = Color(0, 0, 0, 0.38039216)
 shadow_offset = Vector2(4, 4)
 
+[sub_resource type="Animation" id="Animation_ngwn7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Shroud:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b6cld"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Shroud:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oqju1"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Shroud:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ngwn7"]
+_data = {
+&"RESET": SubResource("Animation_ngwn7"),
+&"fade_in": SubResource("Animation_b6cld"),
+&"fade_out": SubResource("Animation_oqju1")
+}
+
 [node name="CookingPotGame" type="Node2D" unique_id=503086958]
 script = ExtResource("1_e6jvx")
+pass_sfx = ExtResource("2_724sb")
+fail_sfx = ExtResource("3_khwjq")
+splat_sfx = ExtResource("4_q10gw")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=996980263]
 texture = ExtResource("2_enqv7")
@@ -372,9 +461,11 @@ texture = ExtResource("3_0wxp5")
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_ktohr")
 
-[node name="Cauldron" type="Sprite2D" parent="." unique_id=946566970]
+[node name="Cauldron" type="AnimatedSprite2D" parent="." unique_id=750060789]
 position = Vector2(662, 706)
-texture = ExtResource("3_mbp8u")
+sprite_frames = SubResource("SpriteFrames_ktohr")
+autoplay = "default"
+frame_progress = 0.3956751
 
 [node name="FireBack2" type="GPUParticles2D" parent="." unique_id=385625648]
 material = SubResource("CanvasItemMaterial_0eun0")
@@ -400,7 +491,7 @@ one_shot = true
 
 [node name="StirPoint" type="Node2D" parent="." unique_id=1719328662]
 unique_name_in_owner = true
-position = Vector2(675, 672)
+position = Vector2(676, 752)
 
 [node name="Splat" type="GPUParticles2D" parent="." unique_id=1964025514]
 unique_name_in_owner = true
@@ -423,6 +514,17 @@ texture = ExtResource("5_0eun0")
 lifetime = 0.56
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_5jqi1")
+
+[node name="TwistSeasoningParticles" type="GPUParticles2D" parent="." unique_id=1577014799]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_5jqi1")
+position = Vector2(692, 230)
+emitting = false
+amount = 16
+texture = ExtResource("5_0eun0")
+lifetime = 0.56
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_b6cld")
 
 [node name="ButterPoint" type="Node2D" parent="." unique_id=327942805]
 unique_name_in_owner = true
@@ -449,7 +551,7 @@ position = Vector2(1626, 502)
 
 [node name="Milk" parent="Ingredients" unique_id=1746058275 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_r1n2f")
+material = SubResource("ShaderMaterial_b6cld")
 position = Vector2(140, -189)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Milk" unique_id=120376861]
@@ -461,7 +563,7 @@ shape = SubResource("RectangleShape2D_lwrwe")
 
 [node name="Pumpkin" parent="Ingredients" unique_id=438314555 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_0wxp5")
+material = SubResource("ShaderMaterial_ngwn7")
 position = Vector2(78, 519)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Pumpkin" unique_id=753268800]
@@ -474,7 +576,7 @@ shape = SubResource("RectangleShape2D_a1fu1")
 
 [node name="Garlic" parent="Ingredients" unique_id=2023098467 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_ekt5o")
+material = SubResource("ShaderMaterial_oqju1")
 position = Vector2(176, 232)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Garlic" unique_id=1155802434]
@@ -487,12 +589,11 @@ shape = SubResource("RectangleShape2D_b6cld")
 
 [node name="Cream" parent="Ingredients" unique_id=584506115 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_g44vp")
+material = SubResource("ShaderMaterial_724sb")
 position = Vector2(-140, -146)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Cream" unique_id=695896546]
 texture = ExtResource("9_r1n2f")
-region_enabled = true
 region_rect = Rect2(1662, 528, 243, 313)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/Cream" unique_id=1172945622]
@@ -501,7 +602,7 @@ shape = SubResource("RectangleShape2D_26e66")
 
 [node name="Onion" parent="Ingredients" unique_id=1685821879 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_26e66")
+material = SubResource("ShaderMaterial_khwjq")
 position = Vector2(-106, 136)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Onion" unique_id=824876557]
@@ -577,6 +678,21 @@ offset_transform_enabled = true
 text = "Nice!"
 label_settings = SubResource("LabelSettings_lwrwe")
 
+[node name="Shroud" type="ColorRect" parent="CanvasLayer" unique_id=1133472736]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Transition" type="AnimationPlayer" parent="." unique_id=1796346232]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_ngwn7")
+autoplay = &"fade_in"
+
+[connection signal="animation_finished" from="TimelinePlayer" to="." method="_on_timeline_player_animation_finished"]
 [connection signal="clicked" from="Ingredients/Milk" to="." method="_on_milk_clicked"]
 [connection signal="clicked" from="Ingredients/Pumpkin" to="." method="_on_pumpkin_clicked"]
 [connection signal="clicked" from="Ingredients/Garlic" to="." method="_on_garlic_clicked"]

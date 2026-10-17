@@ -2,7 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cabdnqygsbkqp" path="res://src/game_components/clickable_area.tscn" id="1_chfn2"]
 [ext_resource type="Script" uid="uid://cm3ic2wr0vajk" path="res://src/game_components/timed_input.gd" id="1_s6wvn"]
+[ext_resource type="AudioStream" uid="uid://b1e6wgd4lfknu" path="res://assets/audio/sfx/confirmation_003.ogg" id="2_odfeo"]
+[ext_resource type="AudioStream" uid="uid://djqypggequkcu" path="res://assets/audio/sfx/error_008.ogg" id="3_5s6rw"]
 [ext_resource type="Texture2D" uid="uid://dsi5ev0r01qsa" path="res://assets/gfx/textures/circle.svg" id="3_v02r1"]
+[ext_resource type="AudioStream" uid="uid://b0sqqsj588r7y" path="res://assets/audio/sfx/glass_002.ogg" id="4_7dc6y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v02r1"]
 font_size = 48
@@ -11,6 +14,9 @@ outline_color = Color(0.20981678, 0.20981681, 0.20981678, 1)
 
 [node name="TimedInput" type="Node2D" unique_id=517426030]
 script = ExtResource("1_s6wvn")
+pass_sfx = ExtResource("2_odfeo")
+fail_sfx = ExtResource("3_5s6rw")
+retry_sfx = ExtResource("4_7dc6y")
 
 [node name="Timer" type="Timer" parent="." unique_id=329137932]
 one_shot = true

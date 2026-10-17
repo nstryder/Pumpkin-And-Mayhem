@@ -20,6 +20,10 @@ signal incomplete
 ## How long the window is for the user to click and still pass
 @export var pass_time_duration: float = 0.2
 
+@export var pass_sfx: AudioStream
+@export var fail_sfx: AudioStream
+@export var retry_sfx: AudioStream
+
 var tween: Tween
 
 @onready var timer: Timer = $Timer
@@ -49,6 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	set_process(false)
 	set_process_unhandled_input(false)
+	process_mode = Node.PROCESS_MODE_DISABLED
 	var time_elapsed: float = total_time - timer.time_left
 	if pass_time_start <= time_elapsed and time_elapsed <= (pass_time_start + pass_time_duration):
 		on_pass()
@@ -68,7 +73,7 @@ func show_text(text: String) -> void:
 	prompt.offset_transform_position.y = -64
 	if tween:
 		tween.kill()
-	tween = create_tween()
+	tween = get_tree().create_tween()
 	(tween.tween_property(prompt, "offset_transform_position:y", 0, 0.2)
 		.set_trans(Tween.TRANS_ELASTIC)
 		.set_ease(Tween.EASE_OUT)
@@ -78,12 +83,14 @@ func show_text(text: String) -> void:
 
 
 func on_pass() -> void:
+	Audio.play_sfx(pass_sfx)
 	show_text("Passed!")
 	timer.stop()
 	passed.emit()
 
 
 func on_fail() -> void:
+	Audio.play_sfx(fail_sfx)
 	print("Failed!")
 	show_text("Failed.")
 	timer.stop()
@@ -91,12 +98,14 @@ func on_fail() -> void:
 
 
 func on_incomplete() -> void:
+	Audio.play_sfx(retry_sfx)
 	print("Incomplete. Retry")
 	show_text("Try again...")
 	await tween.finished
 	timer.start()
 	set_process_unhandled_input(true)
 	set_process(true)
+	process_mode = Node.PROCESS_MODE_INHERIT
 	incomplete.emit()
 
 

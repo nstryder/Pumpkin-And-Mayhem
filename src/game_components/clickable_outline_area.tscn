@@ -3,11 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://cabdnqygsbkqp" path="res://src/game_components/clickable_area.tscn" id="1_td0os"]
 [ext_resource type="Script" uid="uid://cjuleeavqa7du" path="res://src/game_components/clickable_outline_area.gd" id="2_o27y2"]
 [ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="2_xexu6"]
+[ext_resource type="AudioStream" uid="uid://d0jnqvvron8q5" path="res://assets/audio/sfx/drop_004.ogg" id="4_ic35a"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwrwe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xexu6"]
 resource_local_to_scene = true
 shader = ExtResource("2_xexu6")
-shader_parameter/color = Color(1, 1, 1, 0.7411765)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 1
 shader_parameter/inside = false
@@ -51,8 +52,9 @@ _data = {
 }
 
 [node name="ClickableOutlineArea" unique_id=1746058275 instance=ExtResource("1_td0os")]
-material = SubResource("ShaderMaterial_lwrwe")
+material = SubResource("ShaderMaterial_xexu6")
 script = ExtResource("2_o27y2")
+click_sfx = ExtResource("4_ic35a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0" unique_id=1474665287]
 libraries/ = SubResource("AnimationLibrary_8q2iy")

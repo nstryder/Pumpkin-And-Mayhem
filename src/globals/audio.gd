@@ -14,6 +14,7 @@ enum Instruments {
 }
 
 @onready var bgm: AudioStreamPlayer = $BGM
+@onready var sfx: AudioStreamPlayer = $SFX
 
 
 func _ready() -> void:
@@ -44,3 +45,8 @@ func mute_instrument(instrument: Instruments) -> void:
 	var current_volume: float = _get_sync_list().get_sync_stream_volume(instrument)
 	var tween := create_tween()
 	tween.tween_method(set_volume_instrument.bind(instrument), current_volume, -60, BGM_FADE_DURATION)
+
+
+func play_sfx(audio: AudioStream) -> void:
+	sfx.stream = audio
+	sfx.play()

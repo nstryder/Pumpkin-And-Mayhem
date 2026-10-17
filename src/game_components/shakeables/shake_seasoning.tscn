@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://hnynq7d1e7ig" path="res://src/game_components/shake_input.tscn" id="1_kao04"]
 [ext_resource type="Texture2D" uid="uid://bgikba1ex78gi" path="res://assets/gfx/sprites/tools/shakerPouring.png" id="2_6e51p"]
+[ext_resource type="Script" uid="uid://dvd1hcguphvst" path="res://src/game_components/shakeables/shake_seasoning.gd" id="2_gkm8m"]
+[ext_resource type="Texture2D" uid="uid://73qkxthqo65b" path="res://assets/gfx/sprites/tools/shakerPouringTwist.png" id="3_1jfqm"]
 
 [sub_resource type="Animation" id="Animation_6e51p"]
 length = 0.001
@@ -32,7 +34,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_gkm8m"]
 resource_name = "appear"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,6 +67,8 @@ _data = {
 }
 
 [node name="ShakeSeasoning" unique_id=128938445 instance=ExtResource("1_kao04")]
+script = ExtResource("2_gkm8m")
+twisted_sprite = ExtResource("3_1jfqm")
 
 [node name="Slider" parent="." index="0" unique_id=1635499404]
 offset_left = -241.0

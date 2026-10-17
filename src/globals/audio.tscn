@@ -36,3 +36,6 @@ script = ExtResource("1_8u575")
 stream = SubResource("AudioStreamSynchronized_ktohr")
 autoplay = true
 bus = &"BGM"
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=368815201]
+bus = &"SFX"

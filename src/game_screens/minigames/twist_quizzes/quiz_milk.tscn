@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bv56nmuxhexnx"]
+
+[ext_resource type="PackedScene" uid="uid://ssrockctwoaq" path="res://src/game_screens/minigames/twist_quiz.tscn" id="1_5u365"]
+[ext_resource type="Texture2D" uid="uid://pvuyroskktye" path="res://assets/gfx/sprites/ingredients/milk.png" id="2_e62de"]
+[ext_resource type="Texture2D" uid="uid://btj42vo0f0d0o" path="res://assets/gfx/sprites/ingredients/milkTwist.png" id="3_7k4tu"]
+[ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="4_ho36h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e62de"]
+resource_local_to_scene = true
+shader = ExtResource("4_ho36h")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7k4tu"]
+resource_local_to_scene = true
+shader = ExtResource("4_ho36h")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[node name="QuizMilk" unique_id=98396052 instance=ExtResource("1_5u365")]
+correct_sprite = ExtResource("2_e62de")
+wrong_sprite = ExtResource("3_7k4tu")
+global_variable = "milk"
+
+[node name="Choice2" parent="Choice2" parent_id_path=PackedInt32Array(1675814794) index="0" unique_id=1746058275]
+material = SubResource("ShaderMaterial_e62de")
+
+[node name="Choice1" parent="Choice1" parent_id_path=PackedInt32Array(2132052345) index="0" unique_id=1475868059]
+material = SubResource("ShaderMaterial_7k4tu")

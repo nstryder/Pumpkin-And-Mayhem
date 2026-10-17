@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d082tlyd4xugk" path="res://assets/gfx/sprites/backgrounds/cuttingBoard.png" id="2_lpv0c"]
 [ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="3_bb13r"]
 [ext_resource type="Texture2D" uid="uid://cx061svnia22k" path="res://assets/gfx/sprites/tools/punch.png" id="3_lpv0c"]
+[ext_resource type="Texture2D" uid="uid://dt724dvkge57r" path="res://assets/gfx/sprites/ingredients/garlicPeels.png" id="4_lqrmt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(350, 256)
@@ -110,6 +111,11 @@ position = Vector2(981, 655)
 [node name="Garlic" type="Sprite2D" parent="GarlicHolder" unique_id=161729628]
 unique_name_in_owner = true
 texture = ExtResource("3_bb13r")
+
+[node name="Garlic2" type="Sprite2D" parent="GarlicHolder" unique_id=1399067088]
+unique_name_in_owner = true
+position = Vector2(15, 4)
+texture = ExtResource("4_lqrmt")
 
 [node name="GarlicPlaceArea" type="Area2D" parent="GarlicHolder" unique_id=1150140114]
 unique_name_in_owner = true
