@@ -341,5 +341,6 @@ autoplay = &"prompt"
 [connection signal="clicked" from="SmallIngredients/Cream" to="." method="_on_cream_clicked"]
 [connection signal="clicked" from="SmallIngredients/Shaker" to="." method="_on_shaker_clicked"]
 [connection signal="clicked" from="SmallIngredients/Butter" to="." method="_on_butter_clicked"]
+[connection signal="clicked" from="Cauldron" to="." method="_on_cauldron_clicked"]
 [connection signal="clicked" from="CuttingBoard" to="." method="_on_cutting_board_clicked"]
 [connection signal="clicked" from="RecipeClickable" to="." method="_on_recipe_clickable_clicked"]

@@ -96,6 +96,17 @@ func _on_cutting_board_clicked() -> void:
 			EventBus.prompt_requested.emit("Don't have anything to chop...")
 
 
+func _on_cauldron_clicked() -> void:
+	if GlobalState.has_all_mains() and GlobalState.has_all_smalls():
+		if GlobalState.resolved_all_twists_small():
+			EventBus.hide_recipe.emit()
+			EventBus.scene_change_requested.emit(COOKING_POT_GAME)
+		else:
+			EventBus.prompt_requested.emit("Something doesn't look right...")
+	else:
+		EventBus.prompt_requested.emit("I haven't prepared all ingredients yet...")
+
+
 func _on_recipe_clickable_clicked() -> void:
 	GlobalState.is_recipe_read = true
 	recipe_clickable.queue_free()

@@ -64,6 +64,10 @@ func has_all_smalls() -> bool:
 	return got_milk and got_cream and got_butter and got_shaker
 
 
+func has_all_mains() -> bool:
+	return is_onion_done and is_garlic_done and is_pumpkin_done
+
+
 func twist_select_correct(variable_name: String) -> void:
 	print("That's correct!")
 	set(variable_name + "_status", Status.NORMAL)
