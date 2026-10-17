@@ -51,10 +51,18 @@ func _ready() -> void:
 	if not GlobalState.got_butter:
 		butter.queue_free()
 
-	if GlobalState.has_all_smalls() and not GlobalState.fixed_twist_smalls:
-		twist_small_ingredients()
+	for ingredient_name: String in ["milk", "cream", "shaker", "butter"]:
+		var ingredient: ClickableArea = get(ingredient_name)
+		var sprite: Sprite2D = ingredient.get_node("Sprite")
+		sprite.texture = GlobalState.call("get_sprite_" + ingredient_name)
+		if GlobalState.get(ingredient_name + "_status") != GlobalState.Status.NONE:
+			ingredient.process_mode = Node.PROCESS_MODE_DISABLED
 
+
+	if GlobalState.has_all_smalls() and not GlobalState.resolved_all_twists_small():
+		twist_small_ingredients()
 	
+
 	if debug_skip:
 		_on_recipe_clickable_clicked()
 

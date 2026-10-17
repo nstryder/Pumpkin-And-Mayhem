@@ -143,7 +143,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.25, 1.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.008726646259971648, -0.008726646259971648]
+"values": [0.00872664625997164, -0.00872664625997164]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -155,7 +155,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0.75, 1.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.008726646259971648, -0.008726646259971648]
+"values": [0.00872664625997164, -0.00872664625997164]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fc0sf"]
@@ -169,14 +169,31 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("CanvasLayer/Shroud:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_se2ad"]
+resource_name = "fade_in"
+length = 1.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Shroud:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_fc0sf"]
@@ -186,19 +203,20 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("CanvasLayer/Shroud:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.5, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aecyt"]
 _data = {
 &"RESET": SubResource("Animation_aecyt"),
+&"fade_in": SubResource("Animation_se2ad"),
 &"fade_out": SubResource("Animation_fc0sf")
 }
 
@@ -242,7 +260,7 @@ font_size = 48
 shadow_color = Color(0, 0, 0, 0.54509807)
 shadow_offset = Vector2(2, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_se2ad"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc0sf"]
 resource_local_to_scene = true
 shader = ExtResource("4_aecyt")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -254,7 +272,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0sf"]
 size = Vector2(540, 540)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc0sf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aecyt"]
 resource_local_to_scene = true
 shader = ExtResource("4_aecyt")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -305,8 +323,9 @@ autoplay = &"hover"
 
 [node name="Transition" type="AnimationPlayer" parent="." unique_id=1663414677]
 libraries/ = SubResource("AnimationLibrary_aecyt")
+autoplay = &"fade_in"
 
-[node name="SmokeParticles" type="GPUParticles2D" parent="." unique_id=533602440]
+[node name="Fog" type="GPUParticles2D" parent="." unique_id=533602440]
 material = SubResource("CanvasItemMaterial_lwrwe")
 position = Vector2(960, 540)
 amount = 16
@@ -336,7 +355,7 @@ horizontal_alignment = 1
 position = Vector2(480, 540)
 
 [node name="Choice2" parent="Choice2" unique_id=1746058275 instance=ExtResource("3_fc0sf")]
-material = SubResource("ShaderMaterial_se2ad")
+material = SubResource("ShaderMaterial_fc0sf")
 rotation = -0.01199914
 scale = Vector2(1.0000001, 1.0000001)
 
@@ -350,7 +369,7 @@ shape = SubResource("RectangleShape2D_fc0sf")
 position = Vector2(1440, 540.00006)
 
 [node name="Choice1" parent="Choice1" unique_id=1475868059 instance=ExtResource("3_fc0sf")]
-material = SubResource("ShaderMaterial_fc0sf")
+material = SubResource("ShaderMaterial_aecyt")
 scale = Vector2(1.0000002, 1.0000002)
 
 [node name="Choice1Sprite" type="Sprite2D" parent="Choice1/Choice1" unique_id=829936624]
@@ -367,6 +386,17 @@ texture = ExtResource("2_gqsu7")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_se2ad")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1503523035]
+
+[node name="Shroud" type="ColorRect" parent="CanvasLayer" unique_id=1532880561]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [connection signal="clicked" from="Choice2/Choice2" to="." method="_on_choice_2_clicked"]
 [connection signal="clicked" from="Choice1/Choice1" to="." method="_on_choice_1_clicked"]
