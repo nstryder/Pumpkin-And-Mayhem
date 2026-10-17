@@ -5,6 +5,11 @@ const GARLIC_GAME = "uid://bao7qolnlt5wi"
 const ONION_GAME = "uid://cb14c03d2i0xu"
 const PUMPKIN_GAME = "uid://dhb4bcr73gne5"
 
+const QUIZ_BUTTER = "uid://d2w51xuwuxghv"
+const QUIZ_CREAM = "uid://bneba7c1hd8wb"
+const QUIZ_MILK = "uid://bv56nmuxhexnx"
+const QUIZ_SHAKER = "uid://b3fw2lv0c34nj"
+
 @export var debug_skip: bool = false
 
 @onready var recipe_clickable: ClickableArea = $RecipeClickable
@@ -45,6 +50,10 @@ func _ready() -> void:
 		shaker.queue_free()
 	if not GlobalState.got_butter:
 		butter.queue_free()
+
+	if GlobalState.has_all_smalls() and not GlobalState.fixed_twist_smalls:
+		twist_small_ingredients()
+
 	
 	if debug_skip:
 		_on_recipe_clickable_clicked()
@@ -58,6 +67,10 @@ func _disable_all_clickables() -> void:
 func _enable_all_clickables() -> void:
 	to_pantry.process_mode = Node.PROCESS_MODE_INHERIT
 	cutting_board.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func twist_small_ingredients() -> void:
+	small_ingredients.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func _on_cutting_board_clicked() -> void:
@@ -79,3 +92,23 @@ func _on_recipe_clickable_clicked() -> void:
 	GlobalState.is_recipe_read = true
 	recipe_clickable.queue_free()
 	_enable_all_clickables()
+
+
+func _on_milk_clicked() -> void:
+	EventBus.hide_recipe.emit()
+	EventBus.scene_change_requested.emit(QUIZ_MILK)
+
+
+func _on_cream_clicked() -> void:
+	EventBus.hide_recipe.emit()
+	EventBus.scene_change_requested.emit(QUIZ_CREAM)
+
+
+func _on_shaker_clicked() -> void:
+	EventBus.hide_recipe.emit()
+	EventBus.scene_change_requested.emit(QUIZ_SHAKER)
+
+
+func _on_butter_clicked() -> void:
+	EventBus.hide_recipe.emit()
+	EventBus.scene_change_requested.emit(QUIZ_BUTTER)

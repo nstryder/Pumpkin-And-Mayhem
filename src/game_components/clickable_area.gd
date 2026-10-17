@@ -8,7 +8,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if get_viewport().is_input_handled():
 		return
 	
-	if not Utils.event_is_left_click(event):
+	if not Utils.event_is_left_click(event) or not event.is_pressed():
 		return
 	
 	get_viewport().set_input_as_handled()

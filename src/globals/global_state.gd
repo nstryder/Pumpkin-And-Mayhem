@@ -8,6 +8,12 @@ enum Items {
 	GARLIC,
 }
 
+enum Status {
+	NONE,
+	NORMAL,
+	TWISTED
+}
+
 var current_item := Items.NONE
 
 signal recipe_read
@@ -39,6 +45,12 @@ var got_milk: bool = false
 var got_cream: bool = false
 var got_butter: bool = false
 var got_shaker: bool = false
+var fixed_twist_smalls: bool = false
+
+var milk_status := Status.NONE
+var cream_status := Status.NONE
+var butter_status := Status.NONE
+var shaker_status := Status.NONE
 
 
 func _ready() -> void:
@@ -47,3 +59,17 @@ func _ready() -> void:
 
 func is_holding_item() -> bool:
 	return current_item != Items.NONE
+
+
+func has_all_smalls() -> bool:
+	return got_milk and got_cream and got_butter and got_shaker
+
+
+func twist_select_correct(variable_name: String) -> void:
+	print("That's correct!")
+	set(variable_name + "_status", Status.NORMAL)
+
+
+func twist_select_wrong(variable_name: String) -> void:
+	print("That's wrong.")
+	set(variable_name + "_status", Status.TWISTED)

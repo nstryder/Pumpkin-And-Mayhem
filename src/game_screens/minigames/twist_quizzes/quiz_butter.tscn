@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d2w51xuwuxghv"]
+
+[ext_resource type="PackedScene" uid="uid://ssrockctwoaq" path="res://src/game_screens/minigames/twist_quiz.tscn" id="1_el0b0"]
+[ext_resource type="Texture2D" uid="uid://k3fhct5gnqag" path="res://assets/gfx/sprites/ingredients/butterFull.png" id="2_kd8l3"]
+[ext_resource type="Texture2D" uid="uid://cyumuhkyfbj6o" path="res://assets/gfx/sprites/ingredients/butterBitten.png" id="3_ks6os"]
+[ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="4_nu2do"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awe6m"]
+resource_local_to_scene = true
+shader = ExtResource("4_nu2do")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lmjq"]
+resource_local_to_scene = true
+shader = ExtResource("4_nu2do")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[node name="QuizButter" unique_id=98396052 instance=ExtResource("1_el0b0")]
+correct_sprite = ExtResource("2_kd8l3")
+wrong_sprite = ExtResource("3_ks6os")
+global_variable = "butter"
+
+[node name="Choice2" parent="Choice2" parent_id_path=PackedInt32Array(1675814794) index="0" unique_id=1746058275]
+material = SubResource("ShaderMaterial_awe6m")
+
+[node name="Choice1" parent="Choice1" parent_id_path=PackedInt32Array(2132052345) index="0" unique_id=1475868059]
+material = SubResource("ShaderMaterial_2lmjq")
