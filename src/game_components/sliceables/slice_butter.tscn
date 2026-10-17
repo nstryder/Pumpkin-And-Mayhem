@@ -1,24 +1,85 @@
 [gd_scene format=3 uid="uid://c8iwm3ulg4wkh"]
 
 [ext_resource type="PackedScene" uid="uid://bctwpvok04ek" path="res://src/game_components/slice_input.tscn" id="1_bah36"]
+[ext_resource type="Texture2D" uid="uid://ck7d341ji8ng2" path="res://assets/gfx/sprites/ingredients/butterCut.png" id="2_wk05w"]
+[ext_resource type="Texture2D" uid="uid://k3fhct5gnqag" path="res://assets/gfx/sprites/ingredients/butterFull.png" id="3_gd0vt"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_bah36"]
-font_size = 192
+[sub_resource type="Animation" id="Animation_gd0vt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-61, -23)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wk05w"]
+resource_name = "appear"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-121, -59), Vector2(-61, -23)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gd0vt"]
+_data = {
+&"RESET": SubResource("Animation_gd0vt"),
+&"appear": SubResource("Animation_wk05w")
+}
 
 [node name="SliceInput" unique_id=1655751501 instance=ExtResource("1_bah36")]
 
-[node name="Label" type="Label" parent="." index="6" unique_id=446878648]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "🧈"
-label_settings = SubResource("LabelSettings_bah36")
-horizontal_alignment = 1
+[node name="Node2D" type="Node2D" parent="." index="6" unique_id=562007924]
+position = Vector2(-61, -23)
+
+[node name="ButterCut" type="Sprite2D" parent="Node2D" index="0" unique_id=1858612107]
+visible = false
+texture = ExtResource("2_wk05w")
+
+[node name="ButterFull" type="Sprite2D" parent="Node2D" index="1" unique_id=623146126]
+texture = ExtResource("3_gd0vt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7" unique_id=485410233]
+libraries/ = SubResource("AnimationLibrary_gd0vt")
+autoplay = &"appear"
+
+[connection signal="sliced" from="." to="Node2D/ButterFull" method="hide"]
+[connection signal="sliced" from="." to="Node2D/ButterCut" method="show"]

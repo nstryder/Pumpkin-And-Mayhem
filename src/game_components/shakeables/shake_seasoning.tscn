@@ -1,5 +1,81 @@
 [gd_scene format=3 uid="uid://coeo76qvjgdvv"]
 
 [ext_resource type="PackedScene" uid="uid://hnynq7d1e7ig" path="res://src/game_components/shake_input.tscn" id="1_kao04"]
+[ext_resource type="Texture2D" uid="uid://bgikba1ex78gi" path="res://assets/gfx/sprites/tools/shakerPouring.png" id="2_6e51p"]
+
+[sub_resource type="Animation" id="Animation_6e51p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slider:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gkm8m"]
+resource_name = "appear"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slider:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(0.52364725, 1),
+"update": 0,
+"values": [Vector2(0, -160), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jfqm"]
+_data = {
+&"RESET": SubResource("Animation_6e51p"),
+&"appear": SubResource("Animation_gkm8m")
+}
 
 [node name="ShakeSeasoning" unique_id=128938445 instance=ExtResource("1_kao04")]
+
+[node name="Slider" parent="." index="0" unique_id=1635499404]
+offset_left = -241.0
+offset_top = -305.25
+offset_right = 241.0
+offset_bottom = 305.25
+offset_transform_enabled = true
+theme_override_icons/grabber = ExtResource("2_6e51p")
+theme_override_icons/grabber_highlight = ExtResource("2_6e51p")
+theme_override_icons/grabber_disabled = ExtResource("2_6e51p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=941819417]
+libraries/ = SubResource("AnimationLibrary_1jfqm")
+autoplay = &"appear"
