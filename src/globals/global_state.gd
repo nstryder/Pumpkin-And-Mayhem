@@ -143,8 +143,8 @@ func get_sprite_garlic() -> Texture2D:
 
 
 func get_sprite_pumpkin() -> Texture2D:
-	var normal: Texture2D = load("uid://bxia6ay2lv24e")
-	var twisted: Texture2D = load("uid://dwkqv2bhedbat")
+	var normal: Texture2D = load("uid://cc2ppx7h10l22")
+	var twisted: Texture2D = load("uid://g7ga56rn76s2")
 	return choose_sprite_main(pumpkin_status, normal, twisted)
 
 

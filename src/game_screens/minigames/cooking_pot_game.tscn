@@ -16,10 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://dxpf5wipbj7x8" path="res://assets/gfx/sprites/tools/cauldronBoil3.png" id="6_oqju1"]
 [ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="7_muvqr"]
 [ext_resource type="Texture2D" uid="uid://pvuyroskktye" path="res://assets/gfx/sprites/ingredients/milk.png" id="8_muvqr"]
-[ext_resource type="Texture2D" uid="uid://bxia6ay2lv24e" path="res://assets/gfx/sprites/ingredients/pumpkinWhole.png" id="9_5jqi1"]
 [ext_resource type="Texture2D" uid="uid://b2ybjva3igr2j" path="res://assets/gfx/sprites/ingredients/cream.png" id="9_r1n2f"]
 [ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="10_0eun0"]
 [ext_resource type="Texture2D" uid="uid://c43figngusf10" path="res://assets/gfx/sprites/ingredients/onionFull.png" id="10_g44vp"]
+[ext_resource type="Texture2D" uid="uid://cc2ppx7h10l22" path="res://assets/gfx/sprites/ingredients/pumpkinpuree.png" id="20_724sb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0eun0"]
 blend_mode = 1
@@ -326,7 +326,7 @@ _data = {
 &"prompt_ingredients": SubResource("Animation_5jqi1")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6cld"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_724sb"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -338,19 +338,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(242, 600)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngwn7"]
-resource_local_to_scene = true
-shader = ExtResource("7_muvqr")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 0.0
-shader_parameter/pattern = 1
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1fu1"]
-size = Vector2(562, 379)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqju1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_khwjq"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -362,7 +350,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6cld"]
 size = Vector2(188, 176)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_724sb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q10gw"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -374,7 +362,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26e66"]
 size = Vector2(242, 319)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_khwjq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4f3eg"]
 resource_local_to_scene = true
 shader = ExtResource("7_muvqr")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -385,6 +373,18 @@ shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jqi1"]
 size = Vector2(212, 220)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bma2j"]
+resource_local_to_scene = true
+shader = ExtResource("7_muvqr")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1fu1"]
+size = Vector2(259, 228)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
 font_size = 120
@@ -551,7 +551,7 @@ position = Vector2(1626, 502)
 
 [node name="Milk" parent="Ingredients" unique_id=1746058275 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_b6cld")
+material = SubResource("ShaderMaterial_724sb")
 position = Vector2(140, -189)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Milk" unique_id=120376861]
@@ -561,22 +561,9 @@ texture = ExtResource("8_muvqr")
 position = Vector2(3, 10)
 shape = SubResource("RectangleShape2D_lwrwe")
 
-[node name="Pumpkin" parent="Ingredients" unique_id=438314555 instance=ExtResource("6_j7lc5")]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_ngwn7")
-position = Vector2(78, 519)
-
-[node name="Sprite" type="Sprite2D" parent="Ingredients/Pumpkin" unique_id=753268800]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_5jqi1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/Pumpkin" unique_id=811987743]
-position = Vector2(-20, 8.5)
-shape = SubResource("RectangleShape2D_a1fu1")
-
 [node name="Garlic" parent="Ingredients" unique_id=2023098467 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_oqju1")
+material = SubResource("ShaderMaterial_khwjq")
 position = Vector2(176, 232)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Garlic" unique_id=1155802434]
@@ -589,7 +576,7 @@ shape = SubResource("RectangleShape2D_b6cld")
 
 [node name="Cream" parent="Ingredients" unique_id=584506115 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_724sb")
+material = SubResource("ShaderMaterial_q10gw")
 position = Vector2(-140, -146)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Cream" unique_id=695896546]
@@ -602,7 +589,7 @@ shape = SubResource("RectangleShape2D_26e66")
 
 [node name="Onion" parent="Ingredients" unique_id=1685821879 instance=ExtResource("6_j7lc5")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_khwjq")
+material = SubResource("ShaderMaterial_4f3eg")
 position = Vector2(-106, 136)
 
 [node name="Sprite" type="Sprite2D" parent="Ingredients/Onion" unique_id=824876557]
@@ -613,6 +600,20 @@ region_rect = Rect2(1662, 528, 243, 313)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/Onion" unique_id=1127180021]
 position = Vector2(-9, 2)
 shape = SubResource("RectangleShape2D_5jqi1")
+
+[node name="Pumpkin" parent="Ingredients" unique_id=438314555 instance=ExtResource("6_j7lc5")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_bma2j")
+position = Vector2(80, 550)
+
+[node name="Sprite" type="Sprite2D" parent="Ingredients/Pumpkin" unique_id=753268800]
+position = Vector2(-43, -92)
+scale = Vector2(3, 3)
+texture = ExtResource("20_724sb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/Pumpkin" unique_id=811987743]
+position = Vector2(-37.5, -93)
+shape = SubResource("RectangleShape2D_a1fu1")
 
 [node name="TimelineVisual" type="Node2D" parent="." unique_id=1995783135]
 position = Vector2(960, 80)
@@ -694,7 +695,7 @@ autoplay = &"fade_in"
 
 [connection signal="animation_finished" from="TimelinePlayer" to="." method="_on_timeline_player_animation_finished"]
 [connection signal="clicked" from="Ingredients/Milk" to="." method="_on_milk_clicked"]
-[connection signal="clicked" from="Ingredients/Pumpkin" to="." method="_on_pumpkin_clicked"]
 [connection signal="clicked" from="Ingredients/Garlic" to="." method="_on_garlic_clicked"]
 [connection signal="clicked" from="Ingredients/Cream" to="." method="_on_cream_clicked"]
 [connection signal="clicked" from="Ingredients/Onion" to="." method="_on_onion_clicked"]
+[connection signal="clicked" from="Ingredients/Pumpkin" to="." method="_on_pumpkin_clicked"]

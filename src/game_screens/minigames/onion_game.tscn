@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d082tlyd4xugk" path="res://assets/gfx/sprites/backgrounds/cuttingBoard.png" id="2_evax5"]
 [ext_resource type="Shader" uid="uid://dabdarplu12kp" path="res://src/shaders/blur.gdshader" id="3_qwutk"]
 [ext_resource type="Texture2D" uid="uid://ctvk53ib6xrh2" path="res://assets/gfx/sprites/tools/arm.png" id="5_evax5"]
+[ext_resource type="Texture2D" uid="uid://1hnc2rtem5cp" path="res://assets/ui/arrow_decorative_e.png" id="6_ufhvl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
 font_size = 192
@@ -102,5 +103,19 @@ theme_override_icons/grabber_highlight = ExtResource("5_evax5")
 theme_override_icons/grabber_disabled = ExtResource("5_evax5")
 theme_override_styles/slider = SubResource("StyleBoxFlat_ktohr")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_t87rt")
+
+[node name="Arrows" type="Node2D" parent="WipePrompt" unique_id=1370211419]
+position = Vector2(960, 1000)
+
+[node name="ArrowDecorativeE3" type="Sprite2D" parent="WipePrompt/Arrows" unique_id=1611917005]
+position = Vector2(48, 0)
+texture = ExtResource("6_ufhvl")
+
+[node name="ArrowDecorativeE" type="Sprite2D" parent="WipePrompt/Arrows" unique_id=222496721]
+texture = ExtResource("6_ufhvl")
+
+[node name="ArrowDecorativeE2" type="Sprite2D" parent="WipePrompt/Arrows" unique_id=2091373459]
+position = Vector2(-48, 0)
+texture = ExtResource("6_ufhvl")
 
 [connection signal="value_changed" from="WipePrompt/WipeInput" to="." method="_on_wipe_input_value_changed"]

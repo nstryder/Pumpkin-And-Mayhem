@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://dr01e4q2881b0"]
 
 [ext_resource type="Script" uid="uid://c5ne5bw8uspda" path="res://src/game_screens/ending.gd" id="1_twss7"]
+[ext_resource type="AudioStream" uid="uid://o40lucj7ja56" path="res://assets/audio/sfx/confirmation_002.ogg" id="2_1w5ma"]
+[ext_resource type="AudioStream" uid="uid://b0sqqsj588r7y" path="res://assets/audio/sfx/glass_002.ogg" id="2_wtxv7"]
+[ext_resource type="AudioStream" uid="uid://b1e6wgd4lfknu" path="res://assets/audio/sfx/confirmation_003.ogg" id="3_4syys"]
+[ext_resource type="AudioStream" uid="uid://djqypggequkcu" path="res://assets/audio/sfx/error_008.ogg" id="4_18vrp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwrwe"]
 bg_color = Color(1, 1, 1, 1)
@@ -83,7 +87,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_twss7"]
 resource_name = "show"
-length = 7.0
+length = 8.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -133,6 +137,39 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_wtxv7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_wtxv7")
+}],
+"times": PackedFloat32Array(0.5, 1.5)
+}
+tracks/4/use_blend = true
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sfx"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wtxv7"]
 _data = {
@@ -142,6 +179,9 @@ _data = {
 
 [node name="Ending" type="Node2D" unique_id=274153520]
 script = ExtResource("1_twss7")
+superb_sfx = ExtResource("2_1w5ma")
+ok_sfx = ExtResource("3_4syys")
+poor_sfx = ExtResource("4_18vrp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1215321094]
 
@@ -209,5 +249,8 @@ color = Color(1, 1, 1, 0)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=810961913]
 libraries/ = SubResource("AnimationLibrary_wtxv7")
 autoplay = &"show"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=250049425]
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
