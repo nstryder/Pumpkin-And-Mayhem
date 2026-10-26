@@ -194,6 +194,10 @@ func _on_butter_completed() -> void:
 	current_prompt.queue_free()
 
 
+func play_pass_sfx() -> void:
+	Audio.play_sfx(pass_sfx)
+
+
 func _on_seasoning_completed() -> void:
 	if GlobalState.shaker_status == GlobalState.Status.TWISTED:
 		twist_seasoning_particles.restart()
