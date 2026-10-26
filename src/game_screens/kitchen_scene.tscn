@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cc2ppx7h10l22" path="res://assets/gfx/sprites/ingredients/pumpkinpuree.png" id="12_2wouj"]
 [ext_resource type="Texture2D" uid="uid://b8sgnoxumasg4" path="res://assets/gfx/sprites/tools/cauldronSmol.png" id="12_7jr61"]
 [ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="14_7jr61"]
-[ext_resource type="Texture2D" uid="uid://4xtdkrmdkucx" path="res://assets/ui/arrow_decorative_s.png" id="19_2wouj"]
+[ext_resource type="Texture2D" uid="uid://ctglcmwfce0e1" path="res://assets/ui/arrow.png" id="19_2wouj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mt43b"]
 blend_mode = 1
@@ -33,7 +33,7 @@ width = 360
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0.19455253, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jr61"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wouj"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -45,7 +45,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfcrq"]
 size = Vector2(122, 304)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wouj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjwiq"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -57,7 +57,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f040r"]
 size = Vector2(126, 160)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjwiq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdvu7"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -69,7 +69,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h20sc"]
 size = Vector2(71, 146)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdvu7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qee7m"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -81,7 +81,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21got"]
 size = Vector2(278, 165)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qee7m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfcrq"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -93,7 +93,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wouj"]
 size = Vector2(96, 78)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfcrq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhxh0"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -105,7 +105,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjwiq"]
 size = Vector2(214, 224)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhxh0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f040r"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -117,7 +117,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hdvu7"]
 size = Vector2(188, 180)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f040r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ylgrd"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -129,7 +129,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_od81e"]
 size = Vector2(199, 151)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ylgrd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h20sc"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -141,7 +141,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(337, 188)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h20sc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ti8jm"]
 resource_local_to_scene = true
 shader = ExtResource("6_kjwha")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -223,7 +223,7 @@ position = Vector2(893, 520)
 
 [node name="Milk" parent="SmallIngredients" unique_id=1746058275 instance=ExtResource("4_qeuev")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_7jr61")
+material = SubResource("ShaderMaterial_2wouj")
 position = Vector2(-136, 9)
 scale = Vector2(0.5, 0.5)
 
@@ -237,7 +237,7 @@ shape = SubResource("RectangleShape2D_mfcrq")
 
 [node name="Cream" parent="SmallIngredients" unique_id=480397223 instance=ExtResource("4_qeuev")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_2wouj")
+material = SubResource("ShaderMaterial_xjwiq")
 position = Vector2(-68, 48)
 scale = Vector2(0.5, 0.5)
 
@@ -252,7 +252,7 @@ shape = SubResource("RectangleShape2D_f040r")
 
 [node name="Shaker" parent="SmallIngredients" unique_id=1717421763 instance=ExtResource("4_qeuev")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_xjwiq")
+material = SubResource("ShaderMaterial_hdvu7")
 position = Vector2(-9, 47)
 scale = Vector2(0.5, 0.5)
 
@@ -267,7 +267,7 @@ shape = SubResource("RectangleShape2D_h20sc")
 
 [node name="Butter" parent="SmallIngredients" unique_id=535561019 instance=ExtResource("4_qeuev")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_hdvu7")
+material = SubResource("ShaderMaterial_qee7m")
 position = Vector2(84, 51)
 scale = Vector2(0.5, 0.5)
 
@@ -290,7 +290,7 @@ process_mode = 4
 
 [node name="Pumpkin" parent="MainIngredients" unique_id=1312326557 instance=ExtResource("4_qeuev")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_qee7m")
+material = SubResource("ShaderMaterial_mfcrq")
 position = Vector2(571, 933)
 
 [node name="Sprite" type="Sprite2D" parent="MainIngredients/Pumpkin" unique_id=1977353606]
@@ -302,7 +302,7 @@ shape = SubResource("RectangleShape2D_2wouj")
 
 [node name="Onion" parent="MainIngredients" unique_id=3091617 instance=ExtResource("4_qeuev")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_mfcrq")
+material = SubResource("ShaderMaterial_lhxh0")
 position = Vector2(802, 920)
 scale = Vector2(0.5, 0.5)
 
@@ -316,7 +316,7 @@ shape = SubResource("RectangleShape2D_xjwiq")
 
 [node name="Garlic" parent="MainIngredients" unique_id=1434316116 instance=ExtResource("4_qeuev")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_lhxh0")
+material = SubResource("ShaderMaterial_f040r")
 position = Vector2(1001, 926)
 scale = Vector2(0.5, 0.5)
 
@@ -329,7 +329,7 @@ position = Vector2(2, 6)
 shape = SubResource("RectangleShape2D_hdvu7")
 
 [node name="Cauldron" parent="." unique_id=1020724483 instance=ExtResource("4_qeuev")]
-material = SubResource("ShaderMaterial_f040r")
+material = SubResource("ShaderMaterial_ylgrd")
 position = Vector2(433, 545)
 
 [node name="CauldronSmol" type="Sprite2D" parent="Cauldron" unique_id=340869267]
@@ -344,7 +344,7 @@ position = Vector2(-0.5, 17.5)
 shape = SubResource("RectangleShape2D_od81e")
 
 [node name="CuttingBoard" parent="." unique_id=1845611937 instance=ExtResource("4_qeuev")]
-material = SubResource("ShaderMaterial_ylgrd")
+material = SubResource("ShaderMaterial_h20sc")
 position = Vector2(1180, 556)
 
 [node name="SmolFoodProcessor" type="Sprite2D" parent="CuttingBoard" unique_id=1029531692]
@@ -361,7 +361,7 @@ position = Vector2(75.5, -21)
 shape = SubResource("RectangleShape2D_lwrwe")
 
 [node name="RecipeClickable" parent="." unique_id=1613145478 instance=ExtResource("4_qeuev")]
-material = SubResource("ShaderMaterial_h20sc")
+material = SubResource("ShaderMaterial_ti8jm")
 position = Vector2(1030, 953)
 
 [node name="ColorRect" type="ColorRect" parent="RecipeClickable" unique_id=518286143]

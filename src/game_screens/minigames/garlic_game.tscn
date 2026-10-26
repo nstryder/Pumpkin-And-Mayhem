@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="3_bb13r"]
 [ext_resource type="Texture2D" uid="uid://cx061svnia22k" path="res://assets/gfx/sprites/tools/punch.png" id="3_lpv0c"]
 [ext_resource type="Texture2D" uid="uid://dt724dvkge57r" path="res://assets/gfx/sprites/ingredients/garlicPeels.png" id="4_lqrmt"]
+[ext_resource type="Texture2D" uid="uid://ctglcmwfce0e1" path="res://assets/ui/arrow.png" id="6_rr5bl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(350, 256)
@@ -57,23 +58,8 @@ _data = {
 &"oscillate": SubResource("Animation_taym3")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_inrj1"]
-font_size = 128
-
 [sub_resource type="Animation" id="Animation_inrj1"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PromptLayer/PromptAddGarlic:offset_transform_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_mvjtv"]
 resource_name = "new_animation"
@@ -82,7 +68,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PromptLayer/PromptAddGarlic:offset_transform_position")
+tracks/0/path = NodePath("PromptLayer/PromptAddGarlic:offset")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -160,21 +146,10 @@ libraries/ = SubResource("AnimationLibrary_pyrxn")
 
 [node name="PromptLayer" type="CanvasLayer" parent="." unique_id=228327435]
 
-[node name="PromptAddGarlic" type="Label" parent="PromptLayer" unique_id=1816737877]
+[node name="PromptAddGarlic" type="Sprite2D" parent="PromptLayer" unique_id=1548355280]
 unique_name_in_owner = true
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 253.0
-offset_right = 20.0
-offset_bottom = 276.0
-grow_horizontal = 2
-offset_transform_enabled = true
-text = "👇"
-label_settings = SubResource("LabelSettings_inrj1")
-horizontal_alignment = 1
+position = Vector2(960, 425)
+texture = ExtResource("6_rr5bl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PromptLayer" unique_id=383879300]
 root_node = NodePath("../..")

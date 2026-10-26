@@ -122,6 +122,7 @@ func _on_release() -> void:
 		var vfx_distance: float = (line_length / 2.0) + 24
 		slice_vfx.show_slice(Vector2(0, -polarity * vfx_distance), Vector2(0, polarity * vfx_distance), 0.1)
 		slice_vfx.reparent(get_parent())
+		enabled = false
 		
 		Audio.play_sfx(slice_sfx)
 		sliced.emit()

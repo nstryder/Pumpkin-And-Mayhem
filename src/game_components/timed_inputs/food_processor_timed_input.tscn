@@ -2,23 +2,4 @@
 
 [ext_resource type="PackedScene" uid="uid://uyl2msy1ncuw" path="res://src/game_components/timed_input.tscn" id="1_1ak1p"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_my3tv"]
-font_size = 256
-
 [node name="FoodProcessorTimedInput" unique_id=517426030 instance=ExtResource("1_1ak1p")]
-
-[node name="Label" type="Label" parent="." index="3" unique_id=2082937673]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -159.5
-offset_top = -174.5
-offset_right = 159.5
-offset_bottom = 174.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "🥣"
-label_settings = SubResource("LabelSettings_my3tv")
-horizontal_alignment = 1

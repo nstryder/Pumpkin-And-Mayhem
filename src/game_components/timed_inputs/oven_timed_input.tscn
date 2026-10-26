@@ -3,5 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://uyl2msy1ncuw" path="res://src/game_components/timed_input.tscn" id="1_bxlge"]
 
 [node name="OvenTimedInput" unique_id=517426030 instance=ExtResource("1_bxlge")]
-
-[node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=1737650728]

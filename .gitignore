@@ -1,5 +1,6 @@
 .vscode/
 TODO
+.build/
 
 # Godot 4+ specific ignores
 .godot/
