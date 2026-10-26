@@ -20,7 +20,6 @@ const SHAKE_SEASONING = preload("uid://coeo76qvjgdvv")
 
 @export var pass_sfx: AudioStream
 @export var fail_sfx: AudioStream
-@export var splat_sfx: AudioStream
 
 
 var actions: Array[TimelineAction] = []
@@ -229,7 +228,6 @@ func _check_ingredient(ingredient: ClickableArea) -> void:
 	if current_ingredient == ingredient:
 		_on_action_completed()
 		splat.restart()
-		Audio.play_sfx(splat_sfx)
 		current_ingredient.queue_free()
 	else:
 		_on_action_missed()
