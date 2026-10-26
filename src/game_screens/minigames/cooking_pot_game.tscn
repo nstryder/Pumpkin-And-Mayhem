@@ -3,52 +3,25 @@
 [ext_resource type="Script" uid="uid://cterdm68l8yku" path="res://src/game_screens/minigames/cooking_pot_game.gd" id="1_e6jvx"]
 [ext_resource type="AudioStream" uid="uid://b1e6wgd4lfknu" path="res://assets/audio/sfx/confirmation_003.ogg" id="2_724sb"]
 [ext_resource type="Texture2D" uid="uid://05pkc3a767s8" path="res://assets/gfx/sprites/backgrounds/stovetop.png" id="2_enqv7"]
-[ext_resource type="Texture2D" uid="uid://c12daxjxgllt6" path="res://assets/gfx/textures/fire_sheet.png" id="3_0wxp5"]
 [ext_resource type="AudioStream" uid="uid://djqypggequkcu" path="res://assets/audio/sfx/error_008.ogg" id="3_khwjq"]
 [ext_resource type="Texture2D" uid="uid://bqu0qxwujhgkk" path="res://assets/gfx/sprites/tools/cauldronBoil1.png" id="4_b6cld"]
-[ext_resource type="Texture2D" uid="uid://bay7x0gogtynf" path="res://assets/gfx/textures/splat_sheet.png" id="4_kk122"]
 [ext_resource type="AudioStream" uid="uid://0x1k67mibgj0" path="res://assets/audio/sfx/scratch_004.ogg" id="4_q10gw"]
-[ext_resource type="Texture2D" uid="uid://c7463md3rnpoe" path="res://assets/gfx/textures/sparkle_sheet.png" id="5_0eun0"]
-[ext_resource type="Texture2D" uid="uid://d1d5apjogkkhy" path="res://assets/gfx/textures/smoke_sheet.png" id="5_a1fu1"]
 [ext_resource type="Texture2D" uid="uid://ble5hnt5rfcjw" path="res://assets/gfx/sprites/ingredients/butterPiece.png" id="5_kk122"]
 [ext_resource type="Texture2D" uid="uid://bde4jfqg8q4sp" path="res://assets/gfx/sprites/tools/cauldronBoil2.png" id="5_ngwn7"]
 [ext_resource type="PackedScene" uid="uid://b870gceb77832" path="res://src/game_components/clickable_outline_area.tscn" id="6_j7lc5"]
+[ext_resource type="PackedScene" uid="uid://c37oud5s7au7e" path="res://src/game_components/particles/fire_back.tscn" id="6_khwjq"]
 [ext_resource type="Texture2D" uid="uid://dxpf5wipbj7x8" path="res://assets/gfx/sprites/tools/cauldronBoil3.png" id="6_oqju1"]
 [ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="7_muvqr"]
 [ext_resource type="Texture2D" uid="uid://pvuyroskktye" path="res://assets/gfx/sprites/ingredients/milk.png" id="8_muvqr"]
 [ext_resource type="Texture2D" uid="uid://b2ybjva3igr2j" path="res://assets/gfx/sprites/ingredients/cream.png" id="9_r1n2f"]
 [ext_resource type="Texture2D" uid="uid://bq8680d4gurff" path="res://assets/gfx/sprites/ingredients/garlicFull.png" id="10_0eun0"]
 [ext_resource type="Texture2D" uid="uid://c43figngusf10" path="res://assets/gfx/sprites/ingredients/onionFull.png" id="10_g44vp"]
+[ext_resource type="PackedScene" uid="uid://cwjlgbg5xep8k" path="res://src/game_components/particles/fire_back_2.tscn" id="10_khwjq"]
+[ext_resource type="PackedScene" uid="uid://bllf6fbcnxglg" path="res://src/game_components/particles/smoke.tscn" id="11_khwjq"]
+[ext_resource type="PackedScene" uid="uid://bxyihufvs41qh" path="res://src/game_components/particles/splat.tscn" id="12_khwjq"]
+[ext_resource type="PackedScene" uid="uid://cg7m484mgsacf" path="res://src/game_components/particles/seasoning_particles.tscn" id="13_q10gw"]
+[ext_resource type="PackedScene" uid="uid://c5k2eb1b5vu2g" path="res://src/game_components/particles/twist_seasoning_particles.tscn" id="14_q10gw"]
 [ext_resource type="Texture2D" uid="uid://cc2ppx7h10l22" path="res://assets/gfx/sprites/ingredients/pumpkinpuree.png" id="20_724sb"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0eun0"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 3
-particles_anim_v_frames = 3
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_a1fu1"]
-_data = [Vector2(0, 1), 0.0, -3.093715, 0, 0, Vector2(1, 0), -0.057671715, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_0wxp5"]
-curve = SubResource("Curve_a1fu1")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ktohr"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(500, 256, 1)
-angle_min = 1.0728835e-05
-angle_max = 360.00003
-direction = Vector3(0, -1, 0)
-flatness = 1.0
-initial_velocity_min = 1000.0
-initial_velocity_max = 1000.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.7
-scale_max = 0.7
-alpha_curve = SubResource("CurveTexture_0wxp5")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ktohr"]
 animations = [{
@@ -66,29 +39,6 @@ animations = [{
 "name": &"default",
 "speed": 8.0
 }]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lwrwe"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 4
-particles_anim_v_frames = 2
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_ekt5o"]
-_data = [Vector2(0, 0), 0.0, 5.3371367, 0, 0, Vector2(0.36732346, 1), 0.0, 0.0, 0, 0, Vector2(0.71494806, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.960447, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_a1fu1"]
-curve = SubResource("Curve_ekt5o")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_od81e"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(192, 64, 1)
-gravity = Vector3(0, -1000, 0)
-color = Color(0.050948553, 0.05094856, 0.050948553, 1)
-alpha_curve = SubResource("CurveTexture_a1fu1")
-anim_offset_max = 1.0
 
 [sub_resource type="Animation" id="Animation_e6jvx"]
 resource_name = "default"
@@ -155,73 +105,6 @@ tracks/0/keys = {
 _data = {
 &"default": SubResource("Animation_e6jvx")
 }
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ktohr"]
-particles_animation = true
-particles_anim_h_frames = 4
-particles_anim_v_frames = 2
-particles_anim_loop = true
-
-[sub_resource type="Curve" id="Curve_j7lc5"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8711452, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ekt5o"]
-curve = SubResource("Curve_j7lc5")
-
-[sub_resource type="Curve" id="Curve_r1n2f"]
-_data = [Vector2(0, 0.0055242777), 0.0, 0.0, 0, 0, Vector2(0.5095137, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6685076), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_b6cld"]
-curve = SubResource("Curve_r1n2f")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lwrwe"]
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-spread = 71.089
-initial_velocity_min = 438.0
-initial_velocity_max = 521.74
-gravity = Vector3(0, 2000, 0)
-scale_min = 0.29999998
-scale_curve = SubResource("CurveTexture_b6cld")
-color = Color(0.98039216, 0.42352942, 0.18431373, 1)
-alpha_curve = SubResource("CurveTexture_ekt5o")
-anim_offset_max = 1.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5jqi1"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 4
-particles_anim_v_frames = 2
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_0wxp5"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1600455, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_0eun0"]
-curve = SubResource("Curve_0wxp5")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5jqi1"]
-particle_flag_disable_z = true
-emission_shape = 2
-emission_sphere_radius = 128.0
-gravity = Vector3(0, 3000, 0)
-scale_min = 0.099999994
-scale_max = 0.19999999
-scale_curve = SubResource("CurveTexture_0eun0")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b6cld"]
-particle_flag_disable_z = true
-emission_shape = 2
-emission_sphere_radius = 128.0
-gravity = Vector3(0, 3000, 0)
-scale_min = 0.099999994
-scale_max = 0.19999999
-scale_curve = SubResource("CurveTexture_0eun0")
-anim_offset_min = 0.67509997
-anim_offset_max = 1.0
 
 [sub_resource type="Animation" id="Animation_muvqr"]
 length = 0.001
@@ -453,13 +336,8 @@ splat_sfx = ExtResource("4_q10gw")
 texture = ExtResource("2_enqv7")
 centered = false
 
-[node name="FireBack" type="GPUParticles2D" parent="." unique_id=321769258]
-material = SubResource("CanvasItemMaterial_0eun0")
+[node name="FireBack" parent="." unique_id=1405566769 instance=ExtResource("6_khwjq")]
 position = Vector2(686, 1057)
-amount = 16
-texture = ExtResource("3_0wxp5")
-lifetime = 0.5
-process_material = SubResource("ParticleProcessMaterial_ktohr")
 
 [node name="Cauldron" type="AnimatedSprite2D" parent="." unique_id=750060789]
 position = Vector2(662, 706)
@@ -467,20 +345,11 @@ sprite_frames = SubResource("SpriteFrames_ktohr")
 autoplay = "default"
 frame_progress = 0.3956751
 
-[node name="FireBack2" type="GPUParticles2D" parent="." unique_id=385625648]
-material = SubResource("CanvasItemMaterial_0eun0")
+[node name="FireBack2" parent="." unique_id=652323307 instance=ExtResource("10_khwjq")]
 position = Vector2(684, 1403)
-amount = 16
-texture = ExtResource("3_0wxp5")
-lifetime = 0.3
-visibility_rect = Rect2(-1000, -1000, 2000, 2000)
-process_material = SubResource("ParticleProcessMaterial_ktohr")
 
-[node name="Smoke" type="GPUParticles2D" parent="." unique_id=594502216]
-material = SubResource("CanvasItemMaterial_lwrwe")
+[node name="Smoke" parent="." unique_id=1766131265 instance=ExtResource("11_khwjq")]
 position = Vector2(673, 662)
-texture = ExtResource("5_a1fu1")
-process_material = SubResource("ParticleProcessMaterial_od81e")
 
 [node name="TimelinePlayer" type="AnimationPlayer" parent="." unique_id=1183957914]
 libraries/ = SubResource("AnimationLibrary_pmsfn")
@@ -493,38 +362,17 @@ one_shot = true
 unique_name_in_owner = true
 position = Vector2(676, 752)
 
-[node name="Splat" type="GPUParticles2D" parent="." unique_id=1964025514]
+[node name="Splat" parent="." unique_id=2013251123 instance=ExtResource("12_khwjq")]
 unique_name_in_owner = true
-material = SubResource("CanvasItemMaterial_ktohr")
 position = Vector2(676, 673)
-emitting = false
-texture = ExtResource("4_kk122")
-lifetime = 0.3
-one_shot = true
-explosiveness = 0.7
-process_material = SubResource("ParticleProcessMaterial_lwrwe")
 
-[node name="SeasoningParticles" type="GPUParticles2D" parent="." unique_id=823500966]
+[node name="SeasoningParticles" parent="." unique_id=2142261204 instance=ExtResource("13_q10gw")]
 unique_name_in_owner = true
-material = SubResource("CanvasItemMaterial_5jqi1")
 position = Vector2(692, 230)
-emitting = false
-amount = 16
-texture = ExtResource("5_0eun0")
-lifetime = 0.56
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_5jqi1")
 
-[node name="TwistSeasoningParticles" type="GPUParticles2D" parent="." unique_id=1577014799]
+[node name="TwistSeasoningParticles" parent="." unique_id=1821259999 instance=ExtResource("14_q10gw")]
 unique_name_in_owner = true
-material = SubResource("CanvasItemMaterial_5jqi1")
 position = Vector2(692, 230)
-emitting = false
-amount = 16
-texture = ExtResource("5_0eun0")
-lifetime = 0.56
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_b6cld")
 
 [node name="ButterPoint" type="Node2D" parent="." unique_id=327942805]
 unique_name_in_owner = true

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://ssrockctwoaq"]
 
 [ext_resource type="Script" uid="uid://bqwjgo6b2ccf7" path="res://src/game_screens/minigames/twist_quiz.gd" id="1_20px1"]
-[ext_resource type="Texture2D" uid="uid://d1d5apjogkkhy" path="res://assets/gfx/textures/smoke_sheet.png" id="2_gqsu7"]
+[ext_resource type="PackedScene" uid="uid://brkmt0fbxcs8e" path="res://src/game_components/particles/fog.tscn" id="2_aecyt"]
 [ext_resource type="PackedScene" uid="uid://b870gceb77832" path="res://src/game_components/clickable_outline_area.tscn" id="3_fc0sf"]
 [ext_resource type="Shader" uid="uid://dwq3k20ebxsvn" path="res://src/shaders/stroke.gdshader" id="4_aecyt"]
+[ext_resource type="PackedScene" uid="uid://dw3no8h5jmc1" path="res://src/game_components/particles/woosh.tscn" id="5_aecyt"]
 
 [sub_resource type="Animation" id="Animation_gqsu7"]
 length = 0.001
@@ -220,47 +221,12 @@ _data = {
 &"fade_out": SubResource("Animation_fc0sf")
 }
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lwrwe"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 4
-particles_anim_v_frames = 2
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_t87rt"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.267562, 1), 0.0, 0.0, 0, 0, Vector2(0.746901, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_nkkox"]
-curve = SubResource("Curve_t87rt")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ktohr"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(480, 270, 1)
-emission_shape = 2
-emission_sphere_radius = 1.0
-angle_min = -44.99999
-angle_max = 45.00001
-spread = 180.0
-initial_velocity_min = 500.71
-initial_velocity_max = 598.57
-gravity = Vector3(0, 98, 0)
-radial_accel_min = 26.879997
-radial_accel_max = 51.249996
-scale_min = 3.0
-scale_max = 3.0
-color = Color(0.0790124, 0.0018916348, 0.07902161, 1)
-alpha_curve = SubResource("CurveTexture_nkkox")
-anim_offset_max = 1.0
-turbulence_noise_speed_random = 4.0
-turbulence_influence_max = 0.14
-
 [sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
 font_size = 48
 shadow_color = Color(0, 0, 0, 0.54509807)
 shadow_offset = Vector2(2, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc0sf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_se2ad"]
 resource_local_to_scene = true
 shader = ExtResource("4_aecyt")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -272,7 +238,7 @@ shader_parameter/add_margins = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0sf"]
 size = Vector2(540, 540)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aecyt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1b0v"]
 resource_local_to_scene = true
 shader = ExtResource("4_aecyt")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -283,36 +249,6 @@ shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwrwe"]
 size = Vector2(540, 540)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fc0sf"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 4
-particles_anim_v_frames = 2
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_aecyt"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9791427, 0), -2.6520996, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_od81e"]
-curve = SubResource("Curve_aecyt")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_se2ad"]
-particle_flag_disable_z = true
-angle_min = 1.0728835e-05
-angle_max = 360.00003
-spread = 180.0
-initial_velocity_min = 200.0
-initial_velocity_max = 200.0
-angular_velocity_min = -45.000015
-angular_velocity_max = 44.999985
-gravity = Vector3(0, -400, 0)
-color = Color(0.9369793, 0.15030318, 0.9999998, 1)
-alpha_curve = SubResource("CurveTexture_od81e")
-anim_offset_max = 1.0
-turbulence_enabled = true
-turbulence_noise_strength = 20.0
 
 [node name="TwistQuiz" type="Node2D" unique_id=98396052]
 script = ExtResource("1_20px1")
@@ -325,12 +261,8 @@ autoplay = &"hover"
 libraries/ = SubResource("AnimationLibrary_aecyt")
 autoplay = &"fade_in"
 
-[node name="Fog" type="GPUParticles2D" parent="." unique_id=533602440]
-material = SubResource("CanvasItemMaterial_lwrwe")
+[node name="Fog" parent="." unique_id=1710217122 instance=ExtResource("2_aecyt")]
 position = Vector2(960, 540)
-amount = 16
-texture = ExtResource("2_gqsu7")
-process_material = SubResource("ParticleProcessMaterial_ktohr")
 
 [node name="Prompt" type="Node2D" parent="." unique_id=1146350234]
 position = Vector2(960, 110)
@@ -355,7 +287,7 @@ horizontal_alignment = 1
 position = Vector2(480, 540)
 
 [node name="Choice2" parent="Choice2" unique_id=1746058275 instance=ExtResource("3_fc0sf")]
-material = SubResource("ShaderMaterial_fc0sf")
+material = SubResource("ShaderMaterial_se2ad")
 rotation = -0.01199914
 scale = Vector2(1.0000001, 1.0000001)
 
@@ -369,7 +301,7 @@ shape = SubResource("RectangleShape2D_fc0sf")
 position = Vector2(1440, 540.00006)
 
 [node name="Choice1" parent="Choice1" unique_id=1475868059 instance=ExtResource("3_fc0sf")]
-material = SubResource("ShaderMaterial_aecyt")
+material = SubResource("ShaderMaterial_b1b0v")
 scale = Vector2(1.0000002, 1.0000002)
 
 [node name="Choice1Sprite" type="Sprite2D" parent="Choice1/Choice1" unique_id=829936624]
@@ -378,14 +310,8 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Choice1/Choice1" unique_id=1645068216]
 shape = SubResource("RectangleShape2D_lwrwe")
 
-[node name="Woosh" type="GPUParticles2D" parent="." unique_id=958353724]
+[node name="Woosh" parent="." unique_id=1602692103 instance=ExtResource("5_aecyt")]
 unique_name_in_owner = true
-material = SubResource("CanvasItemMaterial_fc0sf")
-emitting = false
-texture = ExtResource("2_gqsu7")
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_se2ad")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1503523035]
 

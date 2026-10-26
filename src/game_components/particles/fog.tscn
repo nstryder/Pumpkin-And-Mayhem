@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://brkmt0fbxcs8e"]
+
+[ext_resource type="Texture2D" uid="uid://d1d5apjogkkhy" path="res://assets/gfx/textures/smoke_sheet.png" id="1_5jrjy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lwrwe"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_t87rt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.267562, 1), 0.0, 0.0, 0, 0, Vector2(0.746901, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_nkkox"]
+curve = SubResource("Curve_t87rt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ktohr"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(480, 270, 1)
+emission_shape = 2
+emission_sphere_radius = 1.0
+angle_min = -44.99999
+angle_max = 45.00001
+spread = 180.0
+initial_velocity_min = 500.71
+initial_velocity_max = 598.57
+gravity = Vector3(0, 98, 0)
+radial_accel_min = 26.879997
+radial_accel_max = 51.249996
+scale_min = 3.0
+scale_max = 3.0
+color = Color(0.0790124, 0.0018916348, 0.07902161, 1)
+alpha_curve = SubResource("CurveTexture_nkkox")
+anim_offset_max = 1.0
+turbulence_noise_speed_random = 4.0
+turbulence_influence_max = 0.14
+
+[node name="Fog" type="GPUParticles2D" unique_id=1710217122]
+material = SubResource("CanvasItemMaterial_lwrwe")
+amount = 16
+texture = ExtResource("1_5jrjy")
+process_material = SubResource("ParticleProcessMaterial_ktohr")

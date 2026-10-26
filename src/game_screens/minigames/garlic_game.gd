@@ -13,7 +13,7 @@ var tween: Tween
 @onready var garlic_press_animation: AnimationPlayer = %GarlicPressAnimation
 @onready var garlic_press_hitbox: Area2D = %GarlicPressHitbox
 
-@onready var prompt_add_garlic: Label = %PromptAddGarlic
+@onready var prompt_add_garlic: Sprite2D = %PromptAddGarlic
 @onready var garlic: Sprite2D = %Garlic
 @onready var garlic_place_area: Area2D = %GarlicPlaceArea
 

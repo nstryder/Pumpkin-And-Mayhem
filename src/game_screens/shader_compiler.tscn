@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://4a7jf6jj6cgy"]
+
+[ext_resource type="Script" uid="uid://caeioyjpnyrgl" path="res://src/game_screens/shader_compiler.gd" id="1_bljek"]
+[ext_resource type="PackedScene" uid="uid://dw3no8h5jmc1" path="res://src/game_components/particles/woosh.tscn" id="1_ncixl"]
+[ext_resource type="PackedScene" uid="uid://bx8rfxo0ogo7m" path="res://src/game_components/circle_input.tscn" id="1_po0mq"]
+[ext_resource type="PackedScene" uid="uid://c37oud5s7au7e" path="res://src/game_components/particles/fire_back.tscn" id="1_uyjl1"]
+[ext_resource type="PackedScene" uid="uid://cwjlgbg5xep8k" path="res://src/game_components/particles/fire_back_2.tscn" id="2_bljek"]
+[ext_resource type="PackedScene" uid="uid://brkmt0fbxcs8e" path="res://src/game_components/particles/fog.tscn" id="3_stgio"]
+[ext_resource type="PackedScene" uid="uid://cg7m484mgsacf" path="res://src/game_components/particles/seasoning_particles.tscn" id="4_0bjtc"]
+[ext_resource type="PackedScene" uid="uid://bllf6fbcnxglg" path="res://src/game_components/particles/smoke.tscn" id="5_ci6cg"]
+[ext_resource type="PackedScene" uid="uid://bxyihufvs41qh" path="res://src/game_components/particles/splat.tscn" id="6_w47sn"]
+[ext_resource type="PackedScene" uid="uid://c5k2eb1b5vu2g" path="res://src/game_components/particles/twist_seasoning_particles.tscn" id="7_3l0hc"]
+[ext_resource type="PackedScene" uid="uid://byeufbv58sty" path="res://src/game_components/particles/sparkles.tscn" id="11_0bjtc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwrwe"]
+font_size = 128
+
+[node name="ShaderCompiler" type="Node2D" unique_id=1268721454]
+script = ExtResource("1_bljek")
+
+[node name="FireBack" parent="." unique_id=1405566769 instance=ExtResource("1_uyjl1")]
+position = Vector2(886, 489)
+
+[node name="FireBack2" parent="." unique_id=652323307 instance=ExtResource("2_bljek")]
+position = Vector2(886, 489)
+
+[node name="Fog" parent="." unique_id=1710217122 instance=ExtResource("3_stgio")]
+position = Vector2(886, 489)
+
+[node name="SeasoningParticles" parent="." unique_id=2142261204 instance=ExtResource("4_0bjtc")]
+position = Vector2(886, 489)
+emitting = true
+one_shot = false
+
+[node name="Smoke" parent="." unique_id=1766131265 instance=ExtResource("5_ci6cg")]
+position = Vector2(886, 489)
+
+[node name="Splat" parent="." unique_id=2013251123 instance=ExtResource("6_w47sn")]
+position = Vector2(886, 489)
+emitting = true
+one_shot = false
+
+[node name="TwistSeasoningParticles" parent="." unique_id=1821259999 instance=ExtResource("7_3l0hc")]
+position = Vector2(886, 489)
+emitting = true
+one_shot = false
+
+[node name="Woosh" parent="." unique_id=1602692103 instance=ExtResource("1_ncixl")]
+position = Vector2(886, 489)
+emitting = true
+one_shot = false
+
+[node name="Sparkles" parent="." unique_id=98028137 instance=ExtResource("11_0bjtc")]
+position = Vector2(906, 548)
+
+[node name="CircleInput" parent="." unique_id=1942862869 instance=ExtResource("1_po0mq")]
+position = Vector2(890, 655)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=877146398]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2141928542]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=2068843170]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer" unique_id=1293878385]
+layout_mode = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_lwrwe")
+horizontal_alignment = 1

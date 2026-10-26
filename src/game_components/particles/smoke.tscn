@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bllf6fbcnxglg"]
+
+[ext_resource type="Texture2D" uid="uid://d1d5apjogkkhy" path="res://assets/gfx/textures/smoke_sheet.png" id="1_81hnt"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lwrwe"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ekt5o"]
+_data = [Vector2(0, 0), 0.0, 5.3371367, 0, 0, Vector2(0.36732346, 1), 0.0, 0.0, 0, 0, Vector2(0.71494806, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.960447, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_a1fu1"]
+curve = SubResource("Curve_ekt5o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_od81e"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(192, 64, 1)
+gravity = Vector3(0, -1000, 0)
+color = Color(0.050948553, 0.05094856, 0.050948553, 1)
+alpha_curve = SubResource("CurveTexture_a1fu1")
+anim_offset_max = 1.0
+
+[node name="Smoke" type="GPUParticles2D" unique_id=1766131265]
+material = SubResource("CanvasItemMaterial_lwrwe")
+texture = ExtResource("1_81hnt")
+process_material = SubResource("ParticleProcessMaterial_od81e")
